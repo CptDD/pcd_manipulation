@@ -1,0 +1,140 @@
+<?xml version="1.0" ?>
+<robot name="baxter" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="connect_to_head" default="false"/>
+  <xacro:if value="$(arg connect_to_head)">
+    <joint name="screen_virtual_camera" type="fixed">
+      <origin rpy="0.6 0 0" xyz="0 0.09 0.04"/>
+      <parent link="screen"/>
+      <child link="virtual_camera_link"/>
+    </joint>
+  </xacro:if>
+  <xacro:unless value="$(arg connect_to_head)">
+    <joint name="arm_virtual_camera" type="fixed">
+      <origin rpy="3.1415 3.1415 -1.5657" xyz="-0.06 0.02 0.1"/>
+      <parent link="left_wrist"/>
+      <child link="virtual_camera_link"/>
+    </joint>
+  </xacro:unless>
+  <link name="virtual_camera_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://baxter_description/meshes/asus_camera/ASUS Xtion Pro Live.stl"/>
+      </geometry>
+      <material name="lightgrey">
+        <color rgba=".1 .1 .1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 1.5657 0" xyz="-0.02 0.02 -0.02"/>
+      <geometry>
+        <!--<cylinder length="0.165" radius="0.02"/>-->
+        <mesh filename="package://baxter_description/meshes/asus_camera/ASUS Xtion Pro Live.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.005"/>
+      <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08"/>
+    </inertial>
+  </link>
+  <link name="virtual_camera_gazebo_optical_frame">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.005 0.005 0.005" />
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.005 0.005 0.005" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.0001"/>
+      <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08"/>
+    </inertial>
+  </link>
+  <link name="camera_rgb_optical_frame">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.005 0.005 0.005" />
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.005 0.005 0.005" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.0001"/>
+      <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08"/>
+    </inertial>
+  </link>
+  
+  <!-- Inconsistency between Gazebo plugin and Rviz conventions: http://answers.ros.org/question/232534/gazebo-camera-frame-is-inconsistent-with-rviz-opencv-convention/ -->
+  <joint name="virtual_camera_to_gazebo_optical_frame" type="fixed">
+    <origin rpy="1.57079 -1.57079 0" xyz="-0.005 0.015 -0.01"/>
+    <parent link="virtual_camera_link"/>
+    <child link="virtual_camera_gazebo_optical_frame"/>
+  </joint>
+  <joint name="virtual_gazebo_to_normal_optical_frame" type="fixed">
+    <origin rpy="-1.5707 0 -1.5707" xyz="0 0 0.0001"/>
+    <parent link="virtual_camera_gazebo_optical_frame"/>
+    <child link="camera_rgb_optical_frame"/>
+  </joint>
+  
+  <gazebo reference="virtual_camera_gazebo_optical_frame">
+    <sensor type="depth" name="virtual_camera">
+      <visualize>1</visualize>
+      <always_on>true</always_on>
+      <update_rate>20.0</update_rate>
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+        <image>
+          <format>B8G8R8</format>
+          <width>640</width>
+          <height>480</height>
+        </image>
+        <clip>
+          <near>0.4</near>
+          <far>8.0</far>
+        </clip>
+      </camera>
+      <plugin name="virtual_camera_controller" filename="libgazebo_ros_openni_kinect.so">
+        <baseline>0.2</baseline>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>1.0</updateRate>
+        <cameraName>asus_xtion</cameraName>
+        <imageTopicName>/camera/rgb/image_raw</imageTopicName>
+        <cameraInfoTopicName>/camera/rgb/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>/camera/depth/image_raw</depthImageTopicName>
+        <depthImageInfoTopicName>/camera/depth/camera_info</depthImageInfoTopicName>
+        <pointCloudTopicName>/camera/depth/points</pointCloudTopicName>
+        <frameName>/camera_rgb_optical_frame</frameName>
+        <pointCloudCutoff>0.4</pointCloudCutoff>
+        <distortionK1>0.00000001</distortionK1>
+        <distortionK2>0.00000001</distortionK2>
+        <distortionK3>0.00000001</distortionK3>
+        <distortionT1>0.00000001</distortionT1>
+        <distortionT2>0.00000001</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0</hackBaseline>
+      </plugin>
+    </sensor>
+  </gazebo>
+</robot>

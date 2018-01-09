@@ -1,0 +1,15 @@
+material Beer/Green
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture beer_texture.jpeg
+        filtering anistropic
+        max_anisotropy 16
+      }
+    }
+  }
+}

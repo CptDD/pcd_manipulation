@@ -1,0 +1,15 @@
+material Beer/Green
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture heineken.jpg
+        filtering anistropic
+        max_anisotropy 16
+      }
+    }
+  }
+}
