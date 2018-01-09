@@ -1,0 +1,4 @@
+std_msgs/Bool command
+---
+std_msgs/String state
+geometry_msgs/Vector3 centroid

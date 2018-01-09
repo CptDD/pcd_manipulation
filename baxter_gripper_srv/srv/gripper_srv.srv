@@ -1,0 +1,4 @@
+std_msgs/String gripper
+std_msgs/Int16 action
+---
+std_msgs/String message

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="tucker" pkg="baxter_toosl" type="tuck_arms.py" args="-u" output="true"/>
+  <node name="jtas"   pkg="baxter_interface" type="joint_trajectory_action_server.py" output="true"/>
+  <node name="pcd_processor" pkg="pcd_processor" type="process_server" output="true"/>
+  <node name="pcd_cloud_saver" pkg="pcd_processor" type="save_server" output="true"/>
+</launch>
