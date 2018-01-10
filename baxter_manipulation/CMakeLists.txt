@@ -15,6 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
   moveit_ros_planning_interface
   roscpp
   rospy
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -138,6 +139,7 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(manipulation_test src/manipulation_test.cpp)
+add_executable(arm_poses src/arm_poses.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -151,6 +153,9 @@ add_executable(manipulation_test src/manipulation_test.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(manipulation_test
+   ${catkin_LIBRARIES}
+)
+target_link_libraries(arm_poses
    ${catkin_LIBRARIES}
 )
 

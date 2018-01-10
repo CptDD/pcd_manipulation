@@ -4,6 +4,10 @@
 #include <baxter_current_pose/position.h>
 #include <moveit/move_group_interface/move_group.h>
 #include <geometry_msgs/Vector3.h>
+#include <tf/transform_broadcaster.h>
+#include <tf/transform_listener.h>
+
+#include <cmath>
 
 
 #include <pcd_processor/process.h>
@@ -18,19 +22,6 @@ using namespace std;
 #define GRIPPER_SERVICE_NAME "gripper_service"
 #define CLOUD_SAVER_SERVICE_NAME "pcd_cloud_saver_service"
 #define CLOUD_PROCESSING_SERVICE_NAME "pcd_processor_service"
-
-/*******************************************************
- * Left hand home state                                *
- * 	X :0.579772 Y:0.191197 Z :0.0993143                * 
- *	Orientation --->                                   *
- *	X :0.136569 Y :0.990184 Z :0.0176215 W :0.0239423  *
- * =================================================   *
- * Right hand home state                               *
- * X :0.580194 Y:-0.192612 Z :0.0980529                *
- *	Orientation --->                                   *
- *	X :-0.135652 Y :0.99039 Z :-0.0158881 W :0.0217533 *
- *******************************************************/
-
 
 
 
@@ -98,30 +89,29 @@ geometry_msgs::Pose go_scan()
 }
 
 
-
-geometry_msgs::Pose go_above_cube()
+geometry_msgs::Pose pre_pick()
 {
-
+	
 	geometry_msgs::Pose pose;
-	pose.position.x=0.732617;
-	pose.position.y=0.134935;
-	pose.position.z=0.111202;
 
-	pose.orientation.x=0.231323;
-	pose.orientation.y=0.972512;
-	pose.orientation.z=0.0197414;
-	pose.orientation.w=0.017899;
+
+	pose.position.x=0.684235;
+	pose.position.y=0.272976;
+	pose.position.z=0.27912;
+
+	pose.orientation.x=0.483781;
+	pose.orientation.y=0.507936;
+	pose.orientation.z=-0.487413;
+	pose.orientation.w=0.519986;
 
 	return pose;
-
 }
 
 
-
-void go_up(moveit::planning_interface::MoveGroup &group)
+void go_adv(moveit::planning_interface::MoveGroup &group)
 {
 	geometry_msgs::Pose current_pose=group.getCurrentPose().pose;
-	current_pose.position.z+=0.1;
+	current_pose.position.x+=0.03;
 	group.setPoseTarget(current_pose);
 }
 
@@ -168,32 +158,6 @@ void execute_move(moveit::planning_interface::MoveGroup &group,bool special=fals
 
 }
 
-geometry_msgs::Pose bulb_tester_position_reconstruct(ros::NodeHandle &nh)
-{
-	double p_x,p_y,p_z,o_x,o_y,o_z,o_w;
-
-	geometry_msgs::Pose pose;
-
-	nh.getParam("/hole_p_x",p_x);
-	nh.getParam("/hole_p_y",p_y);
-	nh.getParam("/hole_p_z",p_z);
-
-	nh.getParam("/hole_o_x",o_x);
-	nh.getParam("/hole_o_x",o_y);
-	nh.getParam("/hole_o_x",o_z);
-	nh.getParam("/hole_o_x",o_w);
-
-	pose.position.x=p_x;
-	pose.position.y=p_y;
-	pose.position.z=p_z;
-
-	pose.orientation.x=o_x;
-	pose.orientation.y=o_y;
-	pose.orientation.z=o_z;
-	pose.orientation.w=o_w;
-
-	return pose;
-}
 
 
 int main(int argc,char**argv)
@@ -218,26 +182,56 @@ int main(int argc,char**argv)
 
 	save_cloud();
 	geometry_msgs::Vector3 centroid=process_cloud();
-	pose=group_right.getCurrentPose().pose;
-	pose.position.x=centroid.x;
+
+	cout<<"Executing orientation"<<endl;
+
+	group_left.setPoseTarget(pre_pick());
+	execute_move(group_left);
+
+	pose=group_left.getCurrentPose().pose;
+	pose.position.y=centroid.y+0.03;
+	pose.position.x=0.73;
+
+	group_left.setPoseTarget(pose);
+	execute_move(group_left);
+
+	pose=group_left.getCurrentPose().pose;
 	pose.position.y=centroid.y;
-	pose.position.z=centroid.z;
+
+	group_left.setPoseTarget(pose);
+	execute_move(group_left);
+
+	
+	pose=group_left.getCurrentPose().pose;
+	pose.position.z=floor(centroid.y);
+
+	group_left.setPoseTarget(pose);
+	execute_move(group_left);
+
+
+	
+	pose=group_left.getCurrentPose().pose;
+	pose.position.y=floor(centroid.y)-0.12;
+
 
 	group_left.setPoseTarget(pose);
 	execute_move(group_left);
 
 	gripper_action("left",0);
 
-	/*pose=group_right.getCurrentPose().pose;
-	cout<<"X :"<<pose.position.x<<" Y :"<<pose.position.y<<"Z :"<<pose.position.z<<endl;
-	cout<<"X :"<<pose.orientation.x<<" Y :"<<pose.orientation.y<<" Z :"<<pose.orientation.z<<" W:"<<pose.orientation.w<<endl;
+
 	pose=group_left.getCurrentPose().pose;
-	cout<<"X :"<<pose.position.x<<" Y :"<<pose.position.y<<"Z :"<<pose.position.z<<endl;
-	cout<<"X :"<<pose.orientation.x<<" Y :"<<pose.orientation.y<<" Z :"<<pose.orientation.z<<" W:"<<pose.orientation.w<<endl;*/
+	pose.position.z+=0.2;
+
+
+	group_left.setPoseTarget(pose);
+	execute_move(group_left);
+
+	
 
 
 	sleep(2.0);
-	cout<<"Job finished!"<<endl;
+	cout<<"Job finished! Cheers ! :))"<<endl;
 
 	ros::shutdown();
 

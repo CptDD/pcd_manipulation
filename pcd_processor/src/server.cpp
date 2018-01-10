@@ -7,12 +7,15 @@
 #include <pcl/point_types.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/common/centroid.h>
+#include <pcl_conversions/pcl_conversions.h>
 
 #include <pcd_processor/process.h>
 #include <pcd_processor/CloudFilter.h>
 #include <pcd_processor/Segmentor.hpp>
 #include <pcd_processor/FeatureComputer.hpp>
 #include <pcd_processor/NNComputer.hpp>
+
+#include <sensor_msgs/PointCloud2.h>
 
 
 #define SERVICE_NAME "pcd_processor_service"
@@ -117,11 +120,11 @@ bool processor_service(pcd_processor::process::Request &req,pcd_processor::proce
 
 	CloudFilter::cleanCloud(cloud);
 	cout<<"Cloud has :"<<cloud->points.size()<<" points!"<<endl;
-	Segmentor::transform_cloud(cloud);
+	//Segmentor::transform_cloud(cloud);
 
 	save_cloud(cloud,"transformed");
 
-	Segmentor::pass_filter_cloud(cloud,cloud,-1,1);
+	Segmentor::pass_filter_cloud(cloud,cloud,-0.27,0);
 	cout<<"Cloud has :"<<cloud->points.size()<<" points!"<<endl;
 
 	Segmentor::segment_plane(cloud);
@@ -149,6 +152,8 @@ bool processor_service(pcd_processor::process::Request &req,pcd_processor::proce
 
 	min_element(computed_distances,min_d,min_index);
 
+	std::cout<<"The minimum element is :"<<min_index<<std::endl;
+
 	save_cloud(extracted_clusters[min_index],"min_cloud");
 
 	Eigen::Vector4f centroid;
@@ -166,6 +171,26 @@ bool processor_service(pcd_processor::process::Request &req,pcd_processor::proce
 
 
 	save_cloud(cloud,"pass");
+
+	/*ros::NodeHandle nh;
+
+  	ros::Publisher pub;
+  	pub=nh.advertise<sensor_msgs::PointCloud2> ("clouder", 1);
+
+    sensor_msgs::PointCloud2 msg;
+           	msg.header.frame_id="virtual_camera_gazebo_optical_frame";
+            msg.header.stamp = ros::Time::now();
+            pcl::toROSMsg(*extracted_clusters[min_index],msg);
+         
+
+
+            while(ros::ok())
+            {
+          	 msg.header.stamp = ros::Time::now();
+             pub.publish (msg);
+             ros::spinOnce ();
+            	   pub.publish(msg);
+            	}*/
 
 
 	return true;

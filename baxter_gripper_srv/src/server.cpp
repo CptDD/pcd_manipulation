@@ -30,7 +30,7 @@ bool gripper_service(baxter_gripper_srv::gripper_srv::Request &req,baxter_grippe
 		args<<"{\"position\":100, \"dead zone\":5.0, \"force\":40.0,\"holding force\":30.0,\"velocity\":50.0}";	
 	}else
 	{
-		args<<"{\"position\":20.0, \"dead zone\":5.0, \"force\":50.0,\"holding force\":30.0,\"velocity\":50.0}";
+		args<<"{\"position\":0.0, \"dead zone\":5.0, \"force\":50.0,\"holding force\":30.0,\"velocity\":50.0}";
 	}
 
 

@@ -21,6 +21,7 @@ void callback(const sensor_msgs::PointCloud2 &msg)
 {	
 	cloud->clear();
 	pcl::fromROSMsg(msg,*cloud);
+
 }
 
 
@@ -39,7 +40,26 @@ void save_cloud()
 	ss<<path<<"/clouds/cloud.pcd";
 
 	writer.write(ss.str(),*cloud);
-	
+	/*ros::NodeHandle nh;
+
+  	ros::Publisher pub;
+  	pub=nh.advertise<sensor_msgs::PointCloud2> ("points2", 1);
+
+           	sensor_msgs::PointCloud2 msg;
+           	msg.header.frame_id="virtual_camera_gazebo_optical_frame";
+            msg.header.stamp = ros::Time::now();
+            pcl::toROSMsg(*cloud,msg);
+         
+
+
+            while(ros::ok())
+            {
+          	 msg.header.stamp = ros::Time::now();
+             pub.publish (msg);
+             ros::spinOnce ();
+            	   pub.publish(msg);
+            }*/
+
 }
 
 

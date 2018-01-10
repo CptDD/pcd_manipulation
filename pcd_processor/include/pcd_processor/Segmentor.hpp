@@ -31,6 +31,11 @@ public:
 		pass_filter.setFilterFieldName("y");
 		pass_filter.setFilterLimits(min,max);
 		pass_filter.filter(*filtered_cloud);
+
+		pass_filter.setInputCloud(filtered_cloud);
+		pass_filter.setFilterFieldName("z");
+		pass_filter.setFilterLimits(-1,1);
+		pass_filter.filter(*filtered_cloud);
 	}
 
 	static void transform_cloud(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
