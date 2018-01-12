@@ -27,7 +27,7 @@ using namespace std;
 void save_cloud()
 {
 	ros::NodeHandle nh;
-	ros::ServiceClient client=nh.serviceClient<pcd_saver::save>(CLOUD_SAVER_SERVICE_NAME);
+	ros::ServiceClient client=nh.serviceClient<pcd_cloud_saver::save>(CLOUD_SAVER_SERVICE_NAME);
 
 	pcd_cloud_saver::save srv;
 	client.call(srv);
