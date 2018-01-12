@@ -63,7 +63,7 @@ void save_cloud()
 }
 
 
-bool saver_service(pcd_saver::save::Request &req,pcd_saver::save::Response &res)
+bool saver_service(pcd_cloud_saver::save::Request &req,pcd_cloud_saver::save::Response &res)
 {
 	cout<<"A request has been made!"<<endl;
 
