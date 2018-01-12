@@ -1,7 +1,6 @@
 #include <iostream>
 #include <ros/ros.h>
 #include <baxter_gripper_srv/gripper_srv.h>
-#include <baxter_current_pose/position.h>
 #include <moveit/move_group_interface/move_group.h>
 #include <geometry_msgs/Vector3.h>
 #include <tf/transform_broadcaster.h>
