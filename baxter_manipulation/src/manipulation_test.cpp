@@ -10,7 +10,7 @@
 
 
 #include <pcd_processor/process.h>
-#include <pcd_saver/save.h>
+#include <pcd_cloud_saver/save.h>
 
 #define NODE_NAME "manipulation_node"
 
@@ -29,7 +29,7 @@ void save_cloud()
 	ros::NodeHandle nh;
 	ros::ServiceClient client=nh.serviceClient<pcd_saver::save>(CLOUD_SAVER_SERVICE_NAME);
 
-	pcd_saver::save srv;
+	pcd_cloud_saver::save srv;
 	client.call(srv);
 }
 
