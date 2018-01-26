@@ -12,18 +12,32 @@
 #include <pcl/filters/extract_indices.h>
 #include <pcl/filters/voxel_grid.h>
 #include <pcl/features/normal_3d.h>
-#include <pcl/kdtree/kdtree.h>
+#include <pcl/search/impl/kdtree.hpp>
 #include <pcl/sample_consensus/method_types.h>
 #include <pcl/sample_consensus/model_types.h>
 #include <pcl/segmentation/sac_segmentation.h>
 #include <pcl/segmentation/extract_clusters.h>
-#include <pcl/keypoints/uniform_sampling.h>
+#include <pcl/filters/uniform_sampling.h>
 
 using namespace std;
 
 class Segmentor
 {
 public:
+
+	static void pass_filter_cloud_side(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud,pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud,double min,double max)
+	{
+		pcl::PassThrough<pcl::PointXYZ> pass_filter;
+		pass_filter.setInputCloud(cloud);
+		pass_filter.setFilterFieldName("z");
+		pass_filter.setFilterLimits(min,max);
+		pass_filter.filter(*filtered_cloud);
+
+		pass_filter.setInputCloud(filtered_cloud);
+
+
+	}
+
 	static void pass_filter_cloud(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud,pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud,double min,double max)
 	{
 		pcl::PassThrough<pcl::PointXYZ> pass_filter;
@@ -34,7 +48,7 @@ public:
 
 		pass_filter.setInputCloud(filtered_cloud);
 		pass_filter.setFilterFieldName("z");
-		pass_filter.setFilterLimits(-1,1);
+		pass_filter.setFilterLimits(0.2,0.5);
 		pass_filter.filter(*filtered_cloud);
 	}
 
@@ -90,7 +104,7 @@ public:
   		vector<pcl::PointIndices> cluster_indices;
   		pcl::EuclideanClusterExtraction<pcl::PointXYZ> ec;
 	
-		ec.setClusterTolerance (0.01); // 2cm
+		ec.setClusterTolerance (0.01); // 1cm
   		ec.setMinClusterSize (100);
   		ec.setMaxClusterSize (25000);
   		ec.setSearchMethod (tree);
@@ -130,8 +144,14 @@ public:
 
 		sampler.setInputCloud(cloud);
 		sampler.setRadiusSearch(0.01);
-		sampler.compute(keypointIndices);
-		pcl::copyPointCloud(*cloud, keypointIndices.points, *cloud_filtered);
+		//sampler.compute(keypointIndices);
+		sampler.filter(*cloud_filtered);
+		
+		cout<<"Cloud sampled with :"<<cloud_filtered->points.size()<<endl;
+		
+		pcl::copyPointCloud(*cloud_filtered,*cloud);		
+
+		/*pcl::copyPointCloud(*cloud, keypointIndices.points, *cloud_filtered);
 
 
 		cout<<"Sampled :"<<cloud_filtered->points.size()<<endl;
@@ -139,7 +159,7 @@ public:
 		if(cloud->points.size()>10)
 		{
 			pcl::copyPointCloud(*cloud_filtered,*cloud);
-		}
+		}*/
 
 
 	}

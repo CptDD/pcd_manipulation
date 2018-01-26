@@ -45,15 +45,16 @@ static void compute_pose(pcl::PointCloud<pcl::PointXYZ>::Ptr model,pcl::PointClo
 	std::vector<Eigen::Matrix4f, Eigen::aligned_allocator<Eigen::Matrix4f> > rototranlsations;
 }
 
-static void load_models()
+static void load_models(vector<pair<string,pcl::PointCloud<pcl::VFHSignature308>::Ptr> > &models)
 {
 	string path=ros::package::getPath("pcd_processor");
 	stringstream ss;
-	ss<<path<<"/model/";
-
+	ss<<path<<"/models/model_bulbs/";
+	
 	vector<std::string> files;
-    
-
+	
+	
+	
         boost::filesystem::path apk_path(ss.str());
         boost::filesystem::recursive_directory_iterator end;
 
@@ -63,8 +64,36 @@ static void load_models()
             files.push_back(cp.string());
         }
 
-  		
+	for(int i=0;i<files.size();i++)
+	{
+		cout<<"Loading:"<<files[i]<<endl;
+		pair<string,pcl::PointCloud<pcl::VFHSignature308>::Ptr >temp_model;
+		pcl::PointCloud<pcl::VFHSignature308>::Ptr cloud(new pcl::PointCloud<pcl::VFHSignature308>);
+		if(NNComputer::read_model(files[i],cloud))
+		{
+			temp_model.first=files[i];
+			temp_model.second=cloud;
+			models.push_back(temp_model);
+		}
+		
+	}	
+
+	//cout<<"Loaded :"<<models.size()<<" models!"<<endl;
 }
+
+static bool read_model(string path,pcl::PointCloud<pcl::VFHSignature308>::Ptr cloud)
+{	
+	pcl::PCDReader reader;
+	if(reader.read(path,*cloud)==-1)
+	{
+		cout<<"An error has occured while reading the cloud!"<<endl;
+		return false;
+	}
+	
+	return true;
+		
+}
+
 
 static bool load_model(pcl::PointCloud<pcl::VFHSignature308>::Ptr model)
 	{
@@ -92,6 +121,50 @@ static bool load_model(pcl::PointCloud<pcl::VFHSignature308>::Ptr model)
   			p[0][i]=data->points[0].histogram[i];
   		}
 	}
+
+	
+	static void nearestK(vector<pair<string,pcl::PointCloud<pcl::VFHSignature308>::Ptr> > models,pcl::PointCloud<pcl::VFHSignature308>::Ptr target)
+	{
+		int k=4;
+		
+		flann::Matrix<int> k_indices;
+		flann::Matrix<float> k_distances;
+		
+		flann::Matrix<float> data(new float[4*308],4,308);
+		
+		for(int i=0;i<models.size();i++)
+		{
+			for(int j=0;j<models[i].second->points.size();j++)
+			{
+				data[i][j]=models[i].second->points[0].histogram[j];
+			}
+		}
+
+		cout<<data[0][0]<<endl;
+
+		string path=ros::package::getPath("pcd_processor");
+		stringstream ss;
+		ss<<path<<"/models/model_bulbs_extra/kdtree.idx";
+
+		flann::Index<flann::ChiSquareDistance<float> > index (data, flann::SavedIndexParams (ss.str()));
+  		index.buildIndex();
+		
+		flann::Matrix<int> indices=flann::Matrix<int>(new int[k],1,k);
+  		flann::Matrix<float> distances=flann::Matrix<float>(new float[k],1,k);
+
+
+  			flann::Matrix<float> p = flann::Matrix<float>(new float[1*308], 1, 308);
+
+  			NNComputer::prepare_target(target,p);
+
+  			index.knnSearch(p,indices,distances,k,flann::SearchParams(512));
+
+  			delete [] p.ptr();
+	
+		cout<<"The most similar is :"<<models[indices[0][0]].first<<" Distance :"<<distances[0][0]<<endl;
+	
+	}
+
 
 	static vector<double> nearestKSearch(pcl::PointCloud<pcl::VFHSignature308>::Ptr model,
 		vector<pcl::PointCloud<pcl::VFHSignature308>::Ptr> targets)
@@ -122,9 +195,9 @@ static bool load_model(pcl::PointCloud<pcl::VFHSignature308>::Ptr model)
 
   		flann::Matrix<int> indices=flann::Matrix<int>(new int[k],1,k);
   		flann::Matrix<float> distances=flann::Matrix<float>(new float[k],1,k);
-
-  		vector<double> computed_distances; 
-
+		
+		vector<double> computed_distances;
+ 
   		for(int i=0;i<targets.size();i++)
   		{
 

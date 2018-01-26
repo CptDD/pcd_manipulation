@@ -14,31 +14,41 @@
 #include <pcd_processor/Segmentor.hpp>
 #include <pcd_processor/FeatureComputer.hpp>
 #include <pcd_processor/NNComputer.hpp>
+#include <pcd_processor/Nearest.hpp>
+#include <pcd_processor/N2.hpp>
 
 #include <sensor_msgs/PointCloud2.h>
 
 
 #define SERVICE_NAME "pcd_processor_service"
 
+
+
 using namespace std;
 
 
 void save_cloud(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud,string cloud_name)
 {
-	pcl::PCDWriter writer;
+	if(cloud->points.size()!=0)
+	{
+		pcl::PCDWriter writer;
 
-	cout<<"Saving the cloud!"<<endl;
+		cout<<"Saving the cloud!"<<endl;
 
-	const string pkg="pcd_processor";
-	string path = ros::package::getPath(pkg);
-  	
-	//cout<<"Path :"<<path<<endl;
+		const string pkg="pcd_processor";
+		string path = ros::package::getPath(pkg);
 
-	stringstream ss;
-	ss<<path<<"/clouds/"<<cloud_name<<".pcd";
+		//cout<<"Path :"<<path<<endl;
 
-	writer.write(ss.str(),*cloud);
-	
+		stringstream ss;
+		ss<<path<<"/clouds/"<<cloud_name<<".pcd";
+
+		writer.write(ss.str(),*cloud);
+	}else
+	{
+		cout<<"Cloud is empty!"<<endl;
+	}
+
 }
 
 void save_clouds(vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> clouds)
@@ -51,6 +61,52 @@ void save_clouds(vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> clouds)
 		save_cloud(clouds[i],ss.str());
 	}
 }
+
+void read_extra_cluster(vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> &clouds)
+{
+	string path=ros::package::getPath("pcd_processor");
+
+	stringstream ss;
+	ss<<path<<"/clouds/cluster_4.pcd";
+
+	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+
+	pcl::PCDReader reader;
+
+	if(reader.read(ss.str(),*cloud)==-1)
+	{
+		cout<<"Error reading the cloud!"<<endl;
+
+		return;
+	}
+
+	clouds.push_back(cloud);
+}
+
+
+void read_extra_vfhs(vector<pcl::PointCloud<pcl::VFHSignature308>::Ptr> &clouds)
+{
+	string path=ros::package::getPath("pcd_processor");
+
+	stringstream ss;
+	ss<<path<<"/models/model_bulbs/stan_s_vfh.pcd";
+
+	pcl::PointCloud<pcl::VFHSignature308>::Ptr cloud(new pcl::PointCloud<pcl::VFHSignature308>);
+
+	pcl::PCDReader reader;
+
+	if(reader.read(ss.str(),*cloud)==-1)
+	{
+		cout<<"Error reading the cloud!"<<endl;
+
+		return;
+	}
+
+	clouds.push_back(cloud);
+	cout<<"Extra vfhs read :"<<clouds.size()<<endl;
+}
+
+
 
 bool read_cloud(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud){
 
@@ -112,6 +168,8 @@ void compute_centroid(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud,Eigen::Vector4f 
 
 bool processor_service(pcd_processor::process::Request &req,pcd_processor::process::Response &res)
 {
+
+
 	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
 
 	read_cloud(cloud);
@@ -124,24 +182,54 @@ bool processor_service(pcd_processor::process::Request &req,pcd_processor::proce
 
 	save_cloud(cloud,"transformed");
 
-	Segmentor::pass_filter_cloud(cloud,cloud,-0.27,0);
+	Segmentor::pass_filter_cloud(cloud,cloud,-0.03,0.15);
 	cout<<"Cloud has :"<<cloud->points.size()<<" points!"<<endl;
 
-	Segmentor::segment_plane(cloud);
+	save_cloud(cloud,"filtered");
+
+	//Segmentor::segment_plane(cloud);
 
 	vector<pcl::PointCloud<pcl::PointXYZ>::Ptr >extracted_clusters=Segmentor::extract_clusters(cloud);
 
+	for(int i=0;i<extracted_clusters.size();i++)
+	{
+		stringstream ss;
+		ss<<"original_"<<i;
+		save_cloud(extracted_clusters[i],ss.str());
+	}
+
 	cout<<"Extracted :"<<extracted_clusters.size()<<endl;
-	
+
+	//save_clouds(extracted_clusters);
+
+
+	vector<pcl::PointCloud<pcl::VFHSignature308>::Ptr> vfhs=compute_features(extracted_clusters);
+
+
 	save_clouds(extracted_clusters);
-	
-	vector<pcl::PointCloud<pcl::VFHSignature308>::Ptr> vfhs=compute_features(extracted_clusters);	
+	read_extra_vfhs(vfhs);
 
 	cout<<"Computed VFH features for :"<<vfhs.size()<<" clouds!"<<endl;
 
-	pcl::PointCloud<pcl::VFHSignature308>::Ptr model(new pcl::PointCloud<pcl::VFHSignature308>);
+	for(int i=0;i<vfhs.size();i++)
+        {
+		Nearest::nearestKSearch(vfhs[i]);
+        }
 
-	//NNComputer::load_models();
+
+
+	/*vector<pair<string,pcl::PointCloud<pcl::VFHSignature308>::Ptr> >models;
+	NNComputer::load_models(models);
+	cout<<"Loaded :"<<models.size()<<" models!"<<endl;
+
+	save_cloud(extracted_clusters[0],"extrac");
+	NNComputer::nearestK(models,vfhs[0]);
+
+
+
+	/*pcl::PointCloud<pcl::VFHSignature308>::Ptr model(new pcl::PointCloud<pcl::VFHSignature308>);
+
+	NNComputer::load_models();
 
 	NNComputer::load_model(model);
 
@@ -181,7 +269,7 @@ bool processor_service(pcd_processor::process::Request &req,pcd_processor::proce
            	msg.header.frame_id="virtual_camera_gazebo_optical_frame";
             msg.header.stamp = ros::Time::now();
             pcl::toROSMsg(*extracted_clusters[min_index],msg);
-         
+
 
 
             while(ros::ok())
