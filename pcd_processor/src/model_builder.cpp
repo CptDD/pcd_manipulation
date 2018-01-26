@@ -199,19 +199,20 @@ int main(int argc,char**argv)
 
 	boost::filesystem::path p=ss.str();
 
-	/*read_folders(p,folders);
+	read_folders(p,folders);
 
 	//vector<pair<string,vector<pair<pair<string,int>,pair<int,int> > > > >total_dist;
 	vector<pair<string,vector<DistributionEntry> > > total_dist;
 
 
-	for(int i=0;i<folders.size();i++)
+	/*for(int i=0;i<folders.size();i++)
 	{
 		boost::filesystem::path temp_path=folders[i];
 		vector<pair<pair<string,int>,pcl::PointCloud<pcl::VFHSignature308>::Ptr> >clouds;
 		//vector<pair<pair<string,int>,pair<int,int> > >temp_dist;
 
 		//vector<DistributionEntry> temp_distribution;
+
 		pair<string,vector<DistributionEntry> >temp_distribution;
 		temp_distribution.first=folders[i];
 
@@ -246,13 +247,13 @@ int main(int argc,char**argv)
 	ss.str(string());
 	ss<<path<<"/training_results/"<<"out.txt";
 
-	/*Util::results_2_file(ss.str(),total_dist);
+	//Util::results_2_file(ss.str(),total_dist);
 
-	vector<pair<string,vector<DistributionEntry> > > read_distribution;*/
+	vector<pair<string,vector<DistributionEntry> > > read_distribution;
 
 	Util::get_results_from_file(ss.str(),read_distribution);
 
-	for(int i=0;i<total_dist.size();i++)
+	for(int i=0;i<read_distribution.size();i++)
 	{
 		cout<<read_distribution[i].first<<endl;
 		DistributionComputer::show(read_distribution[i].second);
