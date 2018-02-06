@@ -40,13 +40,27 @@ def main():
 
 def update():
 	distribution=fetch()
-	belief=[1,1,1,1]
+	belief=[0.25,0.25,0.25,0.25]
+
+
+	'''Test values for observed type and observed viewpoint'''
 
 	observed_type=1
 	observed_viewpoint="side_right"
 
-	
+	temp=distribution[observed_viewpoint]
 
+	for i in temp:
+
+		if int(i['type'])==observed_type:
+			print(i['label'])
+			val=float(i['percentage'])*belief[observed_type]
+			belief[observed_type]=val
+			sum_b=sum(belief)
+
+			for j in range(0,4):
+				belief[j]/=sum_b
+				
 
 if __name__=='__main__':
 	main()
