@@ -140,6 +140,7 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(manipulation_test src/manipulation_test.cpp)
 add_executable(arm_poses src/arm_poses.cpp)
+add_executable(conveyor_manipulation src/conveyor_manipulation.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -156,6 +157,10 @@ target_link_libraries(manipulation_test
    ${catkin_LIBRARIES}
 )
 target_link_libraries(arm_poses
+   ${catkin_LIBRARIES}
+)
+
+target_link_libraries(conveyor_manipulation
    ${catkin_LIBRARIES}
 )
 

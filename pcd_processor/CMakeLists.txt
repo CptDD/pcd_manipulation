@@ -82,6 +82,7 @@ include_directories(${HDF5_INCLUDE_DIRS})
 add_service_files(
    FILES
    process.srv
+   classify.srv
 #   Service2.srv
 )
 
@@ -162,6 +163,7 @@ include_directories(
 ## Declare a C++ executable
 add_executable(pcd_processor src/server.cpp)
 add_executable(model_builder src/model_builder.cpp)
+add_executable(classify_server src/classify_server.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -179,6 +181,13 @@ target_link_libraries(model_builder
    ${PCL_LIBRARIES}
    ${HDF5_hdf5_LIBRARY}
 )
+
+target_link_libraries(classify_server
+   ${catkin_LIBRARIES}
+   ${PCL_LIBRARIES}
+   ${HDF5_hdf5_LIBRARY}
+)
+
 
 #############
 ## Install ##

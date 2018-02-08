@@ -212,9 +212,11 @@ bool processor_service(pcd_processor::process::Request &req,pcd_processor::proce
 	cout<<"Computed VFH features for :"<<vfhs.size()<<" clouds!"<<endl;
 
 	for(int i=0;i<vfhs.size();i++)
-        {
+    {
 		Nearest::nearestKSearch(vfhs[i]);
-        }
+    }
+
+   
 
 
 

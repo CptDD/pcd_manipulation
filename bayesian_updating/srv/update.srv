@@ -1,3 +1,9 @@
-std_msgs/Int16 type
+#1 - update
+#2 - get get distribution
+
+std_msgs/UInt16 action
+std_msgs/String viewpoint
+std_msgs/UInt16 type
 ---
 std_msgs/String output
+float32[] belief

@@ -40,7 +40,7 @@ class BayesianUpdater:
 				val=float(i['percentage'])*belief[observed_type]
 				sum_b=sum(belief)
 
-				for j in range(0,4):
+				for j in range(0,self.number_of_classes):
 					belief[j]/=sum_b
 
 	

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ros/ros.h>
 #include <baxter_gripper_srv/gripper_srv.h>
+#include <baxter_current_pose/position.h>
 #include <moveit/move_group_interface/move_group.h>
 #include <geometry_msgs/Vector3.h>
 #include <tf/transform_broadcaster.h>
@@ -10,7 +11,7 @@
 
 
 #include <pcd_processor/process.h>
-#include <pcd_cloud_saver/save.h>
+#include <pcd_saver/save.h>
 
 #define NODE_NAME "manipulation_node"
 
@@ -27,9 +28,9 @@ using namespace std;
 void save_cloud()
 {
 	ros::NodeHandle nh;
-	ros::ServiceClient client=nh.serviceClient<pcd_cloud_saver::save>(CLOUD_SAVER_SERVICE_NAME);
+	ros::ServiceClient client=nh.serviceClient<pcd_saver::save>(CLOUD_SAVER_SERVICE_NAME);
 
-	pcd_cloud_saver::save srv;
+	pcd_saver::save srv;
 	client.call(srv);
 }
 
@@ -189,7 +190,7 @@ int main(int argc,char**argv)
 
 	pose=group_left.getCurrentPose().pose;
 	pose.position.y=centroid.y+0.03;
-	pose.position.x=0.73;
+	pose.position.x=0.74;
 
 	group_left.setPoseTarget(pose);
 	execute_move(group_left);
@@ -202,7 +203,7 @@ int main(int argc,char**argv)
 
 	
 	pose=group_left.getCurrentPose().pose;
-	pose.position.z=floor(centroid.y);
+	pose.position.z=floor(centroid.y)-0.04;
 
 	group_left.setPoseTarget(pose);
 	execute_move(group_left);
@@ -210,7 +211,7 @@ int main(int argc,char**argv)
 
 	
 	pose=group_left.getCurrentPose().pose;
-	pose.position.y=floor(centroid.y)-0.12;
+	pose.position.y=floor(centroid.y)-0.13;
 
 
 	group_left.setPoseTarget(pose);
