@@ -55,6 +55,7 @@ public:
           if(most_similar2==clouds[i].first.second)
           {
             dist[most_similar2].plus_positives();
+
           }
       }
       DistributionComputer::update_percentage(dist);

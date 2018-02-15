@@ -163,7 +163,9 @@ include_directories(
 ## Declare a C++ executable
 add_executable(pcd_processor src/server.cpp)
 add_executable(model_builder src/model_builder.cpp)
+add_executable(multi_model_builder src/multi_model_builder.cpp)
 add_executable(classify_server src/classify_server.cpp)
+
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -183,6 +185,12 @@ target_link_libraries(model_builder
 )
 
 target_link_libraries(classify_server
+   ${catkin_LIBRARIES}
+   ${PCL_LIBRARIES}
+   ${HDF5_hdf5_LIBRARY}
+)
+
+target_link_libraries(multi_model_builder
    ${catkin_LIBRARIES}
    ${PCL_LIBRARIES}
    ${HDF5_hdf5_LIBRARY}

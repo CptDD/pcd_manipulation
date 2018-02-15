@@ -34,9 +34,40 @@ public:
 		pass_filter.filter(*filtered_cloud);
 
 		pass_filter.setInputCloud(filtered_cloud);
+		pass_filter.setFilterFieldName("y");
+		pass_filter.setFilterLimits(-0.1,0.1);
+		pass_filter.filter(*filtered_cloud);
 
 
 	}
+
+
+	static void pass_filter_cloud_inter(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud,pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud,double min,double max)
+	{
+		pcl::PassThrough<pcl::PointXYZ> pass_filter;
+		pass_filter.setInputCloud(cloud);
+		pass_filter.setFilterFieldName("z");
+		pass_filter.setFilterLimits(0.2,0.4);
+		pass_filter.filter(*filtered_cloud);
+
+		pass_filter.setInputCloud(filtered_cloud);
+		pass_filter.setFilterFieldName("y");
+		pass_filter.setFilterLimits(min,max);
+		pass_filter.filter(*filtered_cloud);
+	}
+
+
+
+	static void pass_filter_cloud_top(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud,pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud,double min,double max)
+	{
+		pcl::PassThrough<pcl::PointXYZ> pass_filter;
+		pass_filter.setInputCloud(cloud);
+		pass_filter.setFilterFieldName("z");
+		pass_filter.setFilterLimits(min,max);
+		pass_filter.filter(*filtered_cloud);
+	}
+
+
 
 	static void pass_filter_cloud(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud,pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud,double min,double max)
 	{

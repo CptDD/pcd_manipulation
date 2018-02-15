@@ -97,7 +97,7 @@ public:
   void compute_percentage()
   {
     double perc=(double)positives/total_apperances;
-    perc*=100;
+    //perc*=100;
     cout<<"Percentage :"<<perc<<endl;
       this->set_percentage(perc);
   }

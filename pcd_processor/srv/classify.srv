@@ -1,3 +1,4 @@
 std_msgs/String command
+std_msgs/Int16 viewpoint #0 side #1 inter #2 top
 ---
 std_msgs/Int16 type

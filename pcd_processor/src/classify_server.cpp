@@ -170,6 +170,8 @@ bool processor_service(pcd_processor::classify::Request &req,pcd_processor::clas
 {
 
 
+	int viewpoint=req.viewpoint.data;
+
 	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
 
 	read_cloud(cloud);
@@ -182,7 +184,25 @@ bool processor_service(pcd_processor::classify::Request &req,pcd_processor::clas
 
 	save_cloud(cloud,"transformed");
 
-	Segmentor::pass_filter_cloud(cloud,cloud,-0.03,0.15);
+	if(viewpoint==0)
+	{
+		Segmentor::pass_filter_cloud_side(cloud,cloud,0.3,0.4);
+	}else if(viewpoint==1)
+	{
+		Segmentor::pass_filter_cloud_inter(cloud,cloud,-0.2,0.2);
+	}else
+	{
+		Segmentor::pass_filter_cloud_top(cloud,cloud,0.3,0.5);
+	}
+
+	//Segmentor::pass_filter_cloud(cloud,cloud,-0.03,0.15);
+	//Segmentor::pass_filter_cloud_side(cloud,cloud,0.3,0.4);
+
+	//Segmentor::pass_filter_cloud_inter(cloud,cloud,-0.2,0.2);
+
+	//Segmentor::pass_filter_cloud_top(cloud,cloud,);
+	//Segmentor::pass_filter_cloud_top(cloud,cloud,0.3,0.5);
+
 	cout<<"Cloud has :"<<cloud->points.size()<<" points!"<<endl;
 
 	save_cloud(cloud,"filtered");
@@ -219,7 +239,6 @@ bool processor_service(pcd_processor::classify::Request &req,pcd_processor::clas
     }
 
     res.type.data=result;
-
 
 
 	return true;

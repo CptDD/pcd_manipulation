@@ -2,6 +2,7 @@
 
 
 from bayesian_updater import *
+from bayesian_multi_updater import *
 
 import rospkg
 
@@ -23,12 +24,12 @@ def update_handle(req):
 
 
 def main():
-	b=BayesianUpdater('bay_up','bay_service')
+	b=BayesianMultiUpdater('bay_up','bay_service')
 
 	rospack=rospkg.RosPack()
 
 	path=rospack.get_path('pcd_processor')
-	path+='/training_results/out.txt'
+	path+='/training_results/out_multiple.txt'
 
 	b.fetch_distribution(path)
 	b.init_belief(4)

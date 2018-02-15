@@ -9,7 +9,7 @@ from bayesian_updating.srv import *
 
 
 
-class BayesianUpdater:
+class BayesianMultiUpdater:
 
 	def __init__(self,node_name,service_name):
 		self.node_name=node_name
@@ -24,8 +24,7 @@ class BayesianUpdater:
 
 		value=1./self.number_of_objects
 
-		for i in range(0,self.number_of_objects):
-			self.belief.append(value)
+		self.belief=np.repeat(value,self.number_of_objects)
 
 		print('Initial belief :'+str(self.belief))
 
@@ -58,12 +57,27 @@ class BayesianUpdater:
 					viewpoint=line.split('/')[7]
 				else:
 					temp_tags=dict()
+					positives=list()
+					percentages=list()
+
 					tags=line.split('\t')
+
 					temp_tags['label']=tags[0]
 					temp_tags['type']=tags[1]
-					temp_tags['positives']=tags[2]
-					temp_tags['total']=tags[3]
-					temp_tags['percentage']=tags[4].split('\n')[0]
+					temp_tags['total']=tags[2]
+
+					positives.append(tags[3])
+					positives.append(tags[4])
+					positives.append(tags[5])
+					positives.append(tags[6])
+
+					percentages.append(tags[7])
+					percentages.append(tags[8])
+					percentages.append(tags[9])
+					percentages.append(tags[10])
+
+					temp_tags['positives']=positives
+					temp_tags['percentages']=percentages
 					values.append(temp_tags)
 			else:
 				self.distribution[viewpoint]=values
@@ -75,26 +89,25 @@ class BayesianUpdater:
 
 		temp_distribution=self.distribution[viewpoint]
 
-		prior=list(self.belief)
+		prior=np.array(self.belief)
 
 		for i in temp_distribution:
 			if int(i['type'])==observed_type:
 				print(i['label'])
+				print('Percentages '+str(i['percentages']))
 
-				perc=float(i['percentage'])
-				print('The percentage :'+str(perc))
-				val=perc*self.belief[observed_type]
-				self.belief[observed_type]=val
-				sum_b=sum(self.belief)
+				observation=i['percentages']
+				obs=np.array(i['percentages'],dtype=float)
 
-				for j in range(0,self.number_of_objects):
-					self.belief[j]/=sum_b
+				print('Pre update belief :'+str(self.belief))
+				self.belief*=obs
+				sum_b=np.sum(self.belief)
+				self.belief/=sum_b
 
-		print('Normalisation test :'+str(sum(self.belief)))
-		posterior=list(self.belief)
+		posterior=np.array(self.belief)
 
-		print(temp_distribution[observed_type]['percentage'])
-		self.compute_kl_divergence(prior,posterior,float(temp_distribution[observed_type]['percentage']))
+		
+		self.compute_kl_divergence(prior,posterior,observation)
 
 
 	def get_distribution(self):
@@ -104,6 +117,7 @@ class BayesianUpdater:
 	def compute_kl_divergence(self,prior,posterior,observation):
 		pr=np.array(prior)
 		ps=np.array(posterior)
+		obs=np.array(observation,dtype=float)
 
 		self.information_gain=0
 
@@ -118,7 +132,7 @@ class BayesianUpdater:
 			temp_val=ps/pr
 			self.information_gain=np.sum(posterior*np.log2(temp_val))
 
-		self.eig=self.information_gain*observation
+		self.eig=self.information_gain*obs
 
 		print('Information gain is :'+str(self.information_gain))
 		print('Expected information gain is :'+str(self.eig))
