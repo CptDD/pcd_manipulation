@@ -1,18 +1,18 @@
 /home/cptd/go_ws/src/pcd_processor/training/inter_right/
-elongated	0	3	0	0	3	0	0	0	1	0	
-livarno	1	4	0	0	4	0	0	0	1	0	
+elongated	0	3	1	1	1	0	0.333	0.333	0.333	0	
+livarno	1	4	1	2	1	0	0.25	0.5	0.25	0	
 mushroom	2	1	1	0	0	0	1	0	0	0	
-standard	3	3	0	0	3	0	0	0	1	0	
+standard	3	3	0	1	0	2	0	0.333	0	0.666	
 ===
 /home/cptd/go_ws/src/pcd_processor/training/top/
-elongated	0	4	0	0	4	0	0	0	1	0	
-livarno	1	4	0	0	2	2	0	0	0.5	0.5	
-mushroom	2	5	5	0	0	0	1	0	0	0	
-standard	3	6	4	0	2	0	0.666667	0	0.333333	0	
+elongated	0	4	2	1	1	0	0.5	0.25	0.25	0	
+livarno	1	4	0	1	1	2	0	0.25	0.25	0.5	
+mushroom	2	5	1	1	2	1	0.2	0.2	0.4	0.2	
+standard	3	6	2	1	0	3	0.333	0.166	0	0.5	
 ===
 /home/cptd/go_ws/src/pcd_processor/training/side_right/
-elongated	0	3	0	0	3	0	0	0	1	0	
-livarno	1	2	0	0	2	0	0	0	1	0	
+elongated	0	3	1	1	1	0	0.333	0.333	0.333	0	
+livarno	1	2	0	1	0	1	0	0.5	0	0.5	
 mushroom	2	5	0	2	3	0	0	0.4	0.6	0	
 standard	3	5	0	3	2	0	0	0.6	0.4	0	
 ===
