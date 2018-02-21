@@ -1,5 +1,6 @@
 #1 - update
-#2 - get get distribution
+#2 - get distribution
+#3 - get expected information gain
 
 std_msgs/UInt16 action
 std_msgs/String viewpoint
@@ -7,3 +8,4 @@ std_msgs/UInt16 type
 ---
 std_msgs/String output
 float32[] belief
+float32 eig 

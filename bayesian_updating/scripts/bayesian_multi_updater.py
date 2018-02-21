@@ -95,19 +95,19 @@ class BayesianMultiUpdater:
 			if int(i['type'])==observed_type:
 				print(i['label'])
 				print('Percentages '+str(i['percentages']))
-
-				observation=i['percentages']
-				obs=np.array(i['percentages'],dtype=float)
+				# observation vector corresponding to the training probability of the light bulb
+				observation_vector=i['percentages']
+				obs_vector=np.array(i['percentages'],dtype=float)
 
 				print('Pre update belief :'+str(self.belief))
-				self.belief*=obs
+				self.belief*=obs_vector
 				sum_b=np.sum(self.belief)
 				self.belief/=sum_b
 
 		posterior=np.array(self.belief)
 
 		
-		self.compute_kl_divergence(prior,posterior,observation)
+		self.compute_kl_divergence(prior,posterior,observation_vector)
 
 
 	def get_distribution(self):
@@ -117,29 +117,39 @@ class BayesianMultiUpdater:
 	def compute_kl_divergence(self,prior,posterior,observation):
 		pr=np.array(prior)
 		ps=np.array(posterior)
-		obs=np.array(observation,dtype=float)
+		obs_vector=np.array(observation,dtype=float)
+		#pr - prior probability
+		#ps - posterior probaility
+		#obs_vector observation probability
 
-		self.information_gain=0
+		self.information_gain=np.zeros(len(pr))
+
 
 		print('The prior is :'+str(prior))
 		print('The posterior is :'+str(posterior))
 
-		if np.sum(prior)==0:
-			self.information_gain=0
-		elif np.sum(posterior)==0:
-			self.information_gain=1
-		else:
-			temp_val=ps/pr
-			self.information_gain=np.sum(posterior*np.log2(temp_val))
 
-		self.eig=self.information_gain*obs
+		for i in range(0,len(pr)):
+			if pr[i]!=0 and ps[i]!=0:
+				temp=ps[i]/pr[i]
+				self.information_gain[i]=ps[i]*np.log2(temp)
+				
+		print("Information gain :"+str(self.information_gain))
 
-		print('Information gain is :'+str(self.information_gain))
-		print('Expected information gain is :'+str(self.eig))
+		#eig expected information gain as a vector
+		self.eig=obs_vector*self.information_gain
+
+		#eig_sum scalar corresponding to the sum of the information gain
+		self.eig_sum=np.sum(self.eig)
+
+		print("Expectation :"+str(self.eig)+" "+"Sum :"+str(self.eig_sum))
 
 
 	def get_eig(self):
 		return self.eig
+
+	def get_eig_sum(self):
+		return self.eig_sum
 
 
 
@@ -159,9 +169,12 @@ class BayesianMultiUpdater:
 			print('Belief is :'+str(self.get_belief()))
 
 
-		else:
+		elif req.action.data==2:
 			for i in self.belief:
 				response.belief.append(i)
+		else:
+			response.eig=self.get_eig_sum()
+
 
 		return response
 
