@@ -1,1 +1,0 @@
-/usr/bin/c++    -msse2 -mfpmath=sse   CMakeFiles/despot_reg_demo.dir/src/reg_demo.cpp.o CMakeFiles/despot_reg_demo.dir/src/main.cpp.o  -o despot_reg_demo -rdynamic ../../../libdespot.so -Wl,-rpath,/home/cptd/despot: 
