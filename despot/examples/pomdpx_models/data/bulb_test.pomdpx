@@ -55,7 +55,7 @@
 <StateTransitionFunction>
   <CondProb> 
     <Var>robot_1</Var> 
-    <Parent> action_robot robot_0 state_0</Parent> 
+    <Parent> action_robot robot_0</Parent> 
     <Parameter type="TBL">
 
       <Entry> 
@@ -81,7 +81,7 @@
       <Entry> 
         <Instance>atop top top</Instance> 
         <ProbTable>1</ProbTable>
-      </Entry> 
+      </Entry>
 
       <Entry> 
         <Instance>atop inter top</Instance> 
@@ -125,12 +125,14 @@
 <ObsFunction>
   <CondProb>
     <Var>obs_sensor</Var>
-    <Parent>action_agent robot_1 state_1</Parent>
+    <Parent>robot_1 state_1</Parent>
     <Parameter type="TBL">
+
       <Entry>
-          <Instance>top elongated oelongated</Instance>
-          <ProbTable>0.5</ProbTable>
+        <Instance>top elongated oelongated</Instance>
+        <ProbTable>0.5</ProbTable>
       </Entry>
+
       <Entry>
           <Instance>top elongated olivarno</Instance>
           <ProbTable>0.25</ProbTable>
@@ -186,7 +188,7 @@
       </Entry>
       <Entry>
           <Instance>top standard olivarno</Instance>
-          <ProbTable>0.166</ProbTable>
+          <ProbTable>0.167</ProbTable>
       </Entry>
       <Entry>
           <Instance>top standard omushroom</Instance>
@@ -199,7 +201,7 @@
 
       <Entry>
           <Instance>side elongated oelongated</Instance>
-          <ProbTable>0.333</ProbTable>
+          <ProbTable>0.334</ProbTable>
       </Entry>
       <Entry>
           <Instance>side elongated olivarno</Instance>
@@ -273,7 +275,7 @@
       </Entry>
       <Entry>
           <Instance>inter elongated olivarno</Instance>
-          <ProbTable>0.333</ProbTable>
+          <ProbTable>0.334</ProbTable>
       </Entry>
       <Entry>
           <Instance>inter elongated omushroom</Instance>
@@ -326,7 +328,7 @@
       </Entry>
       <Entry>
           <Instance>inter standard  olivarno</Instance>
-          <ProbTable>0.166</ProbTable>
+          <ProbTable>0.167</ProbTable>
       </Entry>
       <Entry>
           <Instance>inter standard  omushroom</Instance>
@@ -345,7 +347,7 @@
 <RewardFunction>
 <Func>
   <Var>reward_bulb</Var>
-  <Parent>action_robot state_0 state_1</Parent>
+  <Parent>action_robot robot_0 state_0</Parent>
   <Parameter type="TBL">
 
     <Entry>
@@ -353,7 +355,7 @@
       <ValueTable>0</ValueTable>
     </Entry>
 
-     <Entry>
+     <!--<Entry>
       <Instance>aside * *</Instance>
       <ValueTable>-100</ValueTable>
     </Entry>
@@ -430,7 +432,7 @@
       <Entry>
       <Instance>ainter standard standard</Instance>
       <ValueTable>100</ValueTable>
-    </Entry>
+    </Entry>-->
 
 
 
