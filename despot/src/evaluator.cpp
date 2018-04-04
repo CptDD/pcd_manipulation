@@ -1,4 +1,5 @@
 #include <despot/evaluator.h>
+#include <despot/core/information.h>
 
 using namespace std;
 
@@ -179,6 +180,7 @@ bool Evaluator::RunStep(int step, int round) {
 		if (!Globals::config.silence && out_) {
 			*out_ << "- State:\n";
 			model_->PrintState(*state_, *out_);
+
 		}
 	}
 
@@ -211,7 +213,21 @@ bool Evaluator::RunStep(int step, int round) {
 	*out_<<endl;
 
 	start_t = get_time_second();
+
+	Information i(model_);
+
+	Belief *pre=solver_->belief();
+	//cout<<"Pre :"<<pre->text()<<endl;
+	i.add_pre(pre);
+	
 	solver_->Update(action, obs);
+
+	Belief *post=solver_->belief();
+	i.add_post(post);
+	//cout<<"Post :"<<post->text()<<endl;
+	i.show();
+	i.compute_information_gain();
+
 	end_t = get_time_second();
 	logi << "[RunStep] Time spent in Update(): " << (end_t - start_t) << endl;
 
@@ -316,9 +332,14 @@ void POMDPEvaluator::InitRound() {
 
 	start_t = get_time_second();
 	Belief* belief = model_->InitialBelief(state_, belief_type_);
+	cout<<belief->text()<<endl;
 	end_t = get_time_second();
 	logi << "[POMDPEvaluator::InitRound] Created intial belief "
 		<< typeid(*belief).name() << " in " << (end_t - start_t) << "s" << endl;
+
+	cout << "[POMDPEvaluator::InitRound] Created intial belief "
+		<< typeid(*belief).name() << " in " << (end_t - start_t) << "s" << endl;
+	
 
 	solver_->belief(belief);
 

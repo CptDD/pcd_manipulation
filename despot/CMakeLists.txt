@@ -16,6 +16,7 @@ include_directories(include)
 
 add_library("${PROJECT_NAME}" SHARED
   src/core/belief.cpp
+  src/core/information.cpp
   src/core/globals.cpp
   src/core/lower_bound.cpp
   src/core/mdp.cpp

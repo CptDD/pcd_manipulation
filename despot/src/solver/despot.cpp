@@ -218,6 +218,9 @@ void DESPOT::InitBounds(VNode* vnode, ScenarioLowerBound* lower_bound,
 }
 
 ValuedAction DESPOT::Search() {
+
+	model_->PrintBelief(*belief_);	model_->PrintBelief(*belief_);
+	//model_->PrintBelief(*belief_,cout);
 	if (logging::level() >= logging::DEBUG) {
 		model_->PrintBelief(*belief_);
 	}
@@ -228,6 +231,11 @@ ValuedAction DESPOT::Search() {
 
 	double start = get_time_second();
 	vector<State*> particles = belief_->Sample(Globals::config.num_scenarios);
+
+	cout<<"Particles size "<<particles.size()<<endl;
+
+
+
 	logi << "[DESPOT::Search] Time for sampling " << particles.size()
 		<< " particles: " << (get_time_second() - start) << "s" << endl;
 
@@ -774,13 +782,20 @@ void DESPOT::belief(Belief* b) {
 	logi << "[DESPOT::belief] End: Set initial belief." << endl;
 }
 
+
 void DESPOT::Update(int action, OBS_TYPE obs) {
 	double start = get_time_second();
 
+
 	belief_->Update(action, obs);
+
+
 	history_.Add(action, obs);
 
+	//cout<<"Belief :"<<belief_->text()<<endl;
+
 	lower_bound_->belief(belief_);
+
 
 	logi << "[Solver::Update] Updated belief, history and root with action "
 		<< action << ", observation " << obs

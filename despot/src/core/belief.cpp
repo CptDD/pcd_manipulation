@@ -20,6 +20,13 @@ string Belief::text() const {
 	return "AbstractBelief";
 }
 
+
+std::map<std::string, double> Belief::get_pdf()
+{
+	map<std::string,double> pdf;
+	return pdf;
+}
+
 ostream& operator<<(ostream& os, const Belief& belief) {
 	os << (&belief)->text();
 	return os;
@@ -414,12 +421,15 @@ void ParticleBelief::Update(int action, OBS_TYPE obs) {
 
 Belief* ParticleBelief::MakeCopy() const {
 	vector<State*> copy;
+
 	for (int i = 0; i < particles_.size(); i++) {
 		copy.push_back(model_->Copy(particles_[i]));
 	}
 
 	return new ParticleBelief(copy, model_, prior_, split_);
 }
+
+
 
 string ParticleBelief::text() const {
 	ostringstream oss;
@@ -435,6 +445,18 @@ string ParticleBelief::text() const {
 		oss << " " << pair.first << " = " << pair.second << endl;
 	}
 	return oss.str();
+}
+
+
+std::map<std::string, double> ParticleBelief::get_pdf()
+{
+	map<string, double> pdf;
+	for (int i = 0; i < particles_.size(); i++) {
+		
+		pdf[particles_[i]->text()] += particles_[i]->weight;
+	}
+
+	return pdf;
 }
 
 } // namespace despot

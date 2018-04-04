@@ -40,7 +40,7 @@ int log_ostream::log_buf::sync() {
 	return !out_;
 }
 
-int logging::verbosity_ = ERROR;
+int logging::verbosity_ = VERBOSE;
 
 void logging::level(int verbosity) {
 	verbosity_ = verbosity;
@@ -64,11 +64,11 @@ vector<log_ostream*> logging::InitializeLogStreams() {
 	vector<log_ostream*> streams(6);
 
 	streams[NONE] = NULL;
-	streams[ERROR] = new log_ostream(cerr, markers_[ERROR]);
-	streams[WARN] = new log_ostream(cerr, markers_[WARN]);
-	streams[INFO] = new log_ostream(cerr, markers_[INFO]);
-	streams[DEBUG] = new log_ostream(cerr, markers_[DEBUG]);
-	streams[VERBOSE] = new log_ostream(cerr, markers_[VERBOSE]);
+	streams[ERROR] = new log_ostream(cout, markers_[ERROR]);
+	streams[WARN] = new log_ostream(cout, markers_[WARN]);
+	streams[INFO] = new log_ostream(cout, markers_[INFO]);
+	streams[DEBUG] = new log_ostream(cout, markers_[DEBUG]);
+	streams[VERBOSE] = new log_ostream(cout, markers_[VERBOSE]);
 
 	return streams;
 }

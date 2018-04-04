@@ -1,5 +1,6 @@
 #include <despot/pomdpx/pomdpx.h>
 #include <despot/solver/pomcp.h>
+#include <iostream>
 
 using namespace std;
 
@@ -97,8 +98,21 @@ bool POMDPX::NoisyStep(State& s, double random_num, int action) const {
 	return parser_->IsTerminalState(state.vec_id);
 }
 
+
+void compute_information_gain(Belief &pre,Belief &post)
+{
+	cout<<"Computing information gain!"<<endl;
+
+
+
+	
+}
+
 bool POMDPX::Step(State& s, double random_num, int action, double& reward,
 	OBS_TYPE& obs) const {
+
+	//cout<<"Go go go!"<<endl;
+
 	POMDPXState& state = static_cast<POMDPXState&>(s);
 
 	parser_->GetNextState(state.vec_id, action, random_num);
@@ -298,6 +312,7 @@ void POMDPX::InitStates() {
 		states_[s] = state;
 	}
 
+	
 	for (int s = 0; s < states_.size(); s++)
 		assert(GetIndex(states_[s]) == s);
 
@@ -524,6 +539,7 @@ void POMDPX::PrintState(const State& s, ostream& out) const {
 }
 
 void POMDPX::PrintBelief(const Belief& belief, ostream& out) const {
+	
 }
 
 void POMDPX::PrintObs(const State& state, OBS_TYPE obs, ostream& out) const {

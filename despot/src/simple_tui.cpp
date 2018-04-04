@@ -316,7 +316,7 @@ void SimpleTUI::RunEvaluator(DSPOMDP *model, Evaluator *simulator,
                   << " Step " << i << "-----------------------------------"
                   << endl;*/
       double step_start_t = get_time_second();
-
+      
       bool terminal = simulator->RunStep(i, round);
 
       if (terminal)

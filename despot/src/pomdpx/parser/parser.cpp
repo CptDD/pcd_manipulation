@@ -5,6 +5,7 @@
 #include <despot/util/tinyxml/tinyxml.h>
 #include <despot/pomdpx/parser/parser.h>
 #include <despot/core/pomdp.h>
+#include <iostream>
 
 using namespace std;
 using namespace despot::util::tinyxml;
@@ -50,8 +51,10 @@ void Parser::Print(ostream& out) const {
 	out << endl;
 
 	out << "# Initial belief" << endl;
+	cout<<"Initial belief :"<<endl;
 	for (int s = 0; s < initial_belief_funcs_.size(); s++) {
 		out << "s[" << s << "] = " << initial_belief_funcs_[s] << endl;
+		cout << "s[" << s << "] = " << initial_belief_funcs_[s] << endl;
 	}
 	out << endl;
 
@@ -118,6 +121,8 @@ void Parser::Check() {
 
 ValuedAction Parser::ComputeMaxRewardAction() const {
 	ValuedAction max(-1, Globals::NEG_INFTY);
+	cout<<"Action vars size :"<<action_vars_[0].Size()<<endl;
+	cout<<"Rewards func size:"<<reward_funcs_.size()<<endl;
 	for (int a = 0; a < action_vars_[0].Size(); a++) {
 		double reward = 0;
 		for (int r = 0; r < reward_funcs_.size(); r++) {
@@ -174,6 +179,7 @@ void Parser::Parse(string fn) {
 	ParseHasTerminalTag(xml_handle);
 	ParseVariableTag(xml_handle);
 	logi << "Parsing terminal tag...";
+	cout<<"Parsing terminal tag"<<endl;
 	ParseTerminalStateTag(xml_handle);
 	logi << "Done." << endl;
 	logi << "Parsing initial belief...";
@@ -182,6 +188,7 @@ void Parser::Parse(string fn) {
 	logi << "Done." << endl;
 	logi << "Parsing transitions...";
 	logi.flush();
+	cout<<"Parsing transitions"<<endl;
 	ParseStateTransitionTag(xml_handle);
 	logi << "Done." << endl;
 	logi << "Parsing obs function...";
@@ -190,8 +197,10 @@ void Parser::Parse(string fn) {
 	logi << "Done." << endl;
 	logi << "Parsing reward function...";
 	logi.flush();
+	cout<<"Parsing reward function"<<endl;
 	ParseRewardFunctionTag(xml_handle);
 	logi << "Done." << endl;
+	cout<<"Done"<<endl;
 	// cout << "Parsing terminal state reward" << endl;
 	// ParseTerminalStateRewardTag(xml_handle);
 	// ReadBounds();
@@ -222,6 +231,7 @@ void Parser::ParseHorizonTag(TiXmlHandle& xml_handle) {
 		Globals::config.search_depth = atoi(sim_len_str.c_str());
 	}
 	logi << "Horizon = " << Globals::config.sim_len << endl;
+	cout<<" Horizon = "<<Globals::config.sim_len<<endl;
 }
 
 void Parser::ParseHasTerminalTag(TiXmlHandle& xml_handle) {
@@ -1112,9 +1122,11 @@ double Parser::GetReward(int action) const {
 }
 void Parser::GetNextState(vector<int>& state, int action,
 	double& random) const {
+
 	for (int s = 0; s < state.size(); s++) {
 		prev_state_vars_[s].curr_value = state[s];
 	}
+
 	action_vars_[0].curr_value = action;
 
 	for (int s = 0; s < state.size(); s++) {
@@ -1366,6 +1378,7 @@ void Parser::PrintObs(OBS_TYPE obs, ostream& out) const {
 		obs_vec[o] = obs % obs_vars_[o].Size();
 		obs /= obs_vars_[o].Size();
 	}
+	cout<<endl;
 
 	out << "[";
 	for (int o = 0; o < obs_vars_.size(); o++) {
