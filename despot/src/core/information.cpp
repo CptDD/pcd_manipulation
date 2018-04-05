@@ -3,6 +3,7 @@
 #include <despot/core/information.h>
 #include <cmath>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -27,12 +28,111 @@ void Information::add_post(Belief *b)
     post=b->MakeCopy();
 }
 
-void Information::compute_information_gain()
+map<string,double> Information::pdf_to_map(map<string,double> pdf)
+{
+    map<string,double> out;
+
+    map<string,double>::iterator it;
+
+    for(it=pdf.begin();it!=pdf.end();++it)
+    {
+        pair<string,double> temp=*it;
+
+        int pos=-1;
+
+        cout<<temp.first<<endl;
+        pos=temp.first.find("state_1:");
+
+        if(pos!=-1)
+        {
+            int pos2=-1;
+            pos+=8; //offset to the name of the state variable
+            pos2=temp.first.find("]"); //eliminated the final ']'
+            string parsed_value=temp.first.substr(pos,pos2-pos);
+        
+            out[parsed_value]=temp.second;
+        }
+
+    }
+
+    if(pdf.size()!=4)
+    {
+        it=out.find("elongated");
+
+        if(it==out.end())
+        {
+            out["elongated"]=0;
+        }
+
+        it=out.find("livarno");
+
+        if(it==out.end())
+        {
+            out["livarno"]=0;
+        }
+
+        it=out.find("mushroom");
+
+        if(it==out.end())
+        {
+            out["mushroom"]=0;
+        }
+
+        it=out.find("standard");
+
+        if(it==out.end())
+        {
+            out["standard"]=0;
+        }
+    }
+
+
+    return out;
+}
+
+map<string,double> Information::compute_information_gain()
 {
     map<string,double> pre_pdf=pre->get_pdf();
     map<string,double> post_pdf=post->get_pdf();
 
-    vector<pair<string, double> > pre_pairs = SortByValue(pre_pdf);
+    map<string,double> pre_map,post_map,information_gain;
+    map<string,double>::iterator it;
+
+    cout<<post_pdf.size()<<endl;
+
+    pre_map=this->pdf_to_map(pre_pdf);
+    post_map=this->pdf_to_map(post_pdf);
+
+    for(it=pre_map.begin();it!=pre_map.end();++it)
+    {
+        cout<<it->first<<endl;
+        double pre_val=it->second;
+        double post_val=post_map.at(it->first);
+
+
+
+        if(pre_val!=0 && post_val!=0)
+        {
+            double temp_div=post_val/pre_val;
+            double temp_val=post_val*log2(temp_div);
+
+            information_gain[it->first]=temp_val;
+        }
+
+        if(pre_val==0||post_val==0)
+        {
+            information_gain[it->first]=0;
+        }
+    }
+
+    for(it=information_gain.begin();it!=information_gain.end();++it)
+    {
+        cout<<it->first<<" "<<it->second<<endl;
+    }
+
+    return information_gain;
+
+    /*vector<pair<string, double> > pre_pairs = SortByValue(pre_pdf);
     vector<pair<string, double> > post_pairs = SortByValue(post_pdf);
 
     vector<double> information_gain;
@@ -66,8 +166,10 @@ void Information::compute_information_gain()
 
         information_gain.push_back(temp_val);
 
-        }
-    }
+
+
+        }*/
+
 
 
     
