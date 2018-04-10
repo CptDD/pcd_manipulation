@@ -225,8 +225,24 @@ bool Evaluator::RunStep(int step, int round) {
 	Belief *post=solver_->belief();
 	i.add_post(post);
 	//cout<<"Post :"<<post->text()<<endl;
-	i.show();
-	i.compute_information_gain();
+	//i.show();
+	//i.compute_information_gain();
+
+	/*====Update reward===*/
+	double eig=i.compute_expected_information_gain(); //expected information gain K-L divergence
+
+
+	total_discounted_reward_+= Globals::Discount(step_)*eig;
+	total_undiscounted_reward_ += eig;
+
+
+
+	/*reward_ = reward;
+	total_discounted_reward_ += Globals::Discount(step_) * reward;
+	total_undiscounted_reward_ += reward;*/
+
+
+	
 
 	end_t = get_time_second();
 	logi << "[RunStep] Time spent in Update(): " << (end_t - start_t) << endl;
@@ -363,9 +379,9 @@ bool POMDPEvaluator::ExecuteAction(int action, double& reward, OBS_TYPE& obs) {
 	double random_num = random_.NextDouble();
 	bool terminal = model_->Step(*state_, random_num, action, reward, obs);
 
-	reward_ = reward;
+	/*reward_ = reward;
 	total_discounted_reward_ += Globals::Discount(step_) * reward;
-	total_undiscounted_reward_ += reward;
+	total_undiscounted_reward_ += reward;*/
 
 	return terminal;
 }

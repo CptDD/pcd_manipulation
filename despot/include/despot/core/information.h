@@ -27,6 +27,8 @@ class Information
     void add_post(Belief *b);
 
     std::map<std::string,double> compute_information_gain();
+    double compute_expected_information_gain();
+    double compute_entropy();
 };
 
 

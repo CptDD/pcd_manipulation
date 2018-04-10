@@ -90,6 +90,36 @@ map<string,double> Information::pdf_to_map(map<string,double> pdf)
     return out;
 }
 
+
+
+
+double Information::compute_entropy()
+{
+    double temp=0;
+
+    return 0.0;
+}
+
+double Information::compute_expected_information_gain()
+{
+    map<string,double> post_map=this->pdf_to_map(post->get_pdf());
+    map<string,double> information_gain=this->compute_information_gain();
+
+    map<string,double>::iterator it;
+
+    double eig=0;
+
+    for(it=post_map.begin();it!=post_map.end();++it)
+    {
+        double temp_pro=it->second*information_gain[it->first];
+        eig+=temp_pro;
+    }
+
+    return eig;
+}
+
+
+
 map<string,double> Information::compute_information_gain()
 {
     map<string,double> pre_pdf=pre->get_pdf();

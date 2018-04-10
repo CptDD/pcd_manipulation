@@ -219,7 +219,8 @@ void DESPOT::InitBounds(VNode* vnode, ScenarioLowerBound* lower_bound,
 
 ValuedAction DESPOT::Search() {
 
-	model_->PrintBelief(*belief_);	model_->PrintBelief(*belief_);
+	model_->PrintBelief(*belief_);	
+	//model_->PrintBelief(*belief_);
 	//model_->PrintBelief(*belief_,cout);
 	if (logging::level() >= logging::DEBUG) {
 		model_->PrintBelief(*belief_);
@@ -786,6 +787,8 @@ void DESPOT::belief(Belief* b) {
 void DESPOT::Update(int action, OBS_TYPE obs) {
 	double start = get_time_second();
 
+
+	
 
 	belief_->Update(action, obs);
 
