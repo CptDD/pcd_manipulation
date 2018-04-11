@@ -16,12 +16,13 @@ class DSPOMDP;
 class Information
 {
     protected:
+    int class_numbers;
     DSPOMDP *model;
     Belief *pre;
     Belief *post;
     std::map<std::string,double> pdf_to_map(std::map<std::string,double> pdf);
     public:
-    Information(DSPOMDP *m);
+    Information(DSPOMDP *m, int classes=4):model(m),class_numbers(classes){}
     void show();
     void add_pre(Belief *b);
     void add_post(Belief *b);

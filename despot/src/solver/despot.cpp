@@ -1,6 +1,9 @@
 #include <despot/solver/despot.h>
 #include <despot/solver/pomcp.h>
 
+#define ORIGINAL true
+
+
 using namespace std;
 
 namespace despot {
@@ -219,7 +222,7 @@ void DESPOT::InitBounds(VNode* vnode, ScenarioLowerBound* lower_bound,
 
 ValuedAction DESPOT::Search() {
 
-	model_->PrintBelief(*belief_);	
+	model_->PrintBelief(*belief_,cout);	
 	//model_->PrintBelief(*belief_);
 	//model_->PrintBelief(*belief_,cout);
 	if (logging::level() >= logging::DEBUG) {
@@ -778,6 +781,7 @@ void DESPOT::belief(Belief* b) {
 	logi << "[DESPOT::belief] Start: Set initial belief." << endl;
 	belief_ = b;
 	history_.Truncate(0);
+	
 
 	lower_bound_->belief(b); // needed for POMCPScenarioLowerBound
 	logi << "[DESPOT::belief] End: Set initial belief." << endl;

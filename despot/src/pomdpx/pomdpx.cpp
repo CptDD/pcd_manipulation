@@ -138,6 +138,7 @@ double POMDPX::ObsProb(OBS_TYPE obs, const State& s, int a) const {
 
 State* POMDPX::CreateStartState(string type) const {
 	double random_value = Random::RANDOM.NextDouble();
+	random_value=0.49078145133833467;
 	return new POMDPXState(parser_->ComputeState(random_value));
 }
 

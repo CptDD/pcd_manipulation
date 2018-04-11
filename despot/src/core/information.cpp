@@ -9,8 +9,6 @@ using namespace std;
 
 namespace despot {
 
-Information::Information(DSPOMDP* m):model(m){}
-
 void Information::show()
 {
     cout<<"Show show!"<<endl;
@@ -40,7 +38,7 @@ map<string,double> Information::pdf_to_map(map<string,double> pdf)
 
         int pos=-1;
 
-        cout<<temp.first<<endl;
+        //cout<<temp.first<<endl;
         pos=temp.first.find("state_1:");
 
         if(pos!=-1)
@@ -55,7 +53,7 @@ map<string,double> Information::pdf_to_map(map<string,double> pdf)
 
     }
 
-    if(pdf.size()!=4)
+    if(pdf.size()!=this->class_numbers)
     {
         it=out.find("elongated");
 
@@ -71,7 +69,7 @@ map<string,double> Information::pdf_to_map(map<string,double> pdf)
             out["livarno"]=0;
         }
 
-        it=out.find("mushroom");
+        /*it=out.find("mushroom");
 
         if(it==out.end())
         {
@@ -83,7 +81,7 @@ map<string,double> Information::pdf_to_map(map<string,double> pdf)
         if(it==out.end())
         {
             out["standard"]=0;
-        }
+        }*/
     }
 
 
@@ -128,14 +126,14 @@ map<string,double> Information::compute_information_gain()
     map<string,double> pre_map,post_map,information_gain;
     map<string,double>::iterator it;
 
-    cout<<post_pdf.size()<<endl;
+    //cout<<post_pdf.size()<<endl;
 
     pre_map=this->pdf_to_map(pre_pdf);
     post_map=this->pdf_to_map(post_pdf);
 
     for(it=pre_map.begin();it!=pre_map.end();++it)
     {
-        cout<<it->first<<endl;
+        //cout<<it->first<<endl;
         double pre_val=it->second;
         double post_val=post_map.at(it->first);
 

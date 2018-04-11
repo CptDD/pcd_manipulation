@@ -1,5 +1,7 @@
 #include <despot/evaluator.h>
 #include <despot/core/information.h>
+#define CUSTOM
+
 
 using namespace std;
 
@@ -195,7 +197,7 @@ bool Evaluator::RunStep(int step, int round) {
 				<< endl;
 	}
 
-	ReportStepReward();
+	//ReportStepReward();
 	end_t = get_time_second();
 
 	double step_end_t;
@@ -214,14 +216,18 @@ bool Evaluator::RunStep(int step, int round) {
 
 	start_t = get_time_second();
 
-	Information i(model_);
+	#ifdef CUSTOM
+
+	Information i(model_,2);
 
 	Belief *pre=solver_->belief();
 	//cout<<"Pre :"<<pre->text()<<endl;
 	i.add_pre(pre);
+	#endif
 	
 	solver_->Update(action, obs);
 
+	#ifdef CUSTOM
 	Belief *post=solver_->belief();
 	i.add_post(post);
 	//cout<<"Post :"<<post->text()<<endl;
@@ -229,20 +235,16 @@ bool Evaluator::RunStep(int step, int round) {
 	//i.compute_information_gain();
 
 	/*====Update reward===*/
+	i.show();
 	double eig=i.compute_expected_information_gain(); //expected information gain K-L divergence
 
-
+	reward_=eig;
 	total_discounted_reward_+= Globals::Discount(step_)*eig;
 	total_undiscounted_reward_ += eig;
 
+	#endif
 
-
-	/*reward_ = reward;
-	total_discounted_reward_ += Globals::Discount(step_) * reward;
-	total_undiscounted_reward_ += reward;*/
-
-
-	
+	ReportStepReward();
 
 	end_t = get_time_second();
 	logi << "[RunStep] Time spent in Update(): " << (end_t - start_t) << endl;
@@ -377,11 +379,14 @@ double POMDPEvaluator::EndRound() {
 
 bool POMDPEvaluator::ExecuteAction(int action, double& reward, OBS_TYPE& obs) {
 	double random_num = random_.NextDouble();
+	//random_num=0.89529110719230542;
 	bool terminal = model_->Step(*state_, random_num, action, reward, obs);
 
-	/*reward_ = reward;
+	#ifndef CUSTOM
+	reward_ = reward;
 	total_discounted_reward_ += Globals::Discount(step_) * reward;
-	total_undiscounted_reward_ += reward;*/
+	total_undiscounted_reward_ += reward;
+	#endif
 
 	return terminal;
 }
