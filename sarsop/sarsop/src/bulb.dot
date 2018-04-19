@@ -1,0 +1,43 @@
+digraph G
+{
+root [label="X (side) 1\lY (livarno) 1\lA (atop)\l" shape=doublecircle labeljust="l"];
+x0row1 [label="X (top)\lY (elongated) 0.288\lA (atop)\l"];
+x0row0 [label="X (top)\lY (elongated) 0.484\lA (aside)\l"];
+x1row1 [label="X (side)\lY (elongated) 1\lA (atop)\l"];
+x1row3 [label="X (side)\lY (mushroom) 0.45\lA (atop)\l"];
+x1row2 [label="X (side)\lY (standard) 0.327\lA (atop)\l"];
+x0row3 [label="X (top)\lY (livarno) 0.417\lA (atop)\l"];
+x0row2 [label="X (top)\lY (mushroom) 0.444\lA (atop)\l"];
+root -> x0row0 [label="X (top) 1\lo (oelongated) 0.258\l"];
+root -> x0row1 [label="X (top) 1\lo (olivarno) 0.217\l"];
+root -> x0row2 [label="X (top) 1\lo (omushroom) 0.225\l"];
+root -> x0row3 [label="X (top) 1\lo (ostandard) 0.3\l"];
+x0row0 -> x1row1 [label="X (side) 1\lo (oelongated) 0.0835\l"];
+x0row0 -> x1row2 [label="X (side) 1\lo (olivarno) 0.458\l"];
+x0row0 -> x1row3 [label="X (side) 1\lo (omushroom) 0.333\l"];
+x0row0 -> root [label="X (side) 1\lo (ostandard) 0.125\l"];
+x1row1 -> x0row0 [label="X (top) 1\lo (oelongated) 0.258\l"];
+x1row1 -> x0row1 [label="X (top) 1\lo (olivarno) 0.217\l"];
+x1row1 -> x0row2 [label="X (top) 1\lo (omushroom) 0.225\l"];
+x1row1 -> x0row3 [label="X (top) 1\lo (ostandard) 0.3\l"];
+x0row1 -> x0row0 [label="X (top) 1\lo (oelongated) 0.258\l"];
+x0row1 -> x0row1 [label="X (top) 1\lo (olivarno) 0.217\l"];
+x0row1 -> x0row2 [label="X (top) 1\lo (omushroom) 0.225\l"];
+x0row1 -> x0row3 [label="X (top) 1\lo (ostandard) 0.3\l"];
+x0row2 -> x0row0 [label="X (top) 1\lo (oelongated) 0.258\l"];
+x0row2 -> x0row1 [label="X (top) 1\lo (olivarno) 0.217\l"];
+x0row2 -> x0row2 [label="X (top) 1\lo (omushroom) 0.225\l"];
+x0row2 -> x0row3 [label="X (top) 1\lo (ostandard) 0.3\l"];
+x0row3 -> x0row0 [label="X (top) 1\lo (oelongated) 0.258\l"];
+x0row3 -> x0row1 [label="X (top) 1\lo (olivarno) 0.217\l"];
+x0row3 -> x0row2 [label="X (top) 1\lo (omushroom) 0.225\l"];
+x0row3 -> x0row3 [label="X (top) 1\lo (ostandard) 0.3\l"];
+x1row2 -> x0row0 [label="X (top) 1\lo (oelongated) 0.258\l"];
+x1row2 -> x0row1 [label="X (top) 1\lo (olivarno) 0.217\l"];
+x1row2 -> x0row2 [label="X (top) 1\lo (omushroom) 0.225\l"];
+x1row2 -> x0row3 [label="X (top) 1\lo (ostandard) 0.3\l"];
+x1row3 -> x0row0 [label="X (top) 1\lo (oelongated) 0.258\l"];
+x1row3 -> x0row1 [label="X (top) 1\lo (olivarno) 0.217\l"];
+x1row3 -> x0row2 [label="X (top) 1\lo (omushroom) 0.225\l"];
+x1row3 -> x0row3 [label="X (top) 1\lo (ostandard) 0.3\l"];
+}
