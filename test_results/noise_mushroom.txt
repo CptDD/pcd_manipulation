@@ -1,0 +1,234 @@
+Bulb:		mushroom
+Label:		4
+How many:	10
+Good_e:		0
+Good_l:		2
+Good_m:		8
+Good_s:		0
+Percentage_e:	0
+Percentage_l:	0.2
+Percentage_m:	0.8
+Percentage_s:	0
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		5
+How many:	10
+Good_e:		0
+Good_l:		3
+Good_m:		7
+Good_s:		0
+Percentage_e:	0
+Percentage_l:	0.3
+Percentage_m:	0.7
+Percentage_s:	0
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		6
+Good_e:		0
+Good_l:		2
+Good_m:		6
+Good_s:		2
+Percentage_e:	0
+Percentage_l:	0.2
+Percentage_m:	0.6
+Percentage_s:	0.2
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		7
+How many:	10
+Good_e:		0
+Good_l:		5
+Good_m:		1
+Good_s:		4
+Percentage_e:	0
+Percentage_l:	0.5
+Percentage_m:	0.1
+Percentage_s:	0.4
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		8
+How many:	10
+Good_e:		0
+Good_l:		5
+Good_m:		2
+Good_s:		1
+Percentage_e:	0
+Percentage_l:	0.5
+Percentage_m:	0.2
+Percentage_s:	0.1
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		9
+How many:	10
+Good_e:		1
+Good_l:		5
+Good_m:		3
+Good_s:		1
+Percentage_e:	0.1
+Percentage_l:	0.5
+Percentage_m:	0.3
+Percentage_s:	0.1
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		10
+How many:	10
+Good_e:		1
+Good_l:		3
+Good_m:		4
+Good_s:		2
+Percentage_e:	0.1
+Percentage_l:	0.3
+Percentage_m:	0.4
+Percentage_s:	0.2
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		11
+How many:	10
+Good_e:		2
+Good_l:		2
+Good_m:		6
+Good_s:		0
+Percentage_e:	0.2
+Percentage_l:	0.2
+Percentage_m:	0.6
+Percentage_s:	0
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		12
+How many:	10
+Good_e:		0
+Good_l:		2
+Good_m:		5
+Good_s:		3
+Percentage_e:	0
+Percentage_l:	0.2
+Percentage_m:	0.5
+Percentage_s:	0.3
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		13
+How many:	10
+Good:		6
+Percentage:	0.6
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		14
+How many:	10
+Good:		4
+Percentage:	0.4
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		15
+How many:	10
+Good_e:		5
+Good_l:		1
+Good_m:		4
+Good_s:		0
+Percentage_e:	0.5
+Percentage_l:	0.1
+Percentage_m:	0.4
+Percentage_s:	0
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		16
+How many:	10
+Good_e:		0
+Good_l:		2
+Good_m:		8
+Good_s:		0
+Percentage_e:	0
+Percentage_l:	0.2
+Percentage_m:	0.8
+Percentage_s:	0
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		17
+How many:	10
+Good_e:		0
+Good_l:		2
+Good_m:		8
+Good_s:		0
+Percentage_e:	0
+Percentage_l:	0.2
+Percentage_m:	0.8
+Percentage_s:	0
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		20
+How many:	10
+Good_e:		0
+Good_l:		2
+Good_m:		7
+Good_s:		1
+Percentage_e:	0
+Percentage_l:	0.2
+Percentage_m:	0.7
+Percentage_s:	0.1
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		21
+How many:	10
+Good_e:		0
+Good_l:		2
+Good_m:		6
+Good_s:		2
+Percentage_e:	0
+Percentage_l:	0.2
+Percentage_m:	0.6
+Percentage_s:	0.2
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		22
+How many:	10
+Good_e:		0
+Good_l:		2
+Good_m:		7
+Good_s:		1
+Percentage_e:	0
+Percentage_l:	0.2
+Percentage_m:	0.7
+Percentage_s:	0.1
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		23
+How many:	10
+Good_e:		0
+Good_l:		2
+Good_m:		8
+Good_s:		0
+Percentage_e:	0
+Percentage_l:	0.2
+Percentage_m:	0.8
+Percentage_s:	0
+Noise:		0.25
+---
+Bulb:		mushroom
+Label:		24
+How many:	10
+Good_e:		0
+Good_l:		3
+Good_m:		7
+Good_s:		0
+Percentage_e:	0
+Percentage_l:	0.3
+Percentage_m:	0.7
+Percentage_s:	0
+Noise:		0.25
+---

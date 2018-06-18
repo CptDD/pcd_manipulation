@@ -1,0 +1,60 @@
+1.
+Bulb:		livarno
+Noise:		0.5
+How many:	10
+Good:		2
+Percentage:	20%
+
+Bulb:		livarno
+Noise:		1
+How many:	10
+Good:		5
+Percentage:	50%
+
+Bulb:		livarno
+Noise		1.5
+How many:	10
+Good:		1
+Percentage:	10%
+
+
+Bulb:		elongated
+Noise:		0.0
+How many:	10
+Good:		5
+Percentage:	50%
+
+Bulb:		elongated
+Noise:		0.5
+How many:	10
+Good:		4
+Percentage:	40%
+
+
+Bulb:		elongated
+Noise:		1
+How many:	10
+Good:		2
+Percentage:	20%
+
+Bulb:		mushroom
+Noise:		0.0
+How many:	10
+Good:		5
+Percentage:	50%
+
+Bulb:		mushroom
+Noise:		0.5
+How many:	10
+Good:		2
+Percentage:	20%
+
+Bulb:		mushroom
+Noise:		1
+How many:	10
+Good:		0
+Percentage:	0%
+
+
+
+

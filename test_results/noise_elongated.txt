@@ -1,0 +1,241 @@
+Bulb:		elongated
+Label:		4
+How many:	10
+Good_e:		7
+Good_l:		1
+Good_m:		1
+Good_s:		1
+Percentage_e:	0.7
+Percentage_l:	0.1
+Percentage_m:	0.1
+Percentage_s:	0.1
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		5
+How many:	10
+Good_e:		6
+Good_l:		1
+Good_m:		1
+Good_s:		2
+Percentage_e:	0.6
+Percentage_l:	0.1
+Percentage_m:	0.1
+Percentage_s:	0.2
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		6
+How many:	10
+Good_e:		5
+Good_l:		3
+Good_m:		0
+Good_s:		2
+Percentage_e:	0.5
+Percentage_l:	0.3
+Percentage_m:	0
+Percentage_s:	0.2
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		7
+How many:	10
+Good_e:		8
+Good_l:		2
+Good_m:		0
+Good_s:		0
+Percentage_e:	0.8
+Percentage_l:	0.2
+Percentage_m:	0.0
+Percentage_s:	0.0
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		8
+How many:	10
+Good_e:		6
+Good_l:		1
+Good_m:		3
+Good_s:		0
+Percentage_e:	0.6
+Percentage_l:	0.1
+Percentage_m:	0.3
+Percentage_s:	0.0
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		9
+How many:	10
+Good_e:		9
+Good_l:		1
+Good_m:		0
+Good_s:		0
+Percentage_e:	0.9
+Percentage_l:	0.1
+Percentage_m:	0.0
+Percentage_s:	0.0
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		10
+How many:	10
+Good_e:		7
+Good_l:		0
+Good_m:		3
+Good_s:		0
+Percentage_e:	0.7
+Percentage_l:	0.0
+Percentage_m:	0.3
+Percentage_s:	0.0
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		11
+How many:	10
+Good_e:		8
+Good_l:		1
+Good_m:		0
+Good_s:		1
+Percentage_e:	0.8
+Percentage_l:	0.1
+Percentage_m:	0.0
+Percentage_s:	0.1
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		12
+How many:	10
+Good_e:		6
+Good_l:		2
+Good_m:		1
+Good_s:		1
+Percentage_e:	0.6
+Percentage_l:	0.2
+Percentage_m:	0.1
+Percentage_s:	0.1
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		13
+How many:	10
+Good_e:		7
+Good_l:		1
+Good_m:		2
+Good_s:		0
+Percentage_e:	0.7
+Percentage_l:	0.1
+Percentage_m:	0.2
+Percentage_s:	0.0
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		14
+How many:	10
+Good_e:		3
+Good_l:		4
+Good_m:		2
+Good_s:		1
+Percentage_e:	0.3
+Percentage_l:	0.4
+Percentage_m:	0.2
+Percentage_s:	0.1
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		15
+How many:	10
+Good_e:		8
+Good_l:		1
+Good_m:		1
+Good_s:		0
+Percentage_e:	0.8
+Percentage_l:	0.1
+Percentage_m:	0.1
+Percentage_s:	0.0
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		16
+How many:	10
+Good:		9
+Percentage:	0.9
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		17
+How many:	10
+Good_e:		9
+Good_l:		1
+Good_m:		0
+Good_s:		0
+Percentage_e:	0.9
+Percentage_l:	0.1
+Percentage_m:	0.0
+Percentage_s:	0.0
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		20
+How many:	10
+Good_e:		8
+Good_l:		0
+Good_m:		1
+Good_s:		1
+Percentage_e:	0.8
+Percentage_l:	0.0
+Percentage_m:	0.1
+Percentage_s:	0.1
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		21
+How many:	10
+Good_e:		6
+Good_l:		1
+Good_m:		1
+Good_s:		2
+Percentage_e:	0.6
+Percentage_l:	0.1
+Percentage_m:	0.1
+Percentage_s:	0.2
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		22
+How many:	10
+Good_e:		7
+Good_l:		3
+Good_m:		0
+Good_s:		0
+Percentage_e:	0.7
+Percentage_l:	0.0
+Percentage_m:	0.0
+Percentage_s:	0.3
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		23
+How many:	10
+Good_e:		8
+Good_l:		0
+Good_m:		2
+Good_s:		0
+Percentage_e:	0.8
+Percentage_l:	0.0
+Percentage_m:	0.2
+Percentage_s:	0.0
+Noise:		0.25
+---
+Bulb:		elongated
+Label:		24
+How many:	10
+Good_e:		6
+Good_l:		1
+Good_m:		3
+Good_s:		0
+Percentage_e:	0.6
+Percentage_l:	0.1
+Percentage_m:	0.3
+Percentage_s:	0.0
+Noise:		0.25
+---
