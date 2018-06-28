@@ -2,6 +2,11 @@
 
 import xml.etree.cElementTree as ET
 
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
+import operator
+
 def  add_fullyObs_vars(points):
 
 	text=''
@@ -47,51 +52,56 @@ def prepare_fully_state_transition_entries(parent,points):
 	for k,v in points.items():
 
 		if 'south' in actions:
-			south_neigh=get_south(k,points)
+			south_neigh=get_south_neighbours(k,v['neighbours'],points)
 			if(len(south_neigh)>0):
 				tempEntry=tempEntry=ET.SubElement(parent,'Entry')
-				tempInstance=ET.SubElement(tempEntry,'Instance').text='south vp'+str(k)+' vp'+str(south_neigh[0])
+				tempInstance=ET.SubElement(tempEntry,'Instance').text='south vp'+str(k)+' vp'+str(south_neigh[0][0])
+				tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
+			else:
+				tempEntry=tempEntry=ET.SubElement(parent,'Entry')
+				tempInstance=ET.SubElement(tempEntry,'Instance').text='south vp'+str(k)+' vp'+str(k)
 				tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
 
-			xtr_south=get_extreme_south(points)
-			tempEntry=tempEntry=ET.SubElement(parent,'Entry')
-			tempInstance=ET.SubElement(tempEntry,'Instance').text='south vp'+str(xtr_south[0])+' vp'+str(xtr_south[0])
-			tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
+	for k,v in points.items():
 
 		if 'north' in actions:
-			north_neigh=get_north(k,points)
+			north_neigh=get_north_neighbours(k,v['neighbours'],points)
 			if(len(north_neigh)>0):
 				tempEntry=tempEntry=ET.SubElement(parent,'Entry')
-				tempInstance=ET.SubElement(tempEntry,'Instance').text='north vp'+str(k)+' vp'+str(north_neigh[0])
+				tempInstance=ET.SubElement(tempEntry,'Instance').text='north vp'+str(k)+' vp'+str(north_neigh[0][0])
+				tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
+			else:
+				tempEntry=tempEntry=ET.SubElement(parent,'Entry')
+				tempInstance=ET.SubElement(tempEntry,'Instance').text='north vp'+str(k)+' vp'+str(k)
 				tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
 
-			xtr_north=get_extreme_north(points)
-			tempEntry=tempEntry=ET.SubElement(parent,'Entry')
-			tempInstance=ET.SubElement(tempEntry,'Instance').text='north vp'+str(xtr_north[0])+' vp'+str(xtr_north[0])
-			tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
+	for k,v in points.items():
 
 		if 'east' in actions:
-			east_neigh=get_east(k,points)
+			east_neigh=get_east_neighbours(k,v['neighbours'],points)
 			if(len(east_neigh)>0):
 				tempEntry=tempEntry=ET.SubElement(parent,'Entry')
-				tempInstance=ET.SubElement(tempEntry,'Instance').text='east vp'+str(k)+' vp'+str(east_neigh[0])
+				tempInstance=ET.SubElement(tempEntry,'Instance').text='east vp'+str(k)+' vp'+str(east_neigh[0][0])
+				tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
+			else:
+				tempEntry=tempEntry=ET.SubElement(parent,'Entry')
+				tempInstance=ET.SubElement(tempEntry,'Instance').text='east vp'+str(k)+' vp'+str(k)
 				tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
 
-			xtr_east=get_extreme_east(points)
-			tempEntry=tempEntry=ET.SubElement(parent,'Entry')
-			tempInstance=ET.SubElement(tempEntry,'Instance').text='east vp'+str(xtr_east[0])+' vp'+str(xtr_east[0])
-			tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
+	for k,v in points.items():
 
 		if 'west' in actions:
-			west_neigh=get_west(k,points)
+			west_neigh=get_west_neighbours(k,v['neighbours'],points)
 			if(len(west_neigh)>0):
 				tempEntry=tempEntry=ET.SubElement(parent,'Entry')
-				tempInstance=ET.SubElement(tempEntry,'Instance').text='west vp'+str(k)+' vp'+str(west_neigh[0])
+				tempInstance=ET.SubElement(tempEntry,'Instance').text='west vp'+str(k)+' vp'+str(west_neigh[0][0])
 				tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
-			xtr_west=get_extreme_west(points)
-			tempEntry=tempEntry=ET.SubElement(parent,'Entry')
-			tempInstance=ET.SubElement(tempEntry,'Instance').text='west vp'+str(xtr_west[0])+' vp'+str(xtr_west[0])
-			tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
+			else:
+				tempEntry=tempEntry=ET.SubElement(parent,'Entry')
+				tempInstance=ET.SubElement(tempEntry,'Instance').text='west vp'+str(k)+' vp'+str(k)
+				tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
+
+
 
 
 		if 'up' in actions:
@@ -100,6 +110,7 @@ def prepare_fully_state_transition_entries(parent,points):
 				tempEntry=tempEntry=ET.SubElement(parent,'Entry')
 				tempInstance=ET.SubElement(tempEntry,'Instance').text='up vp'+str(k)+' vp'+str(up_neigh[0])
 				tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
+
 			xtr_up=get_extreme_up(points)
 			tempEntry=tempEntry=ET.SubElement(parent,'Entry')
 			tempInstance=ET.SubElement(tempEntry,'Instance').text='up vp'+str(xtr_up[0])+' vp'+str(xtr_up[0])
@@ -112,10 +123,35 @@ def prepare_fully_state_transition_entries(parent,points):
 				tempEntry=tempEntry=ET.SubElement(parent,'Entry')
 				tempInstance=ET.SubElement(tempEntry,'Instance').text='down vp'+str(k)+' vp'+str(down_neigh[0])
 				tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
+
 			xtr_down=get_extreme_down(points)
 			tempEntry=tempEntry=ET.SubElement(parent,'Entry')
 			tempInstance=ET.SubElement(tempEntry,'Instance').text='down vp'+str(xtr_down[0])+' vp'+str(xtr_down[0])
 			tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
+
+	'''if 'south' in actions:
+		xtr_south=get_extreme_south(points)
+		tempEntry=tempEntry=ET.SubElement(parent,'Entry')
+		tempInstance=ET.SubElement(tempEntry,'Instance').text='south vp'+str(xtr_south[0])+' vp'+str(xtr_south[0])
+		tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
+
+	if 'north' in actions:
+		xtr_north=get_extreme_north(points)
+		tempEntry=tempEntry=ET.SubElement(parent,'Entry')
+		tempInstance=ET.SubElement(tempEntry,'Instance').text='north vp'+str(xtr_north[0])+' vp'+str(xtr_north[0])
+		tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
+
+	if 'east' in actions:
+		xtr_east=get_extreme_east(points)
+		tempEntry=tempEntry=ET.SubElement(parent,'Entry')
+		tempInstance=ET.SubElement(tempEntry,'Instance').text='east vp'+str(xtr_east[0])+' vp'+str(xtr_east[0])
+		tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'
+
+	if 'west' in actions:
+		xtr_west=get_extreme_west(points)
+		tempEntry=tempEntry=ET.SubElement(parent,'Entry')
+		tempInstance=ET.SubElement(tempEntry,'Instance').text='west vp'+str(xtr_west[0])+' vp'+str(xtr_west[0])
+		tempProbTable=ET.SubElement(tempEntry,'ProbTable').text='1'''
 
 
 
@@ -160,55 +196,58 @@ def compute_normalisation_factor(total_sum,bulbs):
 
 def is_south(target,coords):
 
-	x=target['x']
-	y=target['y']
-	z=target['z']
+	x=float(target['x'])
+	y=float(target['y'])
+	z=float(target['z'])
 
-	if(coords['y']<y):
+	if(float(coords['y'])<y):
 		return True
 	else:
 		return False
 
 def is_north(target,coords):
 
-	x=target['x']
-	y=target['y']
-	z=target['z']
+	
+	x=float(target['x'])
+	y=float(target['y'])
+	z=float(target['z'])
 
-	if(coords['y']>y):
+	if(float(coords['y'])>y):
 		return True
 	else:
 		return False
 
 def is_west(target,coords):
 
-	x=target['x']
-	y=target['y']
-	z=target['z']
+	
+	x=float(target['x'])
+	y=float(target['y'])
+	z=float(target['z'])
 
-	if(coords['x']<x):
+	if(float(coords['x'])<x):
 		return True
 	else:
 		return False
 
 def is_east(target,coords):
 
-	x=target['x']
-	y=target['y']
-	z=target['z']
+	
+	x=float(target['x'])
+	y=float(target['y'])
+	z=float(target['z'])
 
-	if(coords['x']>x):
+	if(float(coords['x'])>x):
 		return True
 	else:
 		return False
 
 
 def is_up(target,coords):
-	x=target['x']
-	y=target['y']
-	z=target['z']
+	x=float(target['x'])
+	y=float(target['y'])
+	z=float(target['z'])
 
-	if(coords['z']>z):
+	if(float(coords['z'])>z):
 		return True
 	else:
 		return False
@@ -216,11 +255,11 @@ def is_up(target,coords):
 
 def is_down(target,coords):
 
-	x=target['x']
-	y=target['y']
-	z=target['z']
+	x=float(target['x'])
+	y=float(target['y'])
+	z=float(target['z'])
 
-	if(coords['z']<z):
+	if(float(coords['z'])<z):
 		return True
 	else:
 		return False
@@ -344,6 +383,8 @@ def get_south(target,points):
 
 	return south_neigh
 
+
+
 def get_north(target,points):
 
 	north_neigh=[]
@@ -389,6 +430,150 @@ def get_down(target,points):
 			if(is_down(points[target],v)):
 				down_neigh.append(k)
 	return down_neigh
+
+
+def get_closest_south(target,neighbours,points):
+
+
+	south_neighs=dict()
+	for i in neighbours:
+
+		if(is_south(points[target],points[i])):
+	
+			if(float(points[target]['y'])<=0):
+				diff=abs(float(points[target]['y']))-abs(float(points[i]['y']))
+			else:
+				diff=abs(float(points[i]['y']))-abs(float(points[target]['y']))
+
+			if(diff<-0.044):
+				south_neighs[i]=diff
+
+	sorted_list= sorted(south_neighs.items(), key=operator.itemgetter(0))
+
+	return sorted_list
+	
+
+def get_closest_north(target,neighbours,points):
+
+	north_neighs=dict()
+	for i in neighbours:
+
+		if(is_north(points[target],points[i])):
+
+			if(float(points[target]['y'])<0):
+				diff=abs(float(points[target]['y']))-abs(float(points[i]['y']))
+			else:
+				diff=abs(float(points[i]['y']))-abs(float(points[target]['y']))
+
+			if(diff>0.044):
+				north_neighs[i]=diff
+
+
+	sorted_list=sorted(north_neighs.items(),key=operator.itemgetter(0))
+
+	return sorted_list
+
+def get_closest_east(target,neighbours,points):
+
+	east_neighs=dict()
+
+	for i in neighbours:
+
+		if(is_east(points[target],points[i])):
+
+			if(float(points[target]['x'])>0):
+				diff=abs(float(points[target]['x']))-abs(float(points[i]['x']))
+			else:
+				diff=abs(float(points[i]['x']))-abs(float(points[target]['x']))
+
+
+			if(diff<-0.05):
+				east_neighs[i]=diff
+
+	sorted_list=sorted(east_neighs.items(),key=operator.itemgetter(0),reverse=True)
+
+	return sorted_list
+
+def get_closest_west(target,neighbours,points):
+
+	west_neighs=dict()
+
+	for i in neighbours:
+
+		if(is_west(points[target],points[i])):
+
+
+			if(float(points[target]['x'])>0 and float(points[i]['x'])>0):
+				diff=abs(float(points[target]['x']))-abs(float(points[i]['x']))
+
+				if diff>0.04:
+					west_neighs[i]=diff
+
+
+			elif(float(points[target]['x'])<0 and float(points[i]['x'])<0):
+				diff=abs(float(points[i]['x']))-abs(float(points[target]['x']))
+
+				if diff>0.04:
+					west_neighs[i]=diff
+
+			else:
+				diff=abs(float(points[target]['x']))-abs(float(points[i]['x']))
+
+				if diff<-0.05:
+					west_neighs[i]=diff
+
+
+	sorted_list=sorted(west_neighs.items(),key=operator.itemgetter(0))
+
+	return sorted_list
+
+
+
+def get_south_neighbours(target,neighbours,points):
+
+	south_neigh=[]
+	south_neigh=get_closest_south(target,neighbours,points)
+		#if(is_south(points[target],points[i])):
+		#	south_neigh.append(i)
+
+
+	return south_neigh
+
+def get_north_neighbours(target,neighbours,points):
+
+	north_neigh=[]
+
+	north_neigh=get_closest_north(target,neighbours,points)
+
+	#for i in neighbours:
+	#	if(is_north(points[target],points[i])):
+	#		north_neigh.append(i)
+
+
+	return north_neigh
+
+def get_east_neighbours(target,neighbours,points):
+
+	east_neigh=[]
+	east_neigh=get_closest_east(target,neighbours,points)
+
+
+	#for i in neighbours:
+	#	if(is_east(points[target],points[i])):
+	#		east_neigh.append(i)
+
+	return east_neigh
+
+def get_west_neighbours(target,neighbours,points):
+
+	west_neigh=[]
+	west_neigh=get_closest_west(target,neighbours,points)
+
+	#for i in neighbours:
+	#	if(is_west(points[target],points[i])):
+	#		west_neigh.append(i)
+
+	return west_neigh
 
 
 def  prepare_obs_function_entries(parent,points,bulbs,percs):
@@ -495,6 +680,210 @@ def read_percentages(filename):
     f.close()
     return percs
 
+def show_map(points):
+
+	actions=get_actions()
+	px=[]
+	py=[]
+	pz=[]
+	label=[]
+
+	fig = plt.figure()
+	ax = fig.add_subplot(111)
+
+	for k,v in points.items():
+
+		px.append(float(v['x']))
+		py.append(float(v['y']))
+		pz.append(float(v['z']))
+		label.append(k)
+
+
+		print('---Neighbours for :'+str(k)+'---')
+
+		if 'south' in actions:
+
+			south_neigh=get_south_neighbours(k,v['neighbours'],points)
+
+			if(len(south_neigh)>0):
+				print('South :'+str(south_neigh[0][0]))
+
+				x2=float(points[south_neigh[0][0]]['x'])
+				x1=float(v['x'])
+				y2=float(points[south_neigh[0][0]]['y'])
+				y1=float(v['y'])
+
+				q=np.sqrt((x2-x1)**2+(y2-y1)**2)
+
+				ux=(x2-x1)/q
+				uy=(y2-y1)/q
+
+				ax.arrow(x2,y2,x1-x2,y1-y2,head_length=y2-y1,color='g')
+
+				'''if x1>0 and y1>0:
+					ax.arrow(x2,y2,x1-x2,y1-y2,head_length=y2-y1,color='g')
+				elif x1<0 and y1<0:
+					ax.arrow(x2,y2,x1-x2,y1-y2,head_length=y2-y1,color='g')
+
+				elif x1>0 and y1<0:
+					ax.arrow(x2,y2,x1-x2,y1-y2,head_length=y2-y1,color='g')
+				else:
+					ax.arrow(x2,y2,x1-x2,y1-y2,head_length=y2-y1,color='g')'''
+
+
+
+				#else:
+					#ax.arrow(x2,y2,x1-x2,y1-y2,head_length=x2-x1,color='g')
+
+
+				'''for l in np.arange(0,q,.01):
+					ppx=x1+l*ux
+					ppy=y1+l*uy
+					ax.scatter(ppx,ppy,s=1,color='g')'''
+
+
+
+		if 'north' in actions:
+			north_neigh=get_north_neighbours(k,v['neighbours'],points)
+			if(len(north_neigh)>0):
+				print('North :'+str(north_neigh[0][0]))
+
+
+				x2=float(points[north_neigh[0][0]]['x'])
+				x1=float(v['x'])
+				y2=float(points[north_neigh[0][0]]['y'])
+				y1=float(v['y'])
+
+				q=np.sqrt((x2-x1)**2+(y2-y1)**2)
+
+				ux=(x2-x1)/q
+				uy=(y2-y1)/q
+
+
+				ax.arrow(x2,y2,x1-x2,y1-y2,head_length=y1-y2,color='y')
+
+				'''if x1>0 and y1>0:
+					ax.arrow(x2,y2,x1-x2,y1-y2,head_length=y1-y2,color='y')
+				elif x1<0 and y1<0:
+					ax.arrow(x2,y2,x1-x2,y1-y2,head_length=y1-y2,color='y')
+
+				elif x1>0 and y1<0:
+					ax.arrow(x2,y2,x1-x2,y1-y2,head_length=y1-y2,color='y')
+
+				else:
+					ax.arrow(x2,y2,x1-x2,y1-y2,head_length=y1-y2,color='y')'''
+
+				'''for l in np.arange(0,q,.01):
+					ppx=x1+l*ux
+					ppy=y1+l*uy
+					ax.scatter(ppx,ppy,s=1,color='y')'''
+
+
+
+		if 'east' in actions:
+			east_neigh=get_east_neighbours(k,v['neighbours'],points)
+			if(len(east_neigh)>0):
+				print('East :'+str(east_neigh[0][0]))
+
+				x2=float(points[east_neigh[0][0]]['x'])
+				x1=float(v['x'])
+				y2=float(points[east_neigh[0][0]]['y'])
+				y1=float(v['y'])
+
+				q=np.sqrt((x2-x1)**2+(y2-y1)**2)
+
+				ux=(x2-x1)/q
+				uy=(y2-y1)/q
+
+				ax.arrow(x2,y2,x1-x2,y1-y2,head_length=x1-x2,color='r')
+
+				'''if x1>0 and y1>0:
+					ax.arrow(x2,y2,x1-x2,y1-y2,head_length=x1-x2,color='r')
+				elif x1<0 and y1<0:
+					ax.arrow(x2,y2,x1-x2,y1-y2,head_length=x1-x2,color='r')
+
+				elif x1>0 and y1<0:
+					ax.arrow(x2,y2,x1-x2,y1-y2,head_length=x2-x1,color='r')
+				else:
+					ax.arrow(x2,y2,x1-x2,y1-y2,head_length=x2-x1,color='r')'''
+
+				'''for l in np.arange(0,q,.01):
+					ppx=x1+l*ux
+					ppy=y1+l*uy
+					ax.scatter(ppx,ppy,s=1,color='r')'''
+
+
+
+
+
+		if 'west' in actions:
+			west_neigh=get_west_neighbours(k,v['neighbours'],points)
+			if(len(west_neigh)>0):
+				print('West :'+str(west_neigh[0][0]))
+
+				x2=float(points[west_neigh[0][0]]['x'])
+				x1=float(v['x'])
+				y2=float(points[west_neigh[0][0]]['y'])
+				y1=float(v['y'])
+
+				q=np.sqrt((x2-x1)**2+(y2-y1)**2)
+
+				ux=(x2-x1)/q
+				uy=(y2-y1)/q
+
+				ax.arrow(x2,y2,x1-x2,y1-y2,head_length=x2-x1,color='b')
+
+				'''if x1>0 and y1>0:
+					ax.arrow(x2,y2,x1-x2,y1-y2,head_length=x1-x2,color='b')
+				elif x1<0 and y1<0:
+					ax.arrow(x2,y2,x1-x2,y1-y2,head_length=x1-x2,color='b')
+
+				elif x1>0 and y1<0:
+					ax.arrow(x2,y2,x1-x2,y1-y2,head_length=x2-x1,color='b')
+				else:
+					ax.arrow(x2,y2,x1-x2,y1-y2,head_length=x2-x1,color='b')'''
+
+				'''for l in np.arange(0,q,.01):
+					ppx=x1+l*ux
+					ppy=y1+l*uy
+					ax.scatter(ppx,ppy,s=1,color='b')'''
+
+
+	xtr_south=get_extreme_south(points)
+	print('Extreme south :'+str(xtr_south[0]))
+
+	xtr_north=get_extreme_north(points)
+	print('Extreme north :'+str(xtr_north[0]))
+
+	xtr_east=get_extreme_east(points)
+	print('Extreme east :'+str(xtr_east[0]))
+
+	xtr_west=get_extreme_west(points)
+	print('Extreme west :'+str(xtr_west[0]))
+
+	print(px)
+	print(py)
+	print(label)
+
+
+	ax.grid('on')
+	ax.scatter(px,py)
+
+	ax.set_xlabel('x')
+	ax.set_ylabel('y')
+	#ax.set_zlabel('z')
+
+
+
+	for i in range(0,len(px)):
+		#ax.text(px[i],py[i],pz[i],label[i],size='large')
+		ax.text(px[i],py[i],label[i],size='large')
+
+
+
+	plt.legend(loc='best')
+	plt.show()
+
 
 ### Fetch needed data###
 
@@ -520,6 +909,8 @@ percs.append(elong_percs)
 percs.append(livarno_percs)
 percs.append(mush_percs)
 percs.append(std_percs)
+
+show_map(points)
 
 ########################
 
@@ -570,7 +961,7 @@ prepare_fully_state_transition_entries(transFullyParameter,points)
 
 transNotFullyCondProb=ET.SubElement(stateTransFunction,'CondProb')
 transNotFullyVar=ET.SubElement(transNotFullyCondProb,'Var').text='state_1'
-transNotFullyParent=ET.SubElement(transNotFullyCondProb,'Parent').text='action_robot state_1'
+transNotFullyParent=ET.SubElement(transNotFullyCondProb,'Parent').text='action_robot state_0'
 transNotFullyParameter=ET.SubElement(transNotFullyCondProb,'Parameter',type='TBL')
 prepare_notFully_state_transition_entries(transNotFullyParameter,bulbs)
 
