@@ -7,6 +7,7 @@ from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 import operator
 
+
 def  add_fullyObs_vars(points):
 
 	text=''
@@ -46,6 +47,12 @@ def prepare_fully_bs(points):
 
 def prepare_fully_state_transition_entries(parent,points):
 
+""" 
+Function that prepares the fully observable variables based on the existing actions.
+The function iterates over the neighbours of each point and computes the closest ones in the south, north, east, west directions.
+In case the point has no neighbour in the respective direction the associated action has a kind of stay action.
+The last action is to place the extreme, limit points.
+"""
 
 	actions=get_actions()
 
@@ -177,6 +184,10 @@ def prepare_reward_entries(parent,bulbs):
 				valueTable.text='50'
 
 def compute_total_sum(percs,point,bulb):
+
+"""
+ Function needed to decide if the sum of the observation probabilities is greater than 1, needed for normalization.
+"""
 	total_sum=0
 
 	for i in range(0,len(percs)):
@@ -434,6 +445,10 @@ def get_down(target,points):
 
 def get_closest_south(target,neighbours,points):
 
+""" Function that searches, through the neighbours of a given point, for the closest point in the south direction.
+	A small threshold is kept to avoid very close neighbours.
+"""
+
 
 	south_neighs=dict()
 	for i in neighbours:
@@ -454,6 +469,9 @@ def get_closest_south(target,neighbours,points):
 	
 
 def get_closest_north(target,neighbours,points):
+""" Function that searches, through the neighbours of a given point, for the closest point in the north direction.
+	A small threshold is kept to avoid very close neighbours.
+"""
 
 	north_neighs=dict()
 	for i in neighbours:
@@ -475,6 +493,10 @@ def get_closest_north(target,neighbours,points):
 
 def get_closest_east(target,neighbours,points):
 
+""" Function that searches, through the neighbours of a given point, for the closest point in the east direction.
+	A small threshold is kept to avoid very close neighbours.
+"""
+
 	east_neighs=dict()
 
 	for i in neighbours:
@@ -495,6 +517,10 @@ def get_closest_east(target,neighbours,points):
 	return sorted_list
 
 def get_closest_west(target,neighbours,points):
+
+""" Function that searches, through the neighbours of a given point, for the closest point in the west direction.
+	A small threshold is kept to avoid very close neighbours.
+"""
 
 	west_neighs=dict()
 
@@ -681,6 +707,9 @@ def read_percentages(filename):
     return percs
 
 def show_map(points):
+
+"""Function used to plot the map of the points and tracing lines towards the neighbours"""
+
 
 	actions=get_actions()
 	px=[]

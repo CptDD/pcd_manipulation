@@ -231,6 +231,9 @@ def generic_layout(obj, layout):
 
 
 def random_on_sphere_points(r,num):
+
+"""Function to compute randomly sampled points on a sphere"""
+
     points=[]
     for i in range(0,num):
         z=random.uniform(-r,r)
@@ -241,6 +244,7 @@ def random_on_sphere_points(r,num):
     return points
 
 def regular_on_sphere_points(r,num):
+"""Function to compute uniformly sampled points on a sphere"""
     points=[]
 
     if num==0:
@@ -267,6 +271,7 @@ def regular_on_sphere_points(r,num):
 
 
 def camera_info(camera):
+"""Function used to print information about the camera"""
 
     camera.rotation_mode='QUATERNION'
     print('+++===___Camera-Info___===+++')
@@ -280,9 +285,7 @@ def camera_info(camera):
     print('+++===_________________===+++')
 
 def move_camera(camera):
-
-   
-
+"""Function used to move the camera in 2D on a circle """
     r=4
 
     print(str(camera.location[0])+" "+str(camera.location[1])+" "+str(camera.location[2]))
@@ -326,12 +329,14 @@ def move_camera(camera):
 
 
 def perform_scan(filename):
+
     bpy.ops.blensor.scan(filepath=filename)
     print('Scan :'+filename+' performed!')
 
 
 
 def dispatch_custom_scan(obj,filename=None, output_labels=True): 
+
             """Save the current frame number to restore it after the scan"""
             frame_current = bpy.context.scene.frame_current
 
@@ -387,6 +392,7 @@ def create_vertices (name, verts):
     return ob
 
 def only(verts):
+    """Function used to segment the generated points from the sphere, keeping only the upper half of the sphere"""
     new_v=[]
     i=0
     while i<len(verts):
@@ -400,6 +406,7 @@ def only(verts):
     return new_v
 
 def is_nn(vertex,candidate,radius):
+    """Function used to decide if a certain candidate is the neighbour of vertex"""
   
     if (candidate[0]>=vertex[0]-radius and candidate[0]<=vertex[0]+radius) and (candidate[1]>=vertex[1]-radius and candidate[1]<=vertex[1]+radius) and (candidate[2]>=vertex[2]-radius and candidate[2]<=vertex[2]+radius):
         return True
@@ -407,6 +414,7 @@ def is_nn(vertex,candidate,radius):
         return False
 
 def graph_to_file(graph,filename):
+    """Function used to write the generated graph into a file"""
     out=open(filename,'w')
 
     for i in range(0,len(graph)):
@@ -426,6 +434,7 @@ def graph_to_file(graph,filename):
 
 
 def get_nn(vertex,verts,radius):
+    """Function used to compute all the neighbours of a given vertex"""
     neighbours=[]
 
     for i in range(0,len(verts)):
@@ -440,6 +449,8 @@ def get_nn(vertex,verts,radius):
 
 
 def create_graph(verts):
+
+    """Function used to compute the graph"""
     graph=[]
 
     for i in range(0,len(verts)):
@@ -455,11 +466,17 @@ def create_graph(verts):
 
 
 def compute_rot_x(point):
+
+    """Function used to compute the rotation coefficient needed to rotate the camera on the x axis"""
+
     rot_x=math.atan(abs(point[0]/point[2]))
     print('Print angles on x :'+str(rot_x)+" "+str(degrees(rot_x)))
     return rot_x
 
 def compute_rot_z(point):
+
+    """Function used to compute the rotation coefficient needed to rotate the camera on the z axis"""
+
     if point[1]!=0:
         rot_z=math.atan(abs(point[0]/point[1]))
         print('Print angles on z :'+str(rot_z)+" "+str(degrees(rot_z)))
@@ -471,6 +488,11 @@ def compute_rot_z(point):
 
 
 def dispatch_custom_test(obj,filename=None,output_labels=True):
+
+    """Callback function that segments points on a sphere, moves the camera to each point and performs scans from each of them
+    and saves them in the respective files. It computes the neighbours for each point and creates a graph out of this information
+    which is saved to a file. The noise level can also be varied."""
+
     frame_current=bpy.context.scene.frame_current
 
     blensor.evd.output_labels=output_labels

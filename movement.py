@@ -6,39 +6,6 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 
-'''
-11
-
-
-
-10
-
-
-
-21
-
-
-
-22
-
-22
-
-22
-
-22
-
-
-22
-
-
-22
-
-
-22
-
-22
-'''
-
 
 def read_points(filename):
     f=open(filename,'r')
@@ -111,8 +78,7 @@ def read_percentages(filename):
 
 def show_map(points):
 
-
-
+"""Function used to plot the obervation sequence based on the values returned by the planning algorithms"""
 
 	positions=['11','10','21','22','22','10','9','20','21','22']
 	actions=['south','south','south','south','north','north','west','south','east']
