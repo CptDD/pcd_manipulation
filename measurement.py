@@ -4,8 +4,7 @@ import glob
 import numpy as np
 import xml.etree.ElementTree as ET
 from movement_plotter import *
-
-
+import matplotlib.pyplot as plt
 
 
 def read_results(filename):
@@ -21,6 +20,9 @@ def read_results(filename):
 			temp_tags['action']=line[4]
 			temp_tags['observation']=line[6]
 			temp_tags['state']=line[8]
+
+		if 'State:' in line:
+			print(line)
 
 		if 'Reward :' in line:
 			temp_tags=dict()
@@ -76,101 +78,6 @@ def compute_mean_values(posterior):
 def get_files(path):
 	return glob.glob(str(path+'/*.txt'))
 
-def read_actions(tree):
-	actions=[]
-
-	for child in tree:
-		if child.tag == 'Variable':
-			for c in child:
-				if c.tag == 'ActionVar':
-					actions_text=c.find('ValueEnum').text
-					actions=actions_text.rstrip().split(' ')
-	return actions
-
-def read_positions(tree):
-	positions=[]
-
-	for child in tree:
-		if child.tag == 'Variable':
-			for c in child:
-				if c.tag == 'StateVar':
-					if c.get('fullyObs') == 'true':
-						positions_text=c.find('ValueEnum').text.replace('vp','').rstrip()
-						positions=positions_text.split(' ')
-
-	return positions
-
-
-def associate_actions(unprocessed_actions,actions):
-
-	processed_actions=[]
-	for i in unprocessed_actions:
-		action=int(i['action'])
-		processed_actions.append(actions[action])
-
-
-	print(processed_actions)
-
-	return processed_actions
-
-
-def get_points(tree):
-
-	point=[]
-	actions=[]
-	nearest_point=[]
-	points=dict()
-
-	for child in tree:
-		if child.tag == 'StateTransitionFunction':
-			
-			for c in child:
-				if c.tag=='CondProb':
-					var=c[0]
-					if var.text=='robot_1':
-						parameter=c[2]
-
-						for entry in parameter:
-							text=entry[0].text.replace('vp','')
-							tokens=text.split(' ')
-
-							action=tokens[0]
-							point=tokens[1]
-							neigh=tokens[2]
-
-							if point not in points.keys():
-								temp_tags=dict()
-								temp_tags['south']=''
-								temp_tags['east']=''
-								temp_tags['north']=''
-								temp_tags['west']=''
-								points[point]=temp_tags
-
-							points[point][action]=neigh
-
-	return points
-
-def prepare_positions(initial_pos,actions,points):
-
-	prepared_positions=[]
-	prepared_positions.append(initial_pos)
-
-	current_pos=initial_pos
-
-	print(initial_pos)
-
-	for action in actions:
-		new_pos=points[current_pos][action]
-		print(new_pos)
-		prepared_positions.append(new_pos)
-		current_pos=new_pos
-
-	return prepared_positions
-
-
-
-						
-
 def process_files(files):
 
 	elongated=[]
@@ -215,10 +122,18 @@ def process_files(files):
 
 
 	norm_factor=len(files)
+	elo=np.divide(elongated,norm_factor)
+	liv=np.divide(livarno,norm_factor)
+	mush=np.divide(mushroom,norm_factor)
+	std=np.divide(standard,norm_factor)
+
+
 	print(np.divide(elongated,norm_factor))
 	print(np.divide(livarno,norm_factor))
 	print(np.divide(mushroom,norm_factor))
 	print(np.divide(standard,norm_factor))
+
+	return elo,liv,mush,std
 
 
 
@@ -230,51 +145,34 @@ results_filename='/home/cptd/dd/aems2/extended-appl-with-aems2/src/res.txt'
 pomdpx_filename='/home/cptd/dd/aems2/extended-appl-with-aems2/examples/POMDPX/filename.pomdpx'
 points_filename='/home/cptd/c/graph.txt'
 
-elongated_filename='/home/cptd/test_results/gen_elongated.txt'
-livarno_filename='/home/cptd/test_results/gen_livarno.txt'
-mushroom_filename='/home/cptd/test_results/gen_mushroom.txt'
-standard_filename='/home/cptd/test_results/gen_standard.txt'
-bulbs=['elongated','livarno','mushroom','standard']
+path='/home/cptd/dd/aems2/extended-appl-with-aems2/results/'
 
 ###############################################################################################
 
 ### Fetch needed data ###
-tree = ET.parse(pomdpx_filename)
-root = tree.getroot()
-actions=read_actions(root)
-positions=read_positions(root)
+files=get_files(path)
+elo,liv,mush,std=process_files(files)
 
-results,prior,posterior=read_results(results_filename)
-associated_actions=associate_actions(results,actions)
-points=get_points(root)
-prepared_positions=prepare_positions('11',associated_actions,points)
+plt.style.use('ggplot')
 
-#files=get_files('/home/cptd/dd/aems2/extended-appl-with-aems2/results')
-#process_files(files)
 
-print(prepared_positions)
-print(associated_actions)
+
+fig=plt.figure()
+ax1 = fig.add_subplot(1,1,1)
+ax1.plot(elo,marker=r'o',color=u'red',linestyle='--',label='Elongated')
+ax1.plot(liv,marker=r'o',color=u'blue',linestyle='--',label='Livarno')
+ax1.plot(mush,marker=r'o',color=u'yellow',linestyle='--',label='Mushroom')
+ax1.plot(std,marker=r'o',color=u'green',linestyle='--',label='Standard')
+ax1.xaxis.set_ticks_position('bottom')
+ax1.yaxis.set_ticks_position('left')
+ax1.set_title('Belief state evolution standard')
+plt.legend(loc='best')
+plt.show()
+
+
+
+
 
 ################################################################################################
-
-### Data preparation ###
-plotter=MovementPlotter(points_filename,elongated_filename,livarno_filename,mushroom_filename,standard_filename)
-plotter.setup_grid()
-plotter.setup_fig(step=False)
-plotter.setup_entries(prepared_positions,associated_actions)
-plotter.show(True,prepared_positions[0],prepared_positions[-1],True)
-
-
-
-###############################################################################################
-
-
-
-
-
-
-
-
-#########################
 
 
