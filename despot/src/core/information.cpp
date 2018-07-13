@@ -9,11 +9,35 @@ using namespace std;
 
 namespace despot {
 
-void Information::show()
+void Information::show(map<string,double> values)
 {
-    cout<<"Show show!"<<endl;
-    cout<<pre->text()<<endl;
-    cout<<post->text()<<endl;
+    map<string,double>::iterator it;
+
+    for(it=values.begin();it!=values.end();++it)
+    {
+        cout<<it->first<<" "<<it->second<<endl;
+    }
+    
+}
+
+double Information::get_max(Belief *b)
+{
+    double max_val=0.0;
+
+
+	/*double max=0.0; 
+
+	map<string,double> pdf;
+	for(int i=0;i<particles_.size();i++)
+	{
+		pdf[particles_[i]->text()]+=particles_[i]->weight;
+	}
+
+	vector<pair<string, double> > pairs = SortByValue(pdf);
+
+	cout<<pairs[0].first<<" "<<pairs[0].second<<endl;*/
+
+    return max_val;
 }
 
 void Information::add_pre(Belief *b)
@@ -25,6 +49,16 @@ void Information::add_post(Belief *b)
 {
     post=b->MakeCopy();
 }
+
+map<string,double> Information::pdf_to_tiger(map<string,double> pdf)
+{
+    map<string,double> out;
+    
+    map<string,double>::iterator it;
+
+    return out;
+}
+
 
 map<string,double> Information::pdf_to_map(map<string,double> pdf)
 {
@@ -69,7 +103,7 @@ map<string,double> Information::pdf_to_map(map<string,double> pdf)
             out["livarno"]=0;
         }
 
-        /*it=out.find("mushroom");
+        it=out.find("mushroom");
 
         if(it==out.end())
         {
@@ -81,7 +115,7 @@ map<string,double> Information::pdf_to_map(map<string,double> pdf)
         if(it==out.end())
         {
             out["standard"]=0;
-        }*/
+        }
     }
 
 
@@ -89,11 +123,9 @@ map<string,double> Information::pdf_to_map(map<string,double> pdf)
 }
 
 
-
-
 double Information::compute_entropy()
 {
-    double temp=0;
+    /*entropy computation*/
 
     return 0.0;
 }
@@ -131,6 +163,11 @@ map<string,double> Information::compute_information_gain()
     pre_map=this->pdf_to_map(pre_pdf);
     post_map=this->pdf_to_map(post_pdf);
 
+    cout<<"Pre"<<endl;
+    this->show(pre_map);
+    cout<<"Post"<<endl;
+    this->show(post_map);
+
     for(it=pre_map.begin();it!=pre_map.end();++it)
     {
         //cout<<it->first<<endl;
@@ -151,12 +188,24 @@ map<string,double> Information::compute_information_gain()
         {
             information_gain[it->first]=0;
         }
+
+        /*if(pre_val==0)
+        {
+            information_gain[it->first]=0.5;
+        }
+
+        if(post_val==0)
+        {
+            information_gain[it->first]=0;
+        }*/
     }
 
+    cout<<"===Information gain==="<<endl;
     for(it=information_gain.begin();it!=information_gain.end();++it)
     {
         cout<<it->first<<" "<<it->second<<endl;
     }
+    cout<<"======================"<<endl;
 
     return information_gain;
 

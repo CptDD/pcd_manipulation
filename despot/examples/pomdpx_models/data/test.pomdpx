@@ -8,19 +8,19 @@
 
  <Variable> 
   <StateVar vnamePrev="robot_0" vnameCurr= "robot_1" fullyObs= "true"> 
-    <ValueEnum>top side</ValueEnum> 
+    <ValueEnum>top side inter</ValueEnum> 
   </StateVar> 
 
   <StateVar vnamePrev="state_0" vnameCurr="state_1" fullyObs="false">
-    <ValueEnum>elongated livarno</ValueEnum>
+    <ValueEnum>elongated livarno mushroom standard</ValueEnum>
   </StateVar>
  
   <ObsVar vname="obs_sensor">
-    <ValueEnum>oelongated olivarno</ValueEnum>
+    <ValueEnum>oelongated olivarno omushroom ostandard</ValueEnum>
   </ObsVar>
  
   <ActionVar vname="action_robot">
-    <ValueEnum>atop aside</ValueEnum> 
+    <ValueEnum>atop ainter aside</ValueEnum> 
   </ActionVar> 
  
   <RewardVar vname="reward_bulb"/>
@@ -34,7 +34,7 @@
     <Parameter type="TBL">
       <Entry>
         <Instance>-</Instance>
-        <ProbTable>1 0</ProbTable>
+        <ProbTable>0 1 0</ProbTable>
       </Entry>
     </Parameter>
   </CondProb>
@@ -57,6 +57,22 @@
        <Parent> action_robot robot_0</Parent>
        <Parameter type="TBL">
         
+        <Entry>
+          <Instance>atop * top</Instance>
+          <ProbTable>1</ProbTable>
+        </Entry>
+
+        <Entry>
+        	<Instance>aside * side</Instance>
+        	<ProbTable>1</ProbTable>
+        </Entry>
+
+        <Entry>
+        	<Instance>ainter * inter</Instance>
+        	<ProbTable>1</ProbTable>
+        </Entry>
+
+
         <!--<Entry> 
           <Instance>astay top top</Instance> 
           <ProbTable>1</ProbTable>
@@ -67,7 +83,7 @@
           <ProbTable>1</ProbTable>
         </Entry>-->
 
-        <Entry> 
+        <!--<Entry> 
           <Instance>atop side top</Instance> 
           <ProbTable>1</ProbTable>
         </Entry>
@@ -85,7 +101,7 @@
         <Entry>
           <Instance>aside side side</Instance>
           <ProbTable>1</ProbTable>
-        </Entry>
+        </Entry>-->
       </Parameter>
     </CondProb> 
 
@@ -104,28 +120,71 @@
           <ProbTable>1</ProbTable>
         </Entry>-->
 
+
         <Entry> 
           <Instance>atop elongated elongated</Instance> 
-          <ProbTable>0.5</ProbTable>
-        </Entry>
-
-        <Entry>
-          <Instance>atop elongated livarno</Instance>
-          <ProbTable>0.5</ProbTable>
+          <ProbTable>1</ProbTable>
         </Entry>
 
         <Entry> 
           <Instance>atop livarno livarno</Instance> 
-          <ProbTable>0.5</ProbTable>
+          <ProbTable>1</ProbTable>
         </Entry>
 
         <Entry> 
-          <Instance>atop livarno elongated</Instance> 
-          <ProbTable>0.5</ProbTable>
+          <Instance>atop mushroom mushroom</Instance> 
+          <ProbTable>1</ProbTable>
+        </Entry>
+
+        <Entry> 
+          <Instance>atop standard standard</Instance> 
+          <ProbTable>1</ProbTable>
+        </Entry>
+
+        <Entry> 
+          <Instance>aside elongated elongated</Instance> 
+          <ProbTable>1</ProbTable>
+        </Entry>
+
+        <Entry> 
+          <Instance>aside livarno livarno</Instance> 
+          <ProbTable>1</ProbTable>
+        </Entry>
+
+        <Entry> 
+          <Instance>aside mushroom mushroom</Instance> 
+          <ProbTable>1</ProbTable>
+        </Entry>
+
+        <Entry> 
+          <Instance>aside standard standard</Instance> 
+          <ProbTable>1</ProbTable>
         </Entry>
 
 
-         <Entry> 
+        <Entry> 
+          <Instance>ainter elongated elongated</Instance> 
+          <ProbTable>1</ProbTable>
+        </Entry>
+
+        <Entry> 
+          <Instance>ainter livarno livarno</Instance> 
+          <ProbTable>1</ProbTable>
+        </Entry>
+
+        <Entry> 
+          <Instance>ainter mushroom mushroom</Instance> 
+          <ProbTable>1</ProbTable>
+        </Entry>
+
+        <Entry> 
+          <Instance>ainter standard standard</Instance> 
+          <ProbTable>1</ProbTable>
+        </Entry>
+
+
+
+         <!--<Entry> 
           <Instance>aside elongated elongated</Instance> 
           <ProbTable>0.5</ProbTable>
         </Entry>
@@ -143,7 +202,7 @@
         <Entry> 
           <Instance>aside livarno elongated</Instance> 
           <ProbTable>0.5</ProbTable>
-        </Entry>
+        </Entry>-->
 
 
       </Parameter>
@@ -158,93 +217,265 @@
     <Parent>action_robot robot_1 state_1</Parent>
     <Parameter type="TBL">
 
+      <!-- normalised values -->
+
      <Entry>
-        <Instance>atop top elongated oelongated</Instance>
-        <ProbTable>0.5</ProbTable>
+        <Instance>atop * elongated oelongated</Instance>
+        <ProbTable>0.4835</ProbTable>
       </Entry>
 
        <Entry>
-        <Instance>atop top elongated olivarno</Instance>
-        <ProbTable>0.5</ProbTable>
+        <Instance>atop * elongated olivarno</Instance>
+        <ProbTable>0.0011</ProbTable>
       </Entry>
 
       <Entry>
-        <Instance>atop top livarno oelongated</Instance>
-        <ProbTable>0.5</ProbTable>
+        <Instance>atop * elongated omushroom</Instance>
+        <ProbTable>0.1934</ProbTable>
       </Entry>
-
-       <Entry>
-        <Instance>atop top livarno olivarno</Instance>
-        <ProbTable>0.5</ProbTable>
-      </Entry>
-
-       <Entry>
-        <Instance>atop side elongated oelongated</Instance>
-        <ProbTable>0.5</ProbTable>
-      </Entry>
-
-       <Entry>
-        <Instance>atop side elongated olivarno</Instance>
-        <ProbTable>0.5</ProbTable>
-      </Entry>
-
 
       <Entry>
-        <Instance>atop side livarno oelongated</Instance>
-        <ProbTable>0.5</ProbTable>
+        <Instance>atop * elongated ostandard</Instance>
+        <ProbTable>0.322</ProbTable>
       </Entry>
 
-       <Entry>
-        <Instance>atop side livarno olivarno</Instance>
-        <ProbTable>0.5</ProbTable>
-      </Entry>
-
+  
 
       <Entry>
-        <Instance>aside side elongated oelongated</Instance>
-        <ProbTable>0.5</ProbTable>
+        <Instance>atop * livarno oelongated</Instance>
+        <ProbTable>0.25</ProbTable>
       </Entry>
 
        <Entry>
-        <Instance>aside side elongated olivarno</Instance>
-        <ProbTable>0.5</ProbTable>
+        <Instance>atop * livarno olivarno</Instance>
+        <ProbTable>0.44</ProbTable>
       </Entry>
-
 
       <Entry>
-        <Instance>aside side livarno oelongated</Instance>
-        <ProbTable>0.5</ProbTable>
+        <Instance>atop * livarno omushroom</Instance>
+        <ProbTable>0.17</ProbTable>
       </Entry>
 
-       <Entry>
-        <Instance>aside side livarno olivarno</Instance>
-        <ProbTable>0.5</ProbTable>
+      <Entry>
+        <Instance>atop * livarno ostandard</Instance>
+        <ProbTable>0.14</ProbTable>
       </Entry>
+
 
 
 
       <Entry>
-        <Instance>aside top elongated oelongated</Instance>
-        <ProbTable>0.5</ProbTable>
+        <Instance>atop * mushroom oelongated</Instance>
+        <ProbTable>0.27</ProbTable>
       </Entry>
 
        <Entry>
-        <Instance>aside top elongated olivarno</Instance>
-        <ProbTable>0.5</ProbTable>
+        <Instance>atop * mushroom olivarno</Instance>
+        <ProbTable>0.27</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>atop * mushroom omushroom</Instance>
+        <ProbTable>0.44</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>atop * mushroom ostandard</Instance>
+        <ProbTable>0.02</ProbTable>
       </Entry>
 
 
        <Entry>
-        <Instance>aside top livarno oelongated</Instance>
-        <ProbTable>0.5</ProbTable>
+        <Instance>atop * standard oelongated</Instance>
+        <ProbTable>0.01</ProbTable>
       </Entry>
 
        <Entry>
-        <Instance>aside top livarno olivarno</Instance>
-        <ProbTable>0.5</ProbTable>
+        <Instance>atop * standard olivarno</Instance>
+        <ProbTable>0.26</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>atop * standard omushroom</Instance>
+        <ProbTable>0.21</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>atop * standard ostandard</Instance>
+        <ProbTable>0.52</ProbTable>
       </Entry>
 
 
+
+
+      <Entry>
+        <Instance>aside * elongated oelongated</Instance>
+        <ProbTable>0.333</ProbTable>
+      </Entry>
+
+       <Entry>
+        <Instance>aside * elongated olivarno</Instance>
+        <ProbTable>0.333</ProbTable>
+      </Entry>
+
+       <Entry>
+        <Instance>aside * elongated omushroom</Instance>
+        <ProbTable>0.333</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>aside * elongated ostandard</Instance>
+        <ProbTable>0.001</ProbTable>
+      </Entry>
+
+
+       <Entry>
+        <Instance>aside * livarno oelongated</Instance>
+        <ProbTable>0.001</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>aside * livarno olivarno</Instance>
+        <ProbTable>0.499</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>aside * livarno omushroom</Instance>
+        <ProbTable>0.001</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>aside * livarno ostandard</Instance>
+        <ProbTable>0.499</ProbTable>
+      </Entry>
+
+
+
+      <Entry>
+        <Instance>aside * mushroom oelongated</Instance>
+        <ProbTable>0.001</ProbTable>
+      </Entry>
+
+       <Entry>
+        <Instance>aside * mushroom olivarno</Instance>
+        <ProbTable>0.398</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>aside * mushroom omushroom</Instance>
+        <ProbTable>0.6</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>aside * mushroom ostandard</Instance>
+        <ProbTable>0.001</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>aside * standard oelongated</Instance>
+        <ProbTable>0.001</ProbTable>
+      </Entry>
+
+       <Entry>
+        <Instance>aside * standard olivarno</Instance>
+        <ProbTable>0.599</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>aside * standard omushroom</Instance>
+        <ProbTable>0.399</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>aside * standard ostandard</Instance>
+        <ProbTable>0.001</ProbTable>
+      </Entry>
+
+
+      <Entry>
+        <Instance>ainter * elongated oelongated</Instance>
+        <ProbTable>0.333</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>ainter * elongated olivarno</Instance>
+        <ProbTable>0.333</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>ainter * elongated omushroom</Instance>
+        <ProbTable>0.333</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>ainter * elongated ostandard</Instance>
+        <ProbTable>0.001</ProbTable>
+      </Entry>
+
+
+
+
+      <Entry>
+        <Instance>ainter * livarno oelongated</Instance>
+        <ProbTable>0.25</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>ainter * livarno olivarno</Instance>
+        <ProbTable>0.499</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>ainter * livarno omushroom</Instance>
+        <ProbTable>0.25</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>ainter * livarno ostandard</Instance>
+        <ProbTable>0.001</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>ainter * mushroom oelongated</Instance>
+        <ProbTable>0.1</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>ainter * mushroom olivarno</Instance>
+        <ProbTable>0.1</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>ainter * mushroom omushroom</Instance>
+        <ProbTable>0.7</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>ainter * mushroom ostandard</Instance>
+        <ProbTable>0.1</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>ainter * standard oelongated</Instance>
+        <ProbTable>0.01</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>ainter * standard olivarno</Instance>
+        <ProbTable>0.25</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>ainter * standard omushroom</Instance>
+        <ProbTable>0.23</ProbTable>
+      </Entry>
+
+      <Entry>
+        <Instance>ainter * standard ostandard</Instance>
+        <ProbTable>0.51</ProbTable>
+      </Entry>
+
+       
     </Parameter>
   </CondProb>
   </ObsFunction>
@@ -293,12 +524,73 @@
     </Entry>
 
      <Entry>
+      <Instance>* * elongated mushroom</Instance>
+      <ValueTable>-60</ValueTable>
+    </Entry>
+
+     <Entry>
+      <Instance>* * elongated standard</Instance>
+      <ValueTable>-60</ValueTable>
+    </Entry>
+
+     <Entry>
       <Instance>* * livarno livarno</Instance>
       <ValueTable>-50</ValueTable>
     </Entry>
 
      <Entry>
       <Instance>* * livarno elongated</Instance>
+      <ValueTable>60</ValueTable>
+    </Entry>
+
+     <Entry>
+      <Instance>* * livarno mushroom</Instance>
+      <ValueTable>-60</ValueTable>
+    </Entry>
+
+     <Entry>
+      <Instance>* * livarno standard</Instance>
+      <ValueTable>-60</ValueTable>
+    </Entry>
+
+    <Entry>
+      <Instance>* * mushroom elongated</Instance>
+      <ValueTable>-50</ValueTable>
+    </Entry>
+
+     <Entry>
+      <Instance>* * mushroom livarno</Instance>
+      <ValueTable>-60</ValueTable>
+    </Entry>
+
+     <Entry>
+      <Instance>* * mushroom mushroom</Instance>
+      <ValueTable>60</ValueTable>
+    </Entry>
+
+     <Entry>
+      <Instance>* * mushroom standard</Instance>
+      <ValueTable>-60</ValueTable>
+    </Entry>
+
+
+    <Entry>
+      <Instance>* * standard elongated</Instance>
+      <ValueTable>-50</ValueTable>
+    </Entry>
+
+     <Entry>
+      <Instance>* * standard livarno</Instance>
+      <ValueTable>-60</ValueTable>
+    </Entry>
+
+     <Entry>
+      <Instance>* * standard mushroom</Instance>
+      <ValueTable>-60</ValueTable>
+    </Entry>
+
+     <Entry>
+      <Instance>* * standard standard</Instance>
       <ValueTable>60</ValueTable>
     </Entry>
 

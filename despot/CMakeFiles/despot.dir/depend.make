@@ -25,6 +25,25 @@ CMakeFiles/despot.dir/src/core/globals.cpp.o: include/despot/core/globals.h
 CMakeFiles/despot.dir/src/core/globals.cpp.o: include/despot/util/exec_tracker.h
 CMakeFiles/despot.dir/src/core/globals.cpp.o: include/despot/util/logging.h
 
+CMakeFiles/despot.dir/src/core/information.cpp.o: src/core/information.cpp
+CMakeFiles/despot.dir/src/core/information.cpp.o: include/despot/config.h
+CMakeFiles/despot.dir/src/core/information.cpp.o: include/despot/core/belief.h
+CMakeFiles/despot.dir/src/core/information.cpp.o: include/despot/core/globals.h
+CMakeFiles/despot.dir/src/core/information.cpp.o: include/despot/core/history.h
+CMakeFiles/despot.dir/src/core/information.cpp.o: include/despot/core/information.h
+CMakeFiles/despot.dir/src/core/information.cpp.o: include/despot/core/lower_bound.h
+CMakeFiles/despot.dir/src/core/information.cpp.o: include/despot/core/policy.h
+CMakeFiles/despot.dir/src/core/information.cpp.o: include/despot/core/pomdp.h
+CMakeFiles/despot.dir/src/core/information.cpp.o: include/despot/core/solver.h
+CMakeFiles/despot.dir/src/core/information.cpp.o: include/despot/core/upper_bound.h
+CMakeFiles/despot.dir/src/core/information.cpp.o: include/despot/random_streams.h
+CMakeFiles/despot.dir/src/core/information.cpp.o: include/despot/util/exec_tracker.h
+CMakeFiles/despot.dir/src/core/information.cpp.o: include/despot/util/logging.h
+CMakeFiles/despot.dir/src/core/information.cpp.o: include/despot/util/memorypool.h
+CMakeFiles/despot.dir/src/core/information.cpp.o: include/despot/util/random.h
+CMakeFiles/despot.dir/src/core/information.cpp.o: include/despot/util/seeds.h
+CMakeFiles/despot.dir/src/core/information.cpp.o: include/despot/util/util.h
+
 CMakeFiles/despot.dir/src/core/lower_bound.cpp.o: src/core/lower_bound.cpp
 CMakeFiles/despot.dir/src/core/lower_bound.cpp.o: include/despot/config.h
 CMakeFiles/despot.dir/src/core/lower_bound.cpp.o: include/despot/core/belief.h
@@ -164,6 +183,7 @@ CMakeFiles/despot.dir/src/evaluator.cpp.o: include/despot/config.h
 CMakeFiles/despot.dir/src/evaluator.cpp.o: include/despot/core/belief.h
 CMakeFiles/despot.dir/src/evaluator.cpp.o: include/despot/core/globals.h
 CMakeFiles/despot.dir/src/evaluator.cpp.o: include/despot/core/history.h
+CMakeFiles/despot.dir/src/evaluator.cpp.o: include/despot/core/information.h
 CMakeFiles/despot.dir/src/evaluator.cpp.o: include/despot/core/lower_bound.h
 CMakeFiles/despot.dir/src/evaluator.cpp.o: include/despot/core/mdp.h
 CMakeFiles/despot.dir/src/evaluator.cpp.o: include/despot/core/policy.h

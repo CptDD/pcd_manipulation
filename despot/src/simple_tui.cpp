@@ -120,8 +120,11 @@ Solver *SimpleTUI::InitializeSolver(DSPOMDP *model, string solver_type,
   } // AEMS or its default policy
   else if (solver_type == "AEMS" || solver_type == "BLB") {
     string lbtype = options[E_LBTYPE] ? options[E_LBTYPE].arg : "DEFAULT";
-    BeliefLowerBound *lower_bound =
-        static_cast<BeliefMDP *>(model)->CreateBeliefLowerBound(lbtype);
+    /*BeliefLowerBound *lower_bound =
+        static_cast<BeliefMDP *>(model)->CreateBeliefLowerBound(lbtype);*/
+        BeliefLowerBound *lower_bound;
+        BeliefMDP* mm=static_cast<BeliefMDP*>(model);
+        lower_bound=mm->CreateBeliefLowerBound(lbtype);
 
     logi << "Created lower bound " << typeid(*lower_bound).name() << endl;
 
@@ -133,9 +136,11 @@ Solver *SimpleTUI::InitializeSolver(DSPOMDP *model, string solver_type,
       logi << "Created upper bound " << typeid(*upper_bound).name() << endl;
 
       solver = new AEMS(model, lower_bound, upper_bound);
-    } else
+    } else 
       solver = lower_bound;
-  } // POMCP or DPOMCP
+   // POMCP or DPOMCP
+  }
+  
   else if (solver_type == "POMCP" || solver_type == "DPOMCP") {
     string ptype = options[E_PRIOR] ? options[E_PRIOR].arg : "DEFAULT";
     POMCPPrior *prior = model->CreatePOMCPPrior(ptype);
@@ -381,6 +386,8 @@ int SimpleTUI::run(int argc, char *argv[]) {
   option::Parser parse(usage, argc, argv, options, buffer);
 
   string solver_type = "DESPOT";
+  //string solver_type ="AEMS";
+  cout<<solver_type<<endl;
   bool search_solver;
 
   /* =========================

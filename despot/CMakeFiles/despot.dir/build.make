@@ -81,9 +81,33 @@ CMakeFiles/despot.dir/src/core/belief.cpp.o.provides: CMakeFiles/despot.dir/src/
 CMakeFiles/despot.dir/src/core/belief.cpp.o.provides.build: CMakeFiles/despot.dir/src/core/belief.cpp.o
 
 
+CMakeFiles/despot.dir/src/core/information.cpp.o: CMakeFiles/despot.dir/flags.make
+CMakeFiles/despot.dir/src/core/information.cpp.o: src/core/information.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/despot.dir/src/core/information.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/core/information.cpp.o -c /home/cptd/dd/despot/src/core/information.cpp
+
+CMakeFiles/despot.dir/src/core/information.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/despot.dir/src/core/information.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/cptd/dd/despot/src/core/information.cpp > CMakeFiles/despot.dir/src/core/information.cpp.i
+
+CMakeFiles/despot.dir/src/core/information.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/despot.dir/src/core/information.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/cptd/dd/despot/src/core/information.cpp -o CMakeFiles/despot.dir/src/core/information.cpp.s
+
+CMakeFiles/despot.dir/src/core/information.cpp.o.requires:
+
+.PHONY : CMakeFiles/despot.dir/src/core/information.cpp.o.requires
+
+CMakeFiles/despot.dir/src/core/information.cpp.o.provides: CMakeFiles/despot.dir/src/core/information.cpp.o.requires
+	$(MAKE) -f CMakeFiles/despot.dir/build.make CMakeFiles/despot.dir/src/core/information.cpp.o.provides.build
+.PHONY : CMakeFiles/despot.dir/src/core/information.cpp.o.provides
+
+CMakeFiles/despot.dir/src/core/information.cpp.o.provides.build: CMakeFiles/despot.dir/src/core/information.cpp.o
+
+
 CMakeFiles/despot.dir/src/core/globals.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/core/globals.cpp.o: src/core/globals.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/despot.dir/src/core/globals.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/despot.dir/src/core/globals.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/core/globals.cpp.o -c /home/cptd/dd/despot/src/core/globals.cpp
 
 CMakeFiles/despot.dir/src/core/globals.cpp.i: cmake_force
@@ -107,7 +131,7 @@ CMakeFiles/despot.dir/src/core/globals.cpp.o.provides.build: CMakeFiles/despot.d
 
 CMakeFiles/despot.dir/src/core/lower_bound.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/core/lower_bound.cpp.o: src/core/lower_bound.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/despot.dir/src/core/lower_bound.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/despot.dir/src/core/lower_bound.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/core/lower_bound.cpp.o -c /home/cptd/dd/despot/src/core/lower_bound.cpp
 
 CMakeFiles/despot.dir/src/core/lower_bound.cpp.i: cmake_force
@@ -131,7 +155,7 @@ CMakeFiles/despot.dir/src/core/lower_bound.cpp.o.provides.build: CMakeFiles/desp
 
 CMakeFiles/despot.dir/src/core/mdp.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/core/mdp.cpp.o: src/core/mdp.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/despot.dir/src/core/mdp.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/despot.dir/src/core/mdp.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/core/mdp.cpp.o -c /home/cptd/dd/despot/src/core/mdp.cpp
 
 CMakeFiles/despot.dir/src/core/mdp.cpp.i: cmake_force
@@ -155,7 +179,7 @@ CMakeFiles/despot.dir/src/core/mdp.cpp.o.provides.build: CMakeFiles/despot.dir/s
 
 CMakeFiles/despot.dir/src/core/node.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/core/node.cpp.o: src/core/node.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/despot.dir/src/core/node.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/despot.dir/src/core/node.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/core/node.cpp.o -c /home/cptd/dd/despot/src/core/node.cpp
 
 CMakeFiles/despot.dir/src/core/node.cpp.i: cmake_force
@@ -179,7 +203,7 @@ CMakeFiles/despot.dir/src/core/node.cpp.o.provides.build: CMakeFiles/despot.dir/
 
 CMakeFiles/despot.dir/src/core/policy.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/core/policy.cpp.o: src/core/policy.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/despot.dir/src/core/policy.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/despot.dir/src/core/policy.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/core/policy.cpp.o -c /home/cptd/dd/despot/src/core/policy.cpp
 
 CMakeFiles/despot.dir/src/core/policy.cpp.i: cmake_force
@@ -203,7 +227,7 @@ CMakeFiles/despot.dir/src/core/policy.cpp.o.provides.build: CMakeFiles/despot.di
 
 CMakeFiles/despot.dir/src/core/pomdp.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/core/pomdp.cpp.o: src/core/pomdp.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/despot.dir/src/core/pomdp.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/despot.dir/src/core/pomdp.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/core/pomdp.cpp.o -c /home/cptd/dd/despot/src/core/pomdp.cpp
 
 CMakeFiles/despot.dir/src/core/pomdp.cpp.i: cmake_force
@@ -227,7 +251,7 @@ CMakeFiles/despot.dir/src/core/pomdp.cpp.o.provides.build: CMakeFiles/despot.dir
 
 CMakeFiles/despot.dir/src/core/solver.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/core/solver.cpp.o: src/core/solver.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/despot.dir/src/core/solver.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/despot.dir/src/core/solver.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/core/solver.cpp.o -c /home/cptd/dd/despot/src/core/solver.cpp
 
 CMakeFiles/despot.dir/src/core/solver.cpp.i: cmake_force
@@ -251,7 +275,7 @@ CMakeFiles/despot.dir/src/core/solver.cpp.o.provides.build: CMakeFiles/despot.di
 
 CMakeFiles/despot.dir/src/core/upper_bound.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/core/upper_bound.cpp.o: src/core/upper_bound.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/despot.dir/src/core/upper_bound.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/despot.dir/src/core/upper_bound.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/core/upper_bound.cpp.o -c /home/cptd/dd/despot/src/core/upper_bound.cpp
 
 CMakeFiles/despot.dir/src/core/upper_bound.cpp.i: cmake_force
@@ -275,7 +299,7 @@ CMakeFiles/despot.dir/src/core/upper_bound.cpp.o.provides.build: CMakeFiles/desp
 
 CMakeFiles/despot.dir/src/evaluator.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/evaluator.cpp.o: src/evaluator.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/despot.dir/src/evaluator.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/despot.dir/src/evaluator.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/evaluator.cpp.o -c /home/cptd/dd/despot/src/evaluator.cpp
 
 CMakeFiles/despot.dir/src/evaluator.cpp.i: cmake_force
@@ -299,7 +323,7 @@ CMakeFiles/despot.dir/src/evaluator.cpp.o.provides.build: CMakeFiles/despot.dir/
 
 CMakeFiles/despot.dir/src/pomdpx/parser/function.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/pomdpx/parser/function.cpp.o: src/pomdpx/parser/function.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/despot.dir/src/pomdpx/parser/function.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/despot.dir/src/pomdpx/parser/function.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/pomdpx/parser/function.cpp.o -c /home/cptd/dd/despot/src/pomdpx/parser/function.cpp
 
 CMakeFiles/despot.dir/src/pomdpx/parser/function.cpp.i: cmake_force
@@ -323,7 +347,7 @@ CMakeFiles/despot.dir/src/pomdpx/parser/function.cpp.o.provides.build: CMakeFile
 
 CMakeFiles/despot.dir/src/pomdpx/parser/parser.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/pomdpx/parser/parser.cpp.o: src/pomdpx/parser/parser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/despot.dir/src/pomdpx/parser/parser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/despot.dir/src/pomdpx/parser/parser.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/pomdpx/parser/parser.cpp.o -c /home/cptd/dd/despot/src/pomdpx/parser/parser.cpp
 
 CMakeFiles/despot.dir/src/pomdpx/parser/parser.cpp.i: cmake_force
@@ -347,7 +371,7 @@ CMakeFiles/despot.dir/src/pomdpx/parser/parser.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/despot.dir/src/pomdpx/parser/variable.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/pomdpx/parser/variable.cpp.o: src/pomdpx/parser/variable.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/despot.dir/src/pomdpx/parser/variable.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/despot.dir/src/pomdpx/parser/variable.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/pomdpx/parser/variable.cpp.o -c /home/cptd/dd/despot/src/pomdpx/parser/variable.cpp
 
 CMakeFiles/despot.dir/src/pomdpx/parser/variable.cpp.i: cmake_force
@@ -371,7 +395,7 @@ CMakeFiles/despot.dir/src/pomdpx/parser/variable.cpp.o.provides.build: CMakeFile
 
 CMakeFiles/despot.dir/src/pomdpx/pomdpx.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/pomdpx/pomdpx.cpp.o: src/pomdpx/pomdpx.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/despot.dir/src/pomdpx/pomdpx.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/despot.dir/src/pomdpx/pomdpx.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/pomdpx/pomdpx.cpp.o -c /home/cptd/dd/despot/src/pomdpx/pomdpx.cpp
 
 CMakeFiles/despot.dir/src/pomdpx/pomdpx.cpp.i: cmake_force
@@ -395,7 +419,7 @@ CMakeFiles/despot.dir/src/pomdpx/pomdpx.cpp.o.provides.build: CMakeFiles/despot.
 
 CMakeFiles/despot.dir/src/random_streams.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/random_streams.cpp.o: src/random_streams.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/despot.dir/src/random_streams.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/despot.dir/src/random_streams.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/random_streams.cpp.o -c /home/cptd/dd/despot/src/random_streams.cpp
 
 CMakeFiles/despot.dir/src/random_streams.cpp.i: cmake_force
@@ -419,7 +443,7 @@ CMakeFiles/despot.dir/src/random_streams.cpp.o.provides.build: CMakeFiles/despot
 
 CMakeFiles/despot.dir/src/simple_tui.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/simple_tui.cpp.o: src/simple_tui.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/despot.dir/src/simple_tui.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/despot.dir/src/simple_tui.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/simple_tui.cpp.o -c /home/cptd/dd/despot/src/simple_tui.cpp
 
 CMakeFiles/despot.dir/src/simple_tui.cpp.i: cmake_force
@@ -443,7 +467,7 @@ CMakeFiles/despot.dir/src/simple_tui.cpp.o.provides.build: CMakeFiles/despot.dir
 
 CMakeFiles/despot.dir/src/solver/aems.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/solver/aems.cpp.o: src/solver/aems.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/despot.dir/src/solver/aems.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/despot.dir/src/solver/aems.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/solver/aems.cpp.o -c /home/cptd/dd/despot/src/solver/aems.cpp
 
 CMakeFiles/despot.dir/src/solver/aems.cpp.i: cmake_force
@@ -467,7 +491,7 @@ CMakeFiles/despot.dir/src/solver/aems.cpp.o.provides.build: CMakeFiles/despot.di
 
 CMakeFiles/despot.dir/src/solver/despot.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/solver/despot.cpp.o: src/solver/despot.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/despot.dir/src/solver/despot.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/despot.dir/src/solver/despot.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/solver/despot.cpp.o -c /home/cptd/dd/despot/src/solver/despot.cpp
 
 CMakeFiles/despot.dir/src/solver/despot.cpp.i: cmake_force
@@ -491,7 +515,7 @@ CMakeFiles/despot.dir/src/solver/despot.cpp.o.provides.build: CMakeFiles/despot.
 
 CMakeFiles/despot.dir/src/solver/pomcp.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/solver/pomcp.cpp.o: src/solver/pomcp.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/despot.dir/src/solver/pomcp.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/despot.dir/src/solver/pomcp.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/solver/pomcp.cpp.o -c /home/cptd/dd/despot/src/solver/pomcp.cpp
 
 CMakeFiles/despot.dir/src/solver/pomcp.cpp.i: cmake_force
@@ -515,7 +539,7 @@ CMakeFiles/despot.dir/src/solver/pomcp.cpp.o.provides.build: CMakeFiles/despot.d
 
 CMakeFiles/despot.dir/src/util/coord.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/util/coord.cpp.o: src/util/coord.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/despot.dir/src/util/coord.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/despot.dir/src/util/coord.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/util/coord.cpp.o -c /home/cptd/dd/despot/src/util/coord.cpp
 
 CMakeFiles/despot.dir/src/util/coord.cpp.i: cmake_force
@@ -539,7 +563,7 @@ CMakeFiles/despot.dir/src/util/coord.cpp.o.provides.build: CMakeFiles/despot.dir
 
 CMakeFiles/despot.dir/src/util/dirichlet.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/util/dirichlet.cpp.o: src/util/dirichlet.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/despot.dir/src/util/dirichlet.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/despot.dir/src/util/dirichlet.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/util/dirichlet.cpp.o -c /home/cptd/dd/despot/src/util/dirichlet.cpp
 
 CMakeFiles/despot.dir/src/util/dirichlet.cpp.i: cmake_force
@@ -563,7 +587,7 @@ CMakeFiles/despot.dir/src/util/dirichlet.cpp.o.provides.build: CMakeFiles/despot
 
 CMakeFiles/despot.dir/src/util/exec_tracker.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/util/exec_tracker.cpp.o: src/util/exec_tracker.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/despot.dir/src/util/exec_tracker.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/despot.dir/src/util/exec_tracker.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/util/exec_tracker.cpp.o -c /home/cptd/dd/despot/src/util/exec_tracker.cpp
 
 CMakeFiles/despot.dir/src/util/exec_tracker.cpp.i: cmake_force
@@ -587,7 +611,7 @@ CMakeFiles/despot.dir/src/util/exec_tracker.cpp.o.provides.build: CMakeFiles/des
 
 CMakeFiles/despot.dir/src/util/floor.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/util/floor.cpp.o: src/util/floor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/despot.dir/src/util/floor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/despot.dir/src/util/floor.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/util/floor.cpp.o -c /home/cptd/dd/despot/src/util/floor.cpp
 
 CMakeFiles/despot.dir/src/util/floor.cpp.i: cmake_force
@@ -611,7 +635,7 @@ CMakeFiles/despot.dir/src/util/floor.cpp.o.provides.build: CMakeFiles/despot.dir
 
 CMakeFiles/despot.dir/src/util/gamma.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/util/gamma.cpp.o: src/util/gamma.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/despot.dir/src/util/gamma.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/despot.dir/src/util/gamma.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/util/gamma.cpp.o -c /home/cptd/dd/despot/src/util/gamma.cpp
 
 CMakeFiles/despot.dir/src/util/gamma.cpp.i: cmake_force
@@ -635,7 +659,7 @@ CMakeFiles/despot.dir/src/util/gamma.cpp.o.provides.build: CMakeFiles/despot.dir
 
 CMakeFiles/despot.dir/src/util/logging.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/util/logging.cpp.o: src/util/logging.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/despot.dir/src/util/logging.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/despot.dir/src/util/logging.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/util/logging.cpp.o -c /home/cptd/dd/despot/src/util/logging.cpp
 
 CMakeFiles/despot.dir/src/util/logging.cpp.i: cmake_force
@@ -659,7 +683,7 @@ CMakeFiles/despot.dir/src/util/logging.cpp.o.provides.build: CMakeFiles/despot.d
 
 CMakeFiles/despot.dir/src/util/random.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/util/random.cpp.o: src/util/random.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/despot.dir/src/util/random.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/despot.dir/src/util/random.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/util/random.cpp.o -c /home/cptd/dd/despot/src/util/random.cpp
 
 CMakeFiles/despot.dir/src/util/random.cpp.i: cmake_force
@@ -683,7 +707,7 @@ CMakeFiles/despot.dir/src/util/random.cpp.o.provides.build: CMakeFiles/despot.di
 
 CMakeFiles/despot.dir/src/util/seeds.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/util/seeds.cpp.o: src/util/seeds.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/despot.dir/src/util/seeds.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/despot.dir/src/util/seeds.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/util/seeds.cpp.o -c /home/cptd/dd/despot/src/util/seeds.cpp
 
 CMakeFiles/despot.dir/src/util/seeds.cpp.i: cmake_force
@@ -707,7 +731,7 @@ CMakeFiles/despot.dir/src/util/seeds.cpp.o.provides.build: CMakeFiles/despot.dir
 
 CMakeFiles/despot.dir/src/util/util.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/util/util.cpp.o: src/util/util.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/despot.dir/src/util/util.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/despot.dir/src/util/util.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/util/util.cpp.o -c /home/cptd/dd/despot/src/util/util.cpp
 
 CMakeFiles/despot.dir/src/util/util.cpp.i: cmake_force
@@ -731,7 +755,7 @@ CMakeFiles/despot.dir/src/util/util.cpp.o.provides.build: CMakeFiles/despot.dir/
 
 CMakeFiles/despot.dir/src/util/tinyxml/tinystr.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/util/tinyxml/tinystr.cpp.o: src/util/tinyxml/tinystr.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/despot.dir/src/util/tinyxml/tinystr.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/despot.dir/src/util/tinyxml/tinystr.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/util/tinyxml/tinystr.cpp.o -c /home/cptd/dd/despot/src/util/tinyxml/tinystr.cpp
 
 CMakeFiles/despot.dir/src/util/tinyxml/tinystr.cpp.i: cmake_force
@@ -755,7 +779,7 @@ CMakeFiles/despot.dir/src/util/tinyxml/tinystr.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/despot.dir/src/util/tinyxml/tinyxml.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/util/tinyxml/tinyxml.cpp.o: src/util/tinyxml/tinyxml.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/despot.dir/src/util/tinyxml/tinyxml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/despot.dir/src/util/tinyxml/tinyxml.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/util/tinyxml/tinyxml.cpp.o -c /home/cptd/dd/despot/src/util/tinyxml/tinyxml.cpp
 
 CMakeFiles/despot.dir/src/util/tinyxml/tinyxml.cpp.i: cmake_force
@@ -779,7 +803,7 @@ CMakeFiles/despot.dir/src/util/tinyxml/tinyxml.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlerror.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlerror.cpp.o: src/util/tinyxml/tinyxmlerror.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlerror.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlerror.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlerror.cpp.o -c /home/cptd/dd/despot/src/util/tinyxml/tinyxmlerror.cpp
 
 CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlerror.cpp.i: cmake_force
@@ -803,7 +827,7 @@ CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlerror.cpp.o.provides.build: CMakeF
 
 CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlparser.cpp.o: CMakeFiles/despot.dir/flags.make
 CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlparser.cpp.o: src/util/tinyxml/tinyxmlparser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlparser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlparser.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlparser.cpp.o -c /home/cptd/dd/despot/src/util/tinyxml/tinyxmlparser.cpp
 
 CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlparser.cpp.i: cmake_force
@@ -828,6 +852,7 @@ CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlparser.cpp.o.provides.build: CMake
 # Object files for target despot
 despot_OBJECTS = \
 "CMakeFiles/despot.dir/src/core/belief.cpp.o" \
+"CMakeFiles/despot.dir/src/core/information.cpp.o" \
 "CMakeFiles/despot.dir/src/core/globals.cpp.o" \
 "CMakeFiles/despot.dir/src/core/lower_bound.cpp.o" \
 "CMakeFiles/despot.dir/src/core/mdp.cpp.o" \
@@ -864,6 +889,7 @@ despot_OBJECTS = \
 despot_EXTERNAL_OBJECTS =
 
 libdespot.so: CMakeFiles/despot.dir/src/core/belief.cpp.o
+libdespot.so: CMakeFiles/despot.dir/src/core/information.cpp.o
 libdespot.so: CMakeFiles/despot.dir/src/core/globals.cpp.o
 libdespot.so: CMakeFiles/despot.dir/src/core/lower_bound.cpp.o
 libdespot.so: CMakeFiles/despot.dir/src/core/mdp.cpp.o
@@ -897,7 +923,7 @@ libdespot.so: CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlerror.cpp.o
 libdespot.so: CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlparser.cpp.o
 libdespot.so: CMakeFiles/despot.dir/build.make
 libdespot.so: CMakeFiles/despot.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Linking CXX shared library libdespot.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/cptd/dd/despot/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Linking CXX shared library libdespot.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/despot.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -906,6 +932,7 @@ CMakeFiles/despot.dir/build: libdespot.so
 .PHONY : CMakeFiles/despot.dir/build
 
 CMakeFiles/despot.dir/requires: CMakeFiles/despot.dir/src/core/belief.cpp.o.requires
+CMakeFiles/despot.dir/requires: CMakeFiles/despot.dir/src/core/information.cpp.o.requires
 CMakeFiles/despot.dir/requires: CMakeFiles/despot.dir/src/core/globals.cpp.o.requires
 CMakeFiles/despot.dir/requires: CMakeFiles/despot.dir/src/core/lower_bound.cpp.o.requires
 CMakeFiles/despot.dir/requires: CMakeFiles/despot.dir/src/core/mdp.cpp.o.requires

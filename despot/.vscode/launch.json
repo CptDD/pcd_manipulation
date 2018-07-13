@@ -4,13 +4,12 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
         {
-            "name": "Bulb launch",
+            "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
             "program": "/home/cptd/dd/despot/build/examples/pomdpx_models/despot_pomdpx",
-            "args": ["-m/home/cptd/dd/despot/examples/pomdpx_models/data/bulb.pomdpx"],
+            "args": ["-m/home/cptd/dd/despot/examples/pomdpx_models/data/extended_2.pomdpx"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

@@ -102,10 +102,6 @@ bool POMDPX::NoisyStep(State& s, double random_num, int action) const {
 void compute_information_gain(Belief &pre,Belief &post)
 {
 	cout<<"Computing information gain!"<<endl;
-
-
-
-	
 }
 
 bool POMDPX::Step(State& s, double random_num, int action, double& reward,
@@ -117,7 +113,13 @@ bool POMDPX::Step(State& s, double random_num, int action, double& reward,
 
 	parser_->GetNextState(state.vec_id, action, random_num);
 	reward = parser_->GetReward(action); // Prev state and curr state set in GetNextState
+
+	random_num=(double) rand()/(RAND_MAX+1.);
 	obs = parser_->GetObservation(state.vec_id, action, random_num);
+	//obs=1;
+	//cout<<"Parsed observation is :"<<obs<<endl;
+	//obs=1;
+	//cout<<"Forced observation is :"<<obs<<endl;
 
 	return parser_->IsTerminalState(state.vec_id);
 }
@@ -138,7 +140,7 @@ double POMDPX::ObsProb(OBS_TYPE obs, const State& s, int a) const {
 
 State* POMDPX::CreateStartState(string type) const {
 	double random_value = Random::RANDOM.NextDouble();
-	random_value=0.49078145133833467;
+	//random_value=0.49078145133833467;
 	return new POMDPXState(parser_->ComputeState(random_value));
 }
 
@@ -157,6 +159,8 @@ public:
 	}
 
 	void Update(int action, OBS_TYPE obs) {
+
+
 		history_.Add(action, obs);
 
 		vector<State*> updated;
@@ -167,6 +171,9 @@ public:
 		for (int i = 0; i < max_iter_; i++) {
 			for (int j = 0; j < particles_.size(); j++) {
 				State* particle = particles_[j];
+
+				//cout<<"Test :"<<particle->state_id<<endl;
+
 				State* copy = model_->Copy(particle);
 
 				bool terminal = model_->Step(*copy, Random::RANDOM.NextDouble(),
@@ -297,7 +304,8 @@ Belief* POMDPX::InitialBelief(const State* start, string type) const {
 	if (type == "noisy")
 		belief = new POMDPXBelief(particles, 10, this);
 	else // if (type == "particle")
-		belief = new ParticleBelief(particles, this);
+		//belief = new ParticleBelief(particles, this);
+		belief=new POMDPXBelief(particles,10,this);
 	return belief;
 }
 
@@ -605,5 +613,8 @@ DSPOMDP* POMDPX::MakeCopy() const {
 
 	return pomdpx;
 }
+
+
+
 
 } // namespace despot

@@ -636,14 +636,17 @@ void DESPOT::Expand(VNode* vnode,
 	History& history) {
 	vector<QNode*>& children = vnode->children();
 	logd << "- Expanding vnode " << vnode << endl;
+	//cout << "- Expanding vnode " << vnode << endl;
 	for (int action = 0; action < model->NumActions(); action++) {
 		logd << " Action " << action << endl;
+		//cout << " Action " << action << endl;
 		QNode* qnode = new QNode(vnode, action);
 		children.push_back(qnode);
 
 		Expand(qnode, lower_bound, upper_bound, model, streams, history);
 	}
 	logd << "* Expansion complete!" << endl;
+	//cout << "* Expansion complete!" << endl;
 }
 
 void DESPOT::Expand(QNode* qnode, ScenarioLowerBound* lb,
@@ -665,10 +668,14 @@ void DESPOT::Expand(QNode* qnode, ScenarioLowerBound* lb,
 	for (int i = 0; i < particles.size(); i++) {
 		State* particle = particles[i];
 		logd << " Original: " << *particle << endl;
+		//cout << " Original: " << *particle << endl;
 
 		State* copy = model->Copy(particle);
 
 		logd << " Before step: " << *copy << endl;
+		//cout << " Before step: " << *copy <<endl;
+
+		
 
 		bool terminal = model->Step(*copy, streams.Entry(copy->scenario_id),
 			qnode->edge(), reward, obs);
@@ -677,6 +684,10 @@ void DESPOT::Expand(QNode* qnode, ScenarioLowerBound* lb,
 
 		logd << " After step: " << *copy << " " << (reward * copy->weight)
 			<< " " << reward << " " << copy->weight << endl;
+
+		//cout << " After step: " << *copy << " " << (reward * copy->weight)
+		//	<< " " << reward << " " << copy->weight << endl;
+
 
 		if (!terminal) {
 			partitions[obs].push_back(copy);
@@ -694,6 +705,7 @@ void DESPOT::Expand(QNode* qnode, ScenarioLowerBound* lb,
 	for (map<OBS_TYPE, vector<State*> >::iterator it = partitions.begin();
 		it != partitions.end(); it++) {
 		OBS_TYPE obs = it->first;
+		//cout<<"Obs "<<obs<<endl;
 		logd << " Creating node for obs " << obs << endl;
 		VNode* vnode = new VNode(partitions[obs], parent->depth() + 1,
 			qnode, obs);

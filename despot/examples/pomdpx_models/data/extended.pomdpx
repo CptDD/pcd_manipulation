@@ -1,0 +1,564 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<pomdpx version='1.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='pomdpx.xsd'>
+	<Discount>0.95</Discount>
+	<Horizon>10</Horizon>
+	<Variable>
+		<StateVar fullyObs="true" vnameCurr="robot_1" vnamePrev="robot_0">
+			<ValueEnum>vp6 vp4</ValueEnum>
+		</StateVar>
+		<StateVar fullyObs="false" vnameCurr="state_1" vnamePrev="state_0">
+			<ValueEnum>elongated1 livarno1 elongated2 livarno2</ValueEnum>
+		</StateVar>
+		<ObsVar vname="obs_sensor">
+			<ValueEnum>oelongated olivarno</ValueEnum>
+		</ObsVar>
+		<ActionVar vname="action_robot">
+			<ValueEnum>south north decision</ValueEnum>
+		</ActionVar>
+		<RewardVar vname="reward_bulb"/>
+	</Variable>
+
+	<InitialStateBelief>
+		<CondProb>
+			<Var>robot_0</Var>
+			<Parent>null</Parent>
+			<Parameter type="TBL">
+				<Entry>
+					<Instance>-</Instance>
+					<ProbTable>0 1</ProbTable>
+				</Entry>
+			</Parameter>
+		</CondProb>
+		<CondProb>
+			<Var>state_0</Var>
+			<Parent>null</Parent>
+			<Parameter type="TBL">
+				<Entry>
+					<Instance>-</Instance>
+					<ProbTable>uniform</ProbTable>
+				</Entry>
+			</Parameter>
+		</CondProb>
+	</InitialStateBelief>
+
+	<StateTransitionFunction>
+		  <CondProb>
+            <Var>robot_1</Var>
+            <Parent>action_robot robot_0</Parent>
+            <Parameter type="TBL">
+                <!--<Entry>
+                    <Instance>south vp5 vp6</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>-->
+                <Entry>
+                    <Instance>south vp4 vp4</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <!--<Entry>
+                    <Instance>south vp14 vp4</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>-->
+                <Entry>
+                    <Instance>south vp6 vp4</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+               <!-- <Entry>
+                   <Instance>north vp5 vp5</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>-->
+
+                <Entry>
+                    <Instance>north vp4 vp6</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <!--<Entry>
+                    <Instance>north vp14 vp14</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>-->
+                <Entry>
+                    <Instance>north vp6 vp6</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <!--<Entry>
+                    <Instance>east vp5 vp5</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp4 vp4</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <!--<Entry>
+                    <Instance>east vp14 vp14</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp6 vp4</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <!--<Entry>
+                    <Instance>west vp5 vp6</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp4 vp6</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <!--<Entry>
+                    <Instance>west vp14 vp5</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp6 vp6</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>-->
+
+                <Entry>
+                    <Instance>decision vp6 vp6</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>decision vp4 vp4</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                <!--<Entry>
+                    <Instance>decision vp14 vp14</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>decision vp5 vp5</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>-->
+            </Parameter>
+        </CondProb>
+         <CondProb>
+            <Var>state_1</Var>
+            <Parent>action_robot state_0</Parent>
+            <Parameter type="TBL">
+                <Entry>
+                    <Instance>south elongated1 elongated1</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south livarno1 livarno1</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north elongated1 elongated1</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north livarno1 livarno1</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <!--<Entry>
+                    <Instance>east elongated1 elongated1</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east livarno1 livarno1</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west elongated1 elongated1</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west livarno1 livarno1</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>-->
+
+                 <Entry>
+                    <Instance>decision elongated1 elongated1</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>decision livarno1 livarno1</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>south elongated2 elongated2</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south livarno2 livarno2</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north elongated2 elongated2</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north livarno2 livarno2</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <!--<Entry>
+                    <Instance>east elongated2 elongated2</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east livarno2 livarno2</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west elongated2 elongated2</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west livarno2 livarno2</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>-->
+
+                 <Entry>
+                    <Instance>decision elongated2 elongated2</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>decision livarno2 livarno2</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                <!--<Entry>
+                    <Instance>south elongated3 elongated3</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south livarno3 livarno3</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north elongated3 elongated3</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north livarno3 livarno3</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east elongated3 elongated3</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east livarno3 livarno3</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west elongated3 elongated3</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west livarno3 livarno3</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>decision elongated3 elongated3</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>decision livarno3 livarno3</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>-->
+
+            </Parameter>
+        </CondProb>
+	</StateTransitionFunction>
+
+	<ObsFunction>
+		 <CondProb>
+            <Var>obs_sensor</Var>
+            <Parent>action_robot robot_1 state_1</Parent>
+            <Parameter type="TBL">
+
+            	<Entry>
+                    <Instance>south vp4 elongated1 oelongated</Instance>
+                    <ProbTable>0.85</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp4 elongated1 olivarno</Instance>
+                    <ProbTable>0.15</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp4 livarno1 oelongated</Instance>
+                    <ProbTable>0.18</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp4 livarno1 olivarno</Instance>
+                    <ProbTable>0.82</ProbTable>
+                </Entry>
+
+                <Entry>
+                	<Instance>decision vp4 elongated1 oelongated</Instance>
+                	<ProbTable>0.5</ProbTable>
+                </Entry>
+
+                <Entry>
+                	<Instance>decision vp4 elongated1 olivarno</Instance>
+                	<ProbTable>0.5</ProbTable>
+                </Entry>
+
+                <Entry>
+                	<Instance>decision vp4 livarno1 oelongated</Instance>
+                	<ProbTable>0.5</ProbTable>
+                </Entry>
+
+                <Entry>
+                	<Instance>decision vp4 livarno1 olivarno</Instance>
+                	<ProbTable>0.5</ProbTable>
+                </Entry>
+
+
+                <Entry>
+                    <Instance>south vp4 elongated2 oelongated</Instance>
+                    <ProbTable>0.7</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp4 elongated2 olivarno</Instance>
+                    <ProbTable>0.3</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp4 livarno2 oelongated</Instance>
+                    <ProbTable>0.33</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp4 livarno2 olivarno</Instance>
+                    <ProbTable>0.67</ProbTable>
+                </Entry>
+
+                <Entry>
+                	<Instance>decision vp4 elongated2 oelongated</Instance>
+                	<ProbTable>0.5</ProbTable>
+                </Entry>
+
+                <Entry>
+                	<Instance>decision vp4 elongated2 olivarno</Instance>
+                	<ProbTable>0.5</ProbTable>
+                </Entry>
+
+                <Entry>
+                	<Instance>decision vp4 livarno2 oelongated</Instance>
+                	<ProbTable>0.5</ProbTable>
+                </Entry>
+
+                <Entry>
+                	<Instance>decision vp4 livarno2 olivarno</Instance>
+                	<ProbTable>0.5</ProbTable>
+                </Entry>
+
+
+
+
+
+                <Entry>
+                    <Instance>south vp6 elongated1 oelongated</Instance>
+                    <ProbTable>0.625</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp6 elongated1 olivarno</Instance>
+                    <ProbTable>0.375</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp6 livarno1 oelongated</Instance>
+                    <ProbTable>0.39</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp6 livarno1 olivarno</Instance>
+                    <ProbTable>0.61</ProbTable>
+                </Entry>
+
+                <Entry>
+                	<Instance>decision vp6 elongated1 oelongated</Instance>
+                	<ProbTable>0.5</ProbTable>
+                </Entry>
+
+                <Entry>
+                	<Instance>decision vp6 elongated1 olivarno</Instance>
+                	<ProbTable>0.5</ProbTable>
+                </Entry>
+
+                 <Entry>
+                	<Instance>decision vp6 livarno1 oelongated</Instance>
+                	<ProbTable>0.5</ProbTable>
+                </Entry>
+
+                <Entry>
+                	<Instance>decision vp6 livarno1 olivarno</Instance>
+                	<ProbTable>0.5</ProbTable>
+                </Entry>
+
+
+                <Entry>
+                    <Instance>south vp6 elongated2 oelongated</Instance>
+                    <ProbTable>0.725</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp6 elongated2 olivarno</Instance>
+                    <ProbTable>0.275</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp6 livarno2 oelongated</Instance>
+                    <ProbTable>0.28</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp6 livarno2 olivarno</Instance>
+                    <ProbTable>0.72</ProbTable>
+                </Entry>
+
+
+
+                <Entry>
+                	<Instance>decision vp6 elongated2 oelongated</Instance>
+                	<ProbTable>0.5</ProbTable>
+                </Entry>
+
+                <Entry>
+                	<Instance>decision vp6 elongated2 olivarno</Instance>
+                	<ProbTable>0.5</ProbTable>
+                </Entry>
+
+                 <Entry>
+                	<Instance>decision vp6 livarno2 oelongated</Instance>
+                	<ProbTable>0.5</ProbTable>
+                </Entry>
+
+                <Entry>
+                	<Instance>decision vp6 livarno2 olivarno</Instance>
+                	<ProbTable>0.5</ProbTable>
+                </Entry>
+
+
+
+                <Entry>
+                    <Instance>north vp4 elongated1 oelongated</Instance>
+                    <ProbTable>0.85</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp4 elongated1 olivarno</Instance>
+                    <ProbTable>0.15</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp4 livarno1 oelongated</Instance>
+                    <ProbTable>0.18</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp4 livarno1 olivarno</Instance>
+                    <ProbTable>0.82</ProbTable>
+                </Entry>
+ 				<Entry>
+                    <Instance>north vp4 elongated2 oelongated</Instance>
+                    <ProbTable>0.7</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp4 elongated2 olivarno</Instance>
+                    <ProbTable>0.3</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp4 livarno2 oelongated</Instance>
+                    <ProbTable>0.33</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp4 livarno2 olivarno</Instance>
+                    <ProbTable>0.67</ProbTable>
+                </Entry>
+
+ 				<Entry>
+                    <Instance>north vp6 elongated1 oelongated</Instance>
+                    <ProbTable>0.625</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp6 elongated1 olivarno</Instance>
+                    <ProbTable>0.375</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp6 livarno1 oelongated</Instance>
+                    <ProbTable>0.39</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp6 livarno1 olivarno</Instance>
+                    <ProbTable>0.61</ProbTable>
+                </Entry>
+ 				<Entry>
+                    <Instance>north vp6 elongated2 oelongated</Instance>
+                    <ProbTable>0.725</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp6 elongated2 olivarno</Instance>
+                    <ProbTable>0.275</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp6 livarno2 oelongated</Instance>
+                    <ProbTable>0.28</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp6 livarno2 olivarno</Instance>
+                    <ProbTable>0.72</ProbTable>
+                </Entry>
+
+            </Parameter>
+        </CondProb>
+	</ObsFunction>
+
+	<RewardFunction>
+		<Func>
+			<Var>reward_bulb</Var>
+			<Parent>action_robot robot_0 state_0 state_1</Parent>
+			<Parameter type="TBL">
+
+				<Entry>
+					<Instance>* * elongated1 elongated1</Instance>
+					<ValueTable>15</ValueTable>
+				</Entry>
+
+				<Entry>
+					<Instance>* * elongated1 livarno1</Instance>
+					<ValueTable>-100</ValueTable>
+				</Entry>
+
+				<Entry>
+					<Instance>* * elongated2 elongated2</Instance>
+					<ValueTable>15</ValueTable>
+				</Entry>
+
+				<Entry>
+					<Instance>* * elongated2 livarno2</Instance>
+					<ValueTable>-100</ValueTable>
+				</Entry>
+
+				<Entry>
+					<Instance>* * livarno1 livarno1</Instance>
+					<ValueTable>10</ValueTable>
+				</Entry>
+
+				<Entry>
+					<Instance>* * livarno1 elongated1</Instance>
+					<ValueTable>-60</ValueTable>
+				</Entry>
+
+				<Entry>
+					<Instance>* * livarno2 livarno2</Instance>
+					<ValueTable>6</ValueTable>
+				</Entry>
+
+				<Entry>
+					<Instance>* * livarno1 elongated1</Instance>
+					<ValueTable>-70</ValueTable>
+				</Entry>
+
+				<Entry>
+					<Instance>decision * * *</Instance>
+					<ValueTable>10</ValueTable>
+				</Entry>
+
+
+
+			</Parameter>
+		</Func>
+	</RewardFunction>
+
+</pomdpx>

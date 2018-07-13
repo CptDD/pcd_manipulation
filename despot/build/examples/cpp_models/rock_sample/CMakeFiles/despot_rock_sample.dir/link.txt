@@ -1,0 +1,1 @@
+/usr/bin/g++-5    -msse2 -mfpmath=sse -g   CMakeFiles/despot_rock_sample.dir/src/base/base_rock_sample.cpp.o CMakeFiles/despot_rock_sample.dir/src/rock_sample/rock_sample.cpp.o CMakeFiles/despot_rock_sample.dir/src/rock_sample/main.cpp.o  -o despot_rock_sample -rdynamic ../../../libdespot.so -Wl,-rpath,/home/cptd/dd/despot/build: 

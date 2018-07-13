@@ -16,8 +16,8 @@
 	#Target cannot move when Catch action is executed
 	#in case that Target and Robot are not in the same cell
 </Description>
-
 <Discount>0.95</Discount>
+<Horizon>100</Horizon>
 
 <Variable>
 	<StateVar vnamePrev="robot_0" vnameCurr="robot_1" fullyObs="true">

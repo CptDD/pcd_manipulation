@@ -7,6 +7,7 @@ using namespace despot;
 class TUI: public SimpleTUI {
 public:
   TUI() {
+
   }
 
   DSPOMDP* InitializeModel(option::Option* options) {

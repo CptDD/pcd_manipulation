@@ -21,10 +21,36 @@ string Belief::text() const {
 }
 
 
+double Belief::get_max()
+{
+	return 1.0;
+}
+
 std::map<std::string, double> Belief::get_pdf()
 {
 	map<std::string,double> pdf;
 	return pdf;
+}
+
+std::vector<State*> Belief::get_particles()
+{
+	vector<State*> particles;
+	return particles;
+}
+
+void Belief::propagate()
+{
+	cout<<"Propagation!"<<endl;
+}
+
+vector<State*> Belief::get_propagation()
+{
+	vector<State*> particles;
+	return particles;
+}
+double Belief::particles_sum(std::vector<State*> particles)
+{
+	return 0;
 }
 
 ostream& operator<<(ostream& os, const Belief& belief) {
@@ -339,15 +365,20 @@ void ParticleBelief::Update(int action, OBS_TYPE obs) {
 	history_.Add(action, obs);
 
 	vector<State*> updated;
+
 	double total_weight = 0;
 	double reward;
 	OBS_TYPE o;
 	// Update particles
+
+
 	for (int i = 0; i <particles_.size(); i++) {
 		State* particle = particles_[i];
+
 		bool terminal = model_->Step(*particle, Random::RANDOM.NextDouble(),
 			action, reward, o);
 		double prob = model_->ObsProb(obs, *particle, action);
+		
 
 		if (!terminal && prob) { // Terminal state is not required to be explicitly represented and may not have any observation
 			particle->weight *= prob;
@@ -430,8 +461,145 @@ Belief* ParticleBelief::MakeCopy() const {
 	return new ParticleBelief(copy, model_, prior_, split_);
 }
 
+double ParticleBelief::particles_sum(std::vector<State*> particles)
+{
+	double sum=0.0;
+
+	for(int i=0;i<particles.size();i++)
+	{
+		sum+=particles[i]->weight;
+	}
+
+	return sum;
+}
+
+vector<State*> ParticleBelief::get_propagation()
+{
+	cout<<"Propagate!"<<endl;
+
+	std::vector<State*> particles_0,particles_1,particles_2,particles_3,reinit_0,reinit_1;
+	std::vector<State*> parts;
+
+	State *s=model_->CreateStartState();
+	Belief *belief=model_->InitialBelief(s,"DEFAULT");
+
+	vector<State*> reinitiated=belief->get_particles();
 
 
+	for(int i=0;i<particles_.size();i++)
+	{
+		/*if(particles_[i]->state_id==0)
+		{
+			particles_0.push_back(particles_[i]);
+		}
+
+		if(particles_[i]->state_id==1)
+		{
+			particles_1.push_back(particles_[i]);
+		}*/
+
+		if(particles_[i]->state_id==2)
+		{
+			particles_2.push_back(particles_[i]);
+		}
+
+		if(particles_[i]->state_id==3)
+		{
+			particles_3.push_back(particles_[i]);
+		}
+
+		if(reinitiated[i]->state_id==0)
+		{	
+			reinit_0.push_back(reinitiated[i]);
+
+		}
+
+		if(reinitiated[i]->state_id==1)
+		{
+			reinit_1.push_back(reinitiated[i]);
+		}
+
+	}
+
+	double sum_p2=particles_sum(particles_2);
+	double sum_p3=particles_sum(particles_3);
+
+	double norm_factor=1-(sum_p2+sum_p3);
+	norm_factor/=2;
+
+	double sum_re0=particles_sum(reinit_0);
+	double sum_re1=particles_sum(reinit_1);
+
+	cout<<sum_p2<<" "<<sum_p3<<" "<<sum_re0<<" "<<sum_re1<<" "<<norm_factor<<endl;
+	
+	//Counter definition for each set of particles//
+	int c0=0,c1=0,c2=0,c3=0,rc0=0,rc1=0;
+
+	for(int i=0;i<particles_.size();i++)
+	{
+		if(particles_[i]->state_id==0)
+		{
+			State *s=particles_[i];
+			s->weight=particles_2[c2]->weight;
+
+			//parts.push_back(particles_2[c2]);
+			parts.push_back(s);
+
+			c2++;
+		}
+
+		if(particles_[i]->state_id==1)
+		{	
+			State *s=particles_[i];
+			s->weight=particles_3[c3]->weight;
+
+			//parts.push_back(particles_3[c3]);
+			parts.push_back(s);
+			c3++;
+		}
+
+		if(particles_[i]->state_id==2)
+		{	
+			
+			//State *s=reinit_0[rc0];
+			State *s=particles_[i];
+
+			//cout<<"A :"<<s->weight<<endl; 
+			s->weight=(norm_factor/reinit_0.size());
+			//cout<<"B :"<<s->weight<<endl;
+			parts.push_back(s);
+			//parts.push_back(reinit_0[rc0]);
+
+			rc0++;
+		}
+
+		if(particles_[i]->state_id==3)
+		{	
+			//State *s=reinit_1[rc1];
+			State *s=particles_[i];
+			s->weight=norm_factor/reinit_1.size();
+			parts.push_back(s);
+			//parts.push_back(reinit_1[rc1]);
+			rc1++;
+		}
+	}
+
+	return parts;
+}
+
+
+void ParticleBelief::propagate()
+{
+	particles_=get_propagation();
+}
+
+
+std::vector<State*> ParticleBelief::get_particles()
+{
+	return particles_;
+}
+
+	
 string ParticleBelief::text() const {
 	ostringstream oss;
 	map<string, double> pdf;
@@ -458,6 +626,55 @@ std::map<std::string, double> ParticleBelief::get_pdf()
 	}
 
 	return pdf;
+}
+
+
+
+double ParticleBelief::get_max()
+{
+
+	double max_val=0;
+
+	map<string,double> pdf;
+
+	for(int i=0;i<particles_.size();i++)
+	{
+		pdf[particles_[i]->text()]+=particles_[i]->weight;
+	}
+
+	vector<pair<string,double> >pairs=SortByValue(pdf);
+
+	int pos=-1;
+
+	pos=pairs[0].first.find("elongated");
+
+	if(pos!=-1)
+	{
+		max_val=0.1;
+	}
+
+	pos=pairs[0].first.find("livarno");
+
+	if(pos!=-1)
+	{
+		max_val=0.3;
+	}
+
+	pos=pairs[0].first.find("mushroom");
+
+	if(pos!=-1)
+	{
+		max_val=0.6;
+	}
+
+	pos=pairs[0].first.find("standard");
+
+	if(pos!=-1)
+	{
+		max_val=0.8;
+	}
+
+	return max_val;
 }
 
 } // namespace despot

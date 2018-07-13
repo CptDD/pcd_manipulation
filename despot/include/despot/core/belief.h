@@ -34,7 +34,13 @@ public:
 	virtual Belief* MakeCopy() const = 0;
 
 	virtual std::map<std::string, double> get_pdf();
-	
+
+	virtual double get_max();
+
+	virtual void propagate();
+	virtual std::vector<State*> get_propagation();
+	virtual std::vector<State*> get_particles();
+	virtual double particles_sum(std::vector<State*> particles);
 
 	static std::vector<State*> Sample(int num, std::vector<State*> belief,
 		const DSPOMDP* model);
@@ -74,11 +80,17 @@ public:
 	virtual void Update(int action, OBS_TYPE obs);
 
 	virtual Belief* MakeCopy() const;
-
 	
 	virtual std::string text() const;
 
 	virtual std::map<std::string, double> get_pdf();
+	virtual std::vector<State*> get_particles();
+	virtual double particles_sum(std::vector<State*> particles);
+
+	virtual std::vector<State*> get_propagation();
+
+	virtual void propagate();
+	virtual double get_max();
 };
 
 } // namespace despot

@@ -16,6 +16,20 @@ despot/core/pomdp.h
 despot/core/globals.h
 -
 
+/home/cptd/dd/despot/src/core/information.cpp
+despot/core/belief.h
+-
+despot/core/pomdp.h
+-
+despot/core/information.h
+-
+cmath
+-
+iostream
+-
+string
+-
+
 /home/cptd/dd/despot/src/core/lower_bound.cpp
 despot/core/lower_bound.h
 -
@@ -76,6 +90,8 @@ despot/core/mdp.h
 
 /home/cptd/dd/despot/src/evaluator.cpp
 despot/evaluator.h
+-
+despot/core/information.h
 -
 
 /home/cptd/dd/despot/src/pomdpx/parser/function.cpp
@@ -290,6 +306,16 @@ vector
 despot/util/util.h
 -
 despot/core/globals.h
+-
+
+include/despot/core/information.h
+vector
+-
+despot/util/random.h
+-
+despot/util/logging.h
+-
+despot/core/history.h
 -
 
 include/despot/core/lower_bound.h

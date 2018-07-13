@@ -1,0 +1,1640 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<pomdpx version='1.0' id='tagxmlfac' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='pomdpx.xsd'>
+    <Discount>0.95</Discount>
+    <Horizon>10</Horizon>
+    <Variable>
+        <StateVar fullyObs="true" vnameCurr="robot_1" vnamePrev="robot_0">
+            <ValueEnum>vp24 vp13 vp12 vp15 vp14 vp20 vp16 vp21 vp23 vp4 vp5 vp17 vp6 vp8 vp10 vp22 vp9 vp7 vp11</ValueEnum>
+        </StateVar>
+        <StateVar fullyObs="false" vnameCurr="state_1" vnamePrev="state_0">
+            <ValueEnum>elongated livarno</ValueEnum>
+        </StateVar>
+        <ObsVar vname="obs_sensor">
+            <ValueEnum>oelongated olivarno</ValueEnum>
+        </ObsVar>
+        <ActionVar vname="action_robot">
+            <ValueEnum>south north east west</ValueEnum>
+        </ActionVar>
+        <RewardVar vname="reward_bulb" />
+    </Variable>
+    <InitialStateBelief>
+        <CondProb>
+            <Var>robot_0</Var>
+            <Parent>null</Parent>
+            <Parameter type="TBL">
+                <Entry>
+                    <Instance>-</Instance>
+                    <ProbTable>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1</ProbTable>
+                </Entry>
+            </Parameter>
+        </CondProb>
+        <CondProb>
+            <Var>state_0</Var>
+            <Parent>null</Parent>
+            <Parameter type="TBL">
+                <Entry>
+                    <Instance>-</Instance>
+                    <ProbTable>uniform</ProbTable>
+                </Entry>
+            </Parameter>
+        </CondProb>
+    </InitialStateBelief>
+    <StateTransitionFunction>
+        <CondProb>
+            <Var>robot_1</Var>
+            <Parent>action_robot robot_0</Parent>
+            <Parameter type="TBL">
+                <Entry>
+                    <Instance>south vp11 vp10</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp24 vp23</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp13 vp12</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp12 vp11</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp15 vp14</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp14 vp13</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp22 vp22</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp16 vp17</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp21 vp22</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp23 vp22</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp4 vp12</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp20 vp21</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp5 vp4</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp17 vp7</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp7 vp7</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp6 vp7</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp9 vp10</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp8 vp20</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp10 vp21</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp11 vp12</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp24 vp12</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp13 vp14</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp12 vp13</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp15 vp15</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp14 vp15</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp22 vp10</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp16 vp15</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp21 vp10</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp23 vp10</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp4 vp14</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp20 vp8</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp5 vp14</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp17 vp16</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp7 vp17</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp6 vp15</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp9 vp8</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp8 vp8</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp10 vp11</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp11 vp24</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp24 vp12</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp13 vp12</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp12 vp12</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp15 vp14</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp14 vp13</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp22 vp23</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp16 vp16</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp21 vp21</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp23 vp24</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp4 vp13</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp20 vp20</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp5 vp4</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp17 vp17</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp7 vp7</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp6 vp6</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp9 vp9</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp8 vp8</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp10 vp23</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp11 vp10</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp24 vp11</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp13 vp14</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp12 vp11</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp15 vp16</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp14 vp15</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp22 vp21</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp16 vp17</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp21 vp20</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp23 vp10</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp4 vp5</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp20 vp20</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp5 vp16</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp17 vp17</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp7 vp17</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp6 vp17</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp9 vp20</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp8 vp20</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp10 vp21</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+            </Parameter>
+        </CondProb>
+        <CondProb>
+            <Var>state_1</Var>
+            <Parent>action_robot state_0</Parent>
+            <Parameter type="TBL">
+                <Entry>
+                    <Instance>south elongated elongated</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south livarno livarno</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north elongated elongated</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north livarno livarno</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east elongated elongated</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east livarno livarno</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west elongated elongated</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west livarno livarno</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+            </Parameter>
+        </CondProb>
+    </StateTransitionFunction>
+    <ObsFunction>
+        <CondProb>
+            <Var>obs_sensor</Var>
+            <Parent>action_robot robot_1 state_1</Parent>
+            <Parameter type="TBL">
+                <Entry>
+                    <Instance>south vp11 elongated oelongated</Instance>
+                    <ProbTable>0.546462062075</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp11 elongated olivarno</Instance>
+                    <ProbTable>0.453537937925</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp11 livarno oelongated</Instance>
+                    <ProbTable>0.257343110045</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp11 livarno olivarno</Instance>
+                    <ProbTable>0.742656889955</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp24 elongated oelongated</Instance>
+                    <ProbTable>1.0</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp24 elongated olivarno</Instance>
+                    <ProbTable>2.17908448246e-15</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp24 livarno oelongated</Instance>
+                    <ProbTable>0.254301171783</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp24 livarno olivarno</Instance>
+                    <ProbTable>0.745698828217</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp13 elongated oelongated</Instance>
+                    <ProbTable>0.999999999988</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp13 elongated olivarno</Instance>
+                    <ProbTable>1.16230393218e-11</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp13 livarno oelongated</Instance>
+                    <ProbTable>0.372878337851</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp13 livarno olivarno</Instance>
+                    <ProbTable>0.627121662149</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp12 elongated oelongated</Instance>
+                    <ProbTable>1.0</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp12 elongated olivarno</Instance>
+                    <ProbTable>1.60986081604e-13</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp12 livarno oelongated</Instance>
+                    <ProbTable>0.210026709461</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp12 livarno olivarno</Instance>
+                    <ProbTable>0.789973290539</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp15 elongated oelongated</Instance>
+                    <ProbTable>0.999999999999</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp15 elongated olivarno</Instance>
+                    <ProbTable>8.67091396566e-13</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp15 livarno oelongated</Instance>
+                    <ProbTable>0.512703932077</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp15 livarno olivarno</Instance>
+                    <ProbTable>0.487296067923</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp14 elongated oelongated</Instance>
+                    <ProbTable>0.786379246987</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp14 elongated olivarno</Instance>
+                    <ProbTable>0.213620753013</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp14 livarno oelongated</Instance>
+                    <ProbTable>0.592228907084</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp14 livarno olivarno</Instance>
+                    <ProbTable>0.407771092915</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp22 elongated oelongated</Instance>
+                    <ProbTable>0.162391334334</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp22 elongated olivarno</Instance>
+                    <ProbTable>0.837608665666</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp22 livarno oelongated</Instance>
+                    <ProbTable>0.421057446077</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp22 livarno olivarno</Instance>
+                    <ProbTable>0.578942553923</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp16 elongated oelongated</Instance>
+                    <ProbTable>1.0</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp16 elongated olivarno</Instance>
+                    <ProbTable>7.25316110339e-15</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp16 livarno oelongated</Instance>
+                    <ProbTable>0.426686919681</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp16 livarno olivarno</Instance>
+                    <ProbTable>0.573313080319</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp21 elongated oelongated</Instance>
+                    <ProbTable>0.749368545945</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp21 elongated olivarno</Instance>
+                    <ProbTable>0.250631454055</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp21 livarno oelongated</Instance>
+                    <ProbTable>0.505734203408</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp21 livarno olivarno</Instance>
+                    <ProbTable>0.494265796593</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp23 elongated oelongated</Instance>
+                    <ProbTable>0.318593182128</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp23 elongated olivarno</Instance>
+                    <ProbTable>0.681406817872</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp23 livarno oelongated</Instance>
+                    <ProbTable>0.358878497605</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp23 livarno olivarno</Instance>
+                    <ProbTable>0.641121502395</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp4 elongated oelongated</Instance>
+                    <ProbTable>0.524603749693</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp4 elongated olivarno</Instance>
+                    <ProbTable>0.475396250307</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp4 livarno oelongated</Instance>
+                    <ProbTable>0.334652035708</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp4 livarno olivarno</Instance>
+                    <ProbTable>0.665347964292</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp20 elongated oelongated</Instance>
+                    <ProbTable>0.891446745492</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp20 elongated olivarno</Instance>
+                    <ProbTable>0.108553254508</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp20 livarno oelongated</Instance>
+                    <ProbTable>0.548092430749</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp20 livarno olivarno</Instance>
+                    <ProbTable>0.451907569251</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp5 elongated oelongated</Instance>
+                    <ProbTable>0.662574638867</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp5 elongated olivarno</Instance>
+                    <ProbTable>0.337425361133</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp5 livarno oelongated</Instance>
+                    <ProbTable>0.425181062725</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp5 livarno olivarno</Instance>
+                    <ProbTable>0.574818937276</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp17 elongated oelongated</Instance>
+                    <ProbTable>0.473558620794</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp17 elongated olivarno</Instance>
+                    <ProbTable>0.526441379206</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp17 livarno oelongated</Instance>
+                    <ProbTable>0.321042698878</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp17 livarno olivarno</Instance>
+                    <ProbTable>0.678957301122</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp7 elongated oelongated</Instance>
+                    <ProbTable>0.554416067066</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp7 elongated olivarno</Instance>
+                    <ProbTable>0.445583932934</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp7 livarno oelongated</Instance>
+                    <ProbTable>0.236118400007</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp7 livarno olivarno</Instance>
+                    <ProbTable>0.763881599993</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp6 elongated oelongated</Instance>
+                    <ProbTable>0.808199124833</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp6 elongated olivarno</Instance>
+                    <ProbTable>0.191800875167</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp6 livarno oelongated</Instance>
+                    <ProbTable>0.351209160828</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp6 livarno olivarno</Instance>
+                    <ProbTable>0.648790839172</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp9 elongated oelongated</Instance>
+                    <ProbTable>0.999999999999</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp9 elongated olivarno</Instance>
+                    <ProbTable>6.83922358455e-13</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp9 livarno oelongated</Instance>
+                    <ProbTable>0.398224434195</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp9 livarno olivarno</Instance>
+                    <ProbTable>0.601775565805</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp8 elongated oelongated</Instance>
+                    <ProbTable>0.801009733713</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp8 elongated olivarno</Instance>
+                    <ProbTable>0.198990266287</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp8 livarno oelongated</Instance>
+                    <ProbTable>0.303434289424</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp8 livarno olivarno</Instance>
+                    <ProbTable>0.696565710576</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp10 elongated oelongated</Instance>
+                    <ProbTable>0.568259478598</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp10 elongated olivarno</Instance>
+                    <ProbTable>0.431740521402</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp10 livarno oelongated</Instance>
+                    <ProbTable>0.365382068686</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>south vp10 livarno olivarno</Instance>
+                    <ProbTable>0.634617931314</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp11 elongated oelongated</Instance>
+                    <ProbTable>0.546462062075</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp11 elongated olivarno</Instance>
+                    <ProbTable>0.453537937925</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp11 livarno oelongated</Instance>
+                    <ProbTable>0.257343110045</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp11 livarno olivarno</Instance>
+                    <ProbTable>0.742656889955</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp24 elongated oelongated</Instance>
+                    <ProbTable>1.0</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp24 elongated olivarno</Instance>
+                    <ProbTable>2.17908448246e-15</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp24 livarno oelongated</Instance>
+                    <ProbTable>0.254301171783</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp24 livarno olivarno</Instance>
+                    <ProbTable>0.745698828217</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp13 elongated oelongated</Instance>
+                    <ProbTable>0.999999999988</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp13 elongated olivarno</Instance>
+                    <ProbTable>1.16230393218e-11</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp13 livarno oelongated</Instance>
+                    <ProbTable>0.372878337851</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp13 livarno olivarno</Instance>
+                    <ProbTable>0.627121662149</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp12 elongated oelongated</Instance>
+                    <ProbTable>1.0</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp12 elongated olivarno</Instance>
+                    <ProbTable>1.60986081604e-13</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp12 livarno oelongated</Instance>
+                    <ProbTable>0.210026709461</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp12 livarno olivarno</Instance>
+                    <ProbTable>0.789973290539</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp15 elongated oelongated</Instance>
+                    <ProbTable>0.999999999999</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp15 elongated olivarno</Instance>
+                    <ProbTable>8.67091396566e-13</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp15 livarno oelongated</Instance>
+                    <ProbTable>0.512703932077</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp15 livarno olivarno</Instance>
+                    <ProbTable>0.487296067923</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp14 elongated oelongated</Instance>
+                    <ProbTable>0.786379246987</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp14 elongated olivarno</Instance>
+                    <ProbTable>0.213620753013</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp14 livarno oelongated</Instance>
+                    <ProbTable>0.592228907084</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp14 livarno olivarno</Instance>
+                    <ProbTable>0.407771092915</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp22 elongated oelongated</Instance>
+                    <ProbTable>0.162391334334</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp22 elongated olivarno</Instance>
+                    <ProbTable>0.837608665666</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp22 livarno oelongated</Instance>
+                    <ProbTable>0.421057446077</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp22 livarno olivarno</Instance>
+                    <ProbTable>0.578942553923</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp16 elongated oelongated</Instance>
+                    <ProbTable>1.0</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp16 elongated olivarno</Instance>
+                    <ProbTable>7.25316110339e-15</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp16 livarno oelongated</Instance>
+                    <ProbTable>0.426686919681</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp16 livarno olivarno</Instance>
+                    <ProbTable>0.573313080319</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp21 elongated oelongated</Instance>
+                    <ProbTable>0.749368545945</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp21 elongated olivarno</Instance>
+                    <ProbTable>0.250631454055</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp21 livarno oelongated</Instance>
+                    <ProbTable>0.505734203408</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp21 livarno olivarno</Instance>
+                    <ProbTable>0.494265796593</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp23 elongated oelongated</Instance>
+                    <ProbTable>0.318593182128</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp23 elongated olivarno</Instance>
+                    <ProbTable>0.681406817872</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp23 livarno oelongated</Instance>
+                    <ProbTable>0.358878497605</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp23 livarno olivarno</Instance>
+                    <ProbTable>0.641121502395</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp4 elongated oelongated</Instance>
+                    <ProbTable>0.524603749693</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp4 elongated olivarno</Instance>
+                    <ProbTable>0.475396250307</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp4 livarno oelongated</Instance>
+                    <ProbTable>0.334652035708</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp4 livarno olivarno</Instance>
+                    <ProbTable>0.665347964292</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp20 elongated oelongated</Instance>
+                    <ProbTable>0.891446745492</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp20 elongated olivarno</Instance>
+                    <ProbTable>0.108553254508</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp20 livarno oelongated</Instance>
+                    <ProbTable>0.548092430749</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp20 livarno olivarno</Instance>
+                    <ProbTable>0.451907569251</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp5 elongated oelongated</Instance>
+                    <ProbTable>0.662574638867</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp5 elongated olivarno</Instance>
+                    <ProbTable>0.337425361133</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp5 livarno oelongated</Instance>
+                    <ProbTable>0.425181062725</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp5 livarno olivarno</Instance>
+                    <ProbTable>0.574818937276</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp17 elongated oelongated</Instance>
+                    <ProbTable>0.473558620794</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp17 elongated olivarno</Instance>
+                    <ProbTable>0.526441379206</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp17 livarno oelongated</Instance>
+                    <ProbTable>0.321042698878</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp17 livarno olivarno</Instance>
+                    <ProbTable>0.678957301122</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp7 elongated oelongated</Instance>
+                    <ProbTable>0.554416067066</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp7 elongated olivarno</Instance>
+                    <ProbTable>0.445583932934</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp7 livarno oelongated</Instance>
+                    <ProbTable>0.236118400007</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp7 livarno olivarno</Instance>
+                    <ProbTable>0.763881599993</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp6 elongated oelongated</Instance>
+                    <ProbTable>0.808199124833</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp6 elongated olivarno</Instance>
+                    <ProbTable>0.191800875167</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp6 livarno oelongated</Instance>
+                    <ProbTable>0.351209160828</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp6 livarno olivarno</Instance>
+                    <ProbTable>0.648790839172</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp9 elongated oelongated</Instance>
+                    <ProbTable>0.999999999999</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp9 elongated olivarno</Instance>
+                    <ProbTable>6.83922358455e-13</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp9 livarno oelongated</Instance>
+                    <ProbTable>0.398224434195</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp9 livarno olivarno</Instance>
+                    <ProbTable>0.601775565805</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp8 elongated oelongated</Instance>
+                    <ProbTable>0.801009733713</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp8 elongated olivarno</Instance>
+                    <ProbTable>0.198990266287</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp8 livarno oelongated</Instance>
+                    <ProbTable>0.303434289424</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp8 livarno olivarno</Instance>
+                    <ProbTable>0.696565710576</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp10 elongated oelongated</Instance>
+                    <ProbTable>0.568259478598</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp10 elongated olivarno</Instance>
+                    <ProbTable>0.431740521402</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp10 livarno oelongated</Instance>
+                    <ProbTable>0.365382068686</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>north vp10 livarno olivarno</Instance>
+                    <ProbTable>0.634617931314</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp11 elongated oelongated</Instance>
+                    <ProbTable>0.546462062075</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp11 elongated olivarno</Instance>
+                    <ProbTable>0.453537937925</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp11 livarno oelongated</Instance>
+                    <ProbTable>0.257343110045</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp11 livarno olivarno</Instance>
+                    <ProbTable>0.742656889955</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp24 elongated oelongated</Instance>
+                    <ProbTable>1.0</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp24 elongated olivarno</Instance>
+                    <ProbTable>2.17908448246e-15</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp24 livarno oelongated</Instance>
+                    <ProbTable>0.254301171783</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp24 livarno olivarno</Instance>
+                    <ProbTable>0.745698828217</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp13 elongated oelongated</Instance>
+                    <ProbTable>0.999999999988</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp13 elongated olivarno</Instance>
+                    <ProbTable>1.16230393218e-11</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp13 livarno oelongated</Instance>
+                    <ProbTable>0.372878337851</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp13 livarno olivarno</Instance>
+                    <ProbTable>0.627121662149</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp12 elongated oelongated</Instance>
+                    <ProbTable>1.0</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp12 elongated olivarno</Instance>
+                    <ProbTable>1.60986081604e-13</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp12 livarno oelongated</Instance>
+                    <ProbTable>0.210026709461</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp12 livarno olivarno</Instance>
+                    <ProbTable>0.789973290539</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp15 elongated oelongated</Instance>
+                    <ProbTable>0.999999999999</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp15 elongated olivarno</Instance>
+                    <ProbTable>8.67091396566e-13</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp15 livarno oelongated</Instance>
+                    <ProbTable>0.512703932077</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp15 livarno olivarno</Instance>
+                    <ProbTable>0.487296067923</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp14 elongated oelongated</Instance>
+                    <ProbTable>0.786379246987</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp14 elongated olivarno</Instance>
+                    <ProbTable>0.213620753013</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp14 livarno oelongated</Instance>
+                    <ProbTable>0.592228907084</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp14 livarno olivarno</Instance>
+                    <ProbTable>0.407771092915</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp22 elongated oelongated</Instance>
+                    <ProbTable>0.162391334334</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp22 elongated olivarno</Instance>
+                    <ProbTable>0.837608665666</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp22 livarno oelongated</Instance>
+                    <ProbTable>0.421057446077</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp22 livarno olivarno</Instance>
+                    <ProbTable>0.578942553923</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp16 elongated oelongated</Instance>
+                    <ProbTable>1.0</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp16 elongated olivarno</Instance>
+                    <ProbTable>7.25316110339e-15</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp16 livarno oelongated</Instance>
+                    <ProbTable>0.426686919681</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp16 livarno olivarno</Instance>
+                    <ProbTable>0.573313080319</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp21 elongated oelongated</Instance>
+                    <ProbTable>0.749368545945</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp21 elongated olivarno</Instance>
+                    <ProbTable>0.250631454055</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp21 livarno oelongated</Instance>
+                    <ProbTable>0.505734203408</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp21 livarno olivarno</Instance>
+                    <ProbTable>0.494265796593</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp23 elongated oelongated</Instance>
+                    <ProbTable>0.318593182128</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp23 elongated olivarno</Instance>
+                    <ProbTable>0.681406817872</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp23 livarno oelongated</Instance>
+                    <ProbTable>0.358878497605</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp23 livarno olivarno</Instance>
+                    <ProbTable>0.641121502395</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp4 elongated oelongated</Instance>
+                    <ProbTable>0.524603749693</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp4 elongated olivarno</Instance>
+                    <ProbTable>0.475396250307</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp4 livarno oelongated</Instance>
+                    <ProbTable>0.334652035708</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp4 livarno olivarno</Instance>
+                    <ProbTable>0.665347964292</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp20 elongated oelongated</Instance>
+                    <ProbTable>0.891446745492</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp20 elongated olivarno</Instance>
+                    <ProbTable>0.108553254508</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp20 livarno oelongated</Instance>
+                    <ProbTable>0.548092430749</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp20 livarno olivarno</Instance>
+                    <ProbTable>0.451907569251</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp5 elongated oelongated</Instance>
+                    <ProbTable>0.662574638867</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp5 elongated olivarno</Instance>
+                    <ProbTable>0.337425361133</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp5 livarno oelongated</Instance>
+                    <ProbTable>0.425181062725</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp5 livarno olivarno</Instance>
+                    <ProbTable>0.574818937276</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp17 elongated oelongated</Instance>
+                    <ProbTable>0.473558620794</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp17 elongated olivarno</Instance>
+                    <ProbTable>0.526441379206</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp17 livarno oelongated</Instance>
+                    <ProbTable>0.321042698878</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp17 livarno olivarno</Instance>
+                    <ProbTable>0.678957301122</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp7 elongated oelongated</Instance>
+                    <ProbTable>0.554416067066</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp7 elongated olivarno</Instance>
+                    <ProbTable>0.445583932934</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp7 livarno oelongated</Instance>
+                    <ProbTable>0.236118400007</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp7 livarno olivarno</Instance>
+                    <ProbTable>0.763881599993</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp6 elongated oelongated</Instance>
+                    <ProbTable>0.808199124833</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp6 elongated olivarno</Instance>
+                    <ProbTable>0.191800875167</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp6 livarno oelongated</Instance>
+                    <ProbTable>0.351209160828</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp6 livarno olivarno</Instance>
+                    <ProbTable>0.648790839172</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp9 elongated oelongated</Instance>
+                    <ProbTable>0.999999999999</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp9 elongated olivarno</Instance>
+                    <ProbTable>6.83922358455e-13</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp9 livarno oelongated</Instance>
+                    <ProbTable>0.398224434195</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp9 livarno olivarno</Instance>
+                    <ProbTable>0.601775565805</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp8 elongated oelongated</Instance>
+                    <ProbTable>0.801009733713</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp8 elongated olivarno</Instance>
+                    <ProbTable>0.198990266287</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp8 livarno oelongated</Instance>
+                    <ProbTable>0.303434289424</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp8 livarno olivarno</Instance>
+                    <ProbTable>0.696565710576</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp10 elongated oelongated</Instance>
+                    <ProbTable>0.568259478598</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp10 elongated olivarno</Instance>
+                    <ProbTable>0.431740521402</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp10 livarno oelongated</Instance>
+                    <ProbTable>0.365382068686</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>east vp10 livarno olivarno</Instance>
+                    <ProbTable>0.634617931314</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp11 elongated oelongated</Instance>
+                    <ProbTable>0.546462062075</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp11 elongated olivarno</Instance>
+                    <ProbTable>0.453537937925</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp11 livarno oelongated</Instance>
+                    <ProbTable>0.257343110045</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp11 livarno olivarno</Instance>
+                    <ProbTable>0.742656889955</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp24 elongated oelongated</Instance>
+                    <ProbTable>1.0</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp24 elongated olivarno</Instance>
+                    <ProbTable>2.17908448246e-15</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp24 livarno oelongated</Instance>
+                    <ProbTable>0.254301171783</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp24 livarno olivarno</Instance>
+                    <ProbTable>0.745698828217</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp13 elongated oelongated</Instance>
+                    <ProbTable>0.999999999988</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp13 elongated olivarno</Instance>
+                    <ProbTable>1.16230393218e-11</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp13 livarno oelongated</Instance>
+                    <ProbTable>0.372878337851</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp13 livarno olivarno</Instance>
+                    <ProbTable>0.627121662149</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp12 elongated oelongated</Instance>
+                    <ProbTable>1.0</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp12 elongated olivarno</Instance>
+                    <ProbTable>1.60986081604e-13</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp12 livarno oelongated</Instance>
+                    <ProbTable>0.210026709461</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp12 livarno olivarno</Instance>
+                    <ProbTable>0.789973290539</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp15 elongated oelongated</Instance>
+                    <ProbTable>0.999999999999</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp15 elongated olivarno</Instance>
+                    <ProbTable>8.67091396566e-13</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp15 livarno oelongated</Instance>
+                    <ProbTable>0.512703932077</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp15 livarno olivarno</Instance>
+                    <ProbTable>0.487296067923</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp14 elongated oelongated</Instance>
+                    <ProbTable>0.786379246987</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp14 elongated olivarno</Instance>
+                    <ProbTable>0.213620753013</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp14 livarno oelongated</Instance>
+                    <ProbTable>0.592228907084</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp14 livarno olivarno</Instance>
+                    <ProbTable>0.407771092915</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp22 elongated oelongated</Instance>
+                    <ProbTable>0.162391334334</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp22 elongated olivarno</Instance>
+                    <ProbTable>0.837608665666</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp22 livarno oelongated</Instance>
+                    <ProbTable>0.421057446077</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp22 livarno olivarno</Instance>
+                    <ProbTable>0.578942553923</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp16 elongated oelongated</Instance>
+                    <ProbTable>1.0</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp16 elongated olivarno</Instance>
+                    <ProbTable>7.25316110339e-15</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp16 livarno oelongated</Instance>
+                    <ProbTable>0.426686919681</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp16 livarno olivarno</Instance>
+                    <ProbTable>0.573313080319</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp21 elongated oelongated</Instance>
+                    <ProbTable>0.749368545945</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp21 elongated olivarno</Instance>
+                    <ProbTable>0.250631454055</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp21 livarno oelongated</Instance>
+                    <ProbTable>0.505734203408</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp21 livarno olivarno</Instance>
+                    <ProbTable>0.494265796593</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp23 elongated oelongated</Instance>
+                    <ProbTable>0.318593182128</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp23 elongated olivarno</Instance>
+                    <ProbTable>0.681406817872</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp23 livarno oelongated</Instance>
+                    <ProbTable>0.358878497605</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp23 livarno olivarno</Instance>
+                    <ProbTable>0.641121502395</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp4 elongated oelongated</Instance>
+                    <ProbTable>0.524603749693</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp4 elongated olivarno</Instance>
+                    <ProbTable>0.475396250307</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp4 livarno oelongated</Instance>
+                    <ProbTable>0.334652035708</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp4 livarno olivarno</Instance>
+                    <ProbTable>0.665347964292</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp20 elongated oelongated</Instance>
+                    <ProbTable>0.891446745492</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp20 elongated olivarno</Instance>
+                    <ProbTable>0.108553254508</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp20 livarno oelongated</Instance>
+                    <ProbTable>0.548092430749</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp20 livarno olivarno</Instance>
+                    <ProbTable>0.451907569251</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp5 elongated oelongated</Instance>
+                    <ProbTable>0.662574638867</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp5 elongated olivarno</Instance>
+                    <ProbTable>0.337425361133</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp5 livarno oelongated</Instance>
+                    <ProbTable>0.425181062725</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp5 livarno olivarno</Instance>
+                    <ProbTable>0.574818937276</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp17 elongated oelongated</Instance>
+                    <ProbTable>0.473558620794</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp17 elongated olivarno</Instance>
+                    <ProbTable>0.526441379206</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp17 livarno oelongated</Instance>
+                    <ProbTable>0.321042698878</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp17 livarno olivarno</Instance>
+                    <ProbTable>0.678957301122</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp7 elongated oelongated</Instance>
+                    <ProbTable>0.554416067066</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp7 elongated olivarno</Instance>
+                    <ProbTable>0.445583932934</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp7 livarno oelongated</Instance>
+                    <ProbTable>0.236118400007</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp7 livarno olivarno</Instance>
+                    <ProbTable>0.763881599993</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp6 elongated oelongated</Instance>
+                    <ProbTable>0.808199124833</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp6 elongated olivarno</Instance>
+                    <ProbTable>0.191800875167</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp6 livarno oelongated</Instance>
+                    <ProbTable>0.351209160828</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp6 livarno olivarno</Instance>
+                    <ProbTable>0.648790839172</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp9 elongated oelongated</Instance>
+                    <ProbTable>0.999999999999</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp9 elongated olivarno</Instance>
+                    <ProbTable>6.83922358455e-13</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp9 livarno oelongated</Instance>
+                    <ProbTable>0.398224434195</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp9 livarno olivarno</Instance>
+                    <ProbTable>0.601775565805</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp8 elongated oelongated</Instance>
+                    <ProbTable>0.801009733713</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp8 elongated olivarno</Instance>
+                    <ProbTable>0.198990266287</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp8 livarno oelongated</Instance>
+                    <ProbTable>0.303434289424</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp8 livarno olivarno</Instance>
+                    <ProbTable>0.696565710576</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp10 elongated oelongated</Instance>
+                    <ProbTable>0.568259478598</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp10 elongated olivarno</Instance>
+                    <ProbTable>0.431740521402</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp10 livarno oelongated</Instance>
+                    <ProbTable>0.365382068686</ProbTable>
+                </Entry>
+                <Entry>
+                    <Instance>west vp10 livarno olivarno</Instance>
+                    <ProbTable>0.634617931314</ProbTable>
+                </Entry>
+            </Parameter>
+        </CondProb>
+    </ObsFunction>
+     <RewardFunction>
+        <Func>
+            <Var>reward_bulb</Var>
+            <Parent>action_robot robot_0 state_0 state_1</Parent>
+            <Parameter type="TBL">
+                <Entry>
+                    <Instance>* * elongated elongated</Instance>
+                    <ValueTable>50</ValueTable>
+                </Entry>
+                <Entry>
+                    <Instance>* * elongated livarno</Instance>
+                    <ValueTable>-100</ValueTable>
+                </Entry>
+                <Entry>
+                    <Instance>* * livarno elongated</Instance>
+                    <ValueTable>-30</ValueTable>
+                </Entry>
+                <Entry>
+                    <Instance>* * livarno livarno</Instance>
+                    <ValueTable>45</ValueTable>
+                </Entry>
+            </Parameter>
+        </Func>
+    </RewardFunction>
+</pomdpx>

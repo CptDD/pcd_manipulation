@@ -5,7 +5,9 @@
 
 
 <Description>This is an auto-generated POMDPX file</Description>
-<Discount>0.95</Discount>		  
+<Discount>0.95</Discount>	
+
+<Horizon>5</Horizon>	  
 
 <Variable>
 
