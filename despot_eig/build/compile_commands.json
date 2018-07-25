@@ -1,0 +1,172 @@
+[
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/core/belief.cpp.o -c /home/cptd/dd/despot/src/core/belief.cpp",
+  "file": "/home/cptd/dd/despot/src/core/belief.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/core/information.cpp.o -c /home/cptd/dd/despot/src/core/information.cpp",
+  "file": "/home/cptd/dd/despot/src/core/information.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/core/globals.cpp.o -c /home/cptd/dd/despot/src/core/globals.cpp",
+  "file": "/home/cptd/dd/despot/src/core/globals.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/core/lower_bound.cpp.o -c /home/cptd/dd/despot/src/core/lower_bound.cpp",
+  "file": "/home/cptd/dd/despot/src/core/lower_bound.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/core/mdp.cpp.o -c /home/cptd/dd/despot/src/core/mdp.cpp",
+  "file": "/home/cptd/dd/despot/src/core/mdp.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/core/node.cpp.o -c /home/cptd/dd/despot/src/core/node.cpp",
+  "file": "/home/cptd/dd/despot/src/core/node.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/core/policy.cpp.o -c /home/cptd/dd/despot/src/core/policy.cpp",
+  "file": "/home/cptd/dd/despot/src/core/policy.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/core/pomdp.cpp.o -c /home/cptd/dd/despot/src/core/pomdp.cpp",
+  "file": "/home/cptd/dd/despot/src/core/pomdp.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/core/solver.cpp.o -c /home/cptd/dd/despot/src/core/solver.cpp",
+  "file": "/home/cptd/dd/despot/src/core/solver.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/core/upper_bound.cpp.o -c /home/cptd/dd/despot/src/core/upper_bound.cpp",
+  "file": "/home/cptd/dd/despot/src/core/upper_bound.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/evaluator.cpp.o -c /home/cptd/dd/despot/src/evaluator.cpp",
+  "file": "/home/cptd/dd/despot/src/evaluator.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/pomdpx/parser/function.cpp.o -c /home/cptd/dd/despot/src/pomdpx/parser/function.cpp",
+  "file": "/home/cptd/dd/despot/src/pomdpx/parser/function.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/pomdpx/parser/parser.cpp.o -c /home/cptd/dd/despot/src/pomdpx/parser/parser.cpp",
+  "file": "/home/cptd/dd/despot/src/pomdpx/parser/parser.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/pomdpx/parser/variable.cpp.o -c /home/cptd/dd/despot/src/pomdpx/parser/variable.cpp",
+  "file": "/home/cptd/dd/despot/src/pomdpx/parser/variable.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/pomdpx/pomdpx.cpp.o -c /home/cptd/dd/despot/src/pomdpx/pomdpx.cpp",
+  "file": "/home/cptd/dd/despot/src/pomdpx/pomdpx.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/random_streams.cpp.o -c /home/cptd/dd/despot/src/random_streams.cpp",
+  "file": "/home/cptd/dd/despot/src/random_streams.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/simple_tui.cpp.o -c /home/cptd/dd/despot/src/simple_tui.cpp",
+  "file": "/home/cptd/dd/despot/src/simple_tui.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/solver/aems.cpp.o -c /home/cptd/dd/despot/src/solver/aems.cpp",
+  "file": "/home/cptd/dd/despot/src/solver/aems.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/solver/despot.cpp.o -c /home/cptd/dd/despot/src/solver/despot.cpp",
+  "file": "/home/cptd/dd/despot/src/solver/despot.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/solver/pomcp.cpp.o -c /home/cptd/dd/despot/src/solver/pomcp.cpp",
+  "file": "/home/cptd/dd/despot/src/solver/pomcp.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/util/coord.cpp.o -c /home/cptd/dd/despot/src/util/coord.cpp",
+  "file": "/home/cptd/dd/despot/src/util/coord.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/util/dirichlet.cpp.o -c /home/cptd/dd/despot/src/util/dirichlet.cpp",
+  "file": "/home/cptd/dd/despot/src/util/dirichlet.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/util/exec_tracker.cpp.o -c /home/cptd/dd/despot/src/util/exec_tracker.cpp",
+  "file": "/home/cptd/dd/despot/src/util/exec_tracker.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/util/floor.cpp.o -c /home/cptd/dd/despot/src/util/floor.cpp",
+  "file": "/home/cptd/dd/despot/src/util/floor.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/util/gamma.cpp.o -c /home/cptd/dd/despot/src/util/gamma.cpp",
+  "file": "/home/cptd/dd/despot/src/util/gamma.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/util/logging.cpp.o -c /home/cptd/dd/despot/src/util/logging.cpp",
+  "file": "/home/cptd/dd/despot/src/util/logging.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/util/random.cpp.o -c /home/cptd/dd/despot/src/util/random.cpp",
+  "file": "/home/cptd/dd/despot/src/util/random.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/util/seeds.cpp.o -c /home/cptd/dd/despot/src/util/seeds.cpp",
+  "file": "/home/cptd/dd/despot/src/util/seeds.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/util/util.cpp.o -c /home/cptd/dd/despot/src/util/util.cpp",
+  "file": "/home/cptd/dd/despot/src/util/util.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/util/tinyxml/tinystr.cpp.o -c /home/cptd/dd/despot/src/util/tinyxml/tinystr.cpp",
+  "file": "/home/cptd/dd/despot/src/util/tinyxml/tinystr.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/util/tinyxml/tinyxml.cpp.o -c /home/cptd/dd/despot/src/util/tinyxml/tinyxml.cpp",
+  "file": "/home/cptd/dd/despot/src/util/tinyxml/tinyxml.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlerror.cpp.o -c /home/cptd/dd/despot/src/util/tinyxml/tinyxmlerror.cpp",
+  "file": "/home/cptd/dd/despot/src/util/tinyxml/tinyxmlerror.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build",
+  "command": "/usr/bin/g++-5   -Ddespot_EXPORTS -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g -fPIC   -o CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlparser.cpp.o -c /home/cptd/dd/despot/src/util/tinyxml/tinyxmlparser.cpp",
+  "file": "/home/cptd/dd/despot/src/util/tinyxml/tinyxmlparser.cpp"
+},
+{
+  "directory": "/home/cptd/dd/despot/build/examples/pomdpx_models",
+  "command": "/usr/bin/g++-5    -I/home/cptd/dd/despot/include   -msse2 -mfpmath=sse -g   -o CMakeFiles/despot_pomdpx.dir/src/main.cpp.o -c /home/cptd/dd/despot/examples/pomdpx_models/src/main.cpp",
+  "file": "/home/cptd/dd/despot/examples/pomdpx_models/src/main.cpp"
+}
+]

@@ -1,0 +1,400 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<pomdpx version='1.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='pomdpx.xsd'>
+	<Discount>0.95</Discount>
+	<Horizon>10</Horizon>
+	<Variable>
+		<StateVar fullyObs="true" vnameCurr="robot_1" vnamePrev="robot_0">
+			<ValueEnum>p1 p2</ValueEnum>
+		</StateVar>
+		<StateVar fullyObs="false" vnameCurr="state_1" vnamePrev="state_0">
+			<ValueEnum>s1 s2</ValueEnum>
+		</StateVar>
+
+        <StateVar fullyObs="false" vnameCurr="state_3" vnamePrev="state_2">
+            <ValueEnum>s3 s4</ValueEnum>
+        </StateVar>
+
+		<ObsVar vname="obs_sensor_1">
+			<ValueEnum>os1 os2</ValueEnum>
+		</ObsVar>
+
+        <ObsVar vname="obs_sensor_2">
+            <ValueEnum>os3 os4</ValueEnum>
+        </ObsVar>
+
+		<ActionVar vname="action_robot">
+			<ValueEnum>a1 a2</ValueEnum>
+		</ActionVar>
+		<RewardVar vname="reward_bulb_1"/>
+        <RewardVar vname="reward_bulb_2"/>
+	</Variable>
+
+	<InitialStateBelief>
+		<CondProb>
+			<Var>robot_0</Var>
+			<Parent>null</Parent>
+			<Parameter type="TBL">
+				<Entry>
+					<Instance>-</Instance>
+					<ProbTable>0 1</ProbTable>
+				</Entry>
+			</Parameter>
+		</CondProb>
+		<CondProb>
+			<Var>state_0</Var>
+			<Parent>null</Parent>
+			<Parameter type="TBL">
+				<Entry>
+					<Instance>-</Instance>
+					<ProbTable>uniform</ProbTable>
+				</Entry>
+			</Parameter>
+		</CondProb>
+        <CondProb>
+            <Var>state_2</Var>
+            <Parent>null</Parent>
+            <Parameter type="TBL">
+                <Entry>
+                    <Instance>-</Instance>
+                    <ProbTable>uniform</ProbTable>
+                </Entry>
+            </Parameter>
+        </CondProb>
+	</InitialStateBelief>
+
+	<StateTransitionFunction>
+		  <CondProb>
+            <Var>robot_1</Var>
+            <Parent>action_robot robot_0</Parent>
+            <Parameter type="TBL">
+
+                <Entry>
+                    <Instance>a1 p1 p1</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>a1 p2 p1</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>a2 p1 p2</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>a2 p2 p2</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+           </Parameter>
+        </CondProb>
+
+        <CondProb>
+            <Var>state_1</Var>
+            <Parent>action_robot state_0</Parent>
+            <Parameter type="TBL">
+                <Entry>
+                    <Instance>a1 s1 s1</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>a1 s2 s2</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>a2 s1 s1</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>a2 s2 s2</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+            </Parameter>
+        </CondProb>
+
+        <CondProb>
+            <Var>state_3</Var>
+            <Parent>action_robot state_2</Parent>
+            <Parameter type="TBL">
+                <Entry>
+                    <Instance>a1 s3 s3</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>a1 s4 s4</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>a2 s3 s3</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>a2 s4 s4</Instance>
+                    <ProbTable>1</ProbTable>
+                </Entry>
+
+            </Parameter>
+        </CondProb>
+	</StateTransitionFunction>
+
+	<ObsFunction>
+		 <CondProb>
+            <Var>obs_sensor_1</Var>
+            <Parent>action_robot robot_1 state_1</Parent>
+            <Parameter type="TBL">
+
+                <Entry>
+                    <Instance>a1 p1 s1 os1</Instance>
+                    <ProbTable>0.7</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>a1 p1 s1 os2</Instance>
+                    <ProbTable>0.3</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>a1 p1 s2 os1</Instance>
+                    <ProbTable>0.2</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>a1 p1 s2 os2</Instance>
+                    <ProbTable>0.8</ProbTable>
+                </Entry>
+
+
+
+                <Entry>
+                    <Instance>a1 p2 s1 os1</Instance>
+                    <ProbTable>0.6</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>a1 p2 s1 os2</Instance>
+                    <ProbTable>0.4</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>a1 p2 s2 os1</Instance>
+                    <ProbTable>0.4</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>a1 p2 s2 os2</Instance>
+                    <ProbTable>0.6</ProbTable>
+                </Entry>
+
+
+
+                 <Entry>
+                    <Instance>a2 p1 s1 os1</Instance>
+                    <ProbTable>0.8</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>a2 p1 s1 os2</Instance>
+                    <ProbTable>0.2</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>a2 p1 s2 os1</Instance>
+                    <ProbTable>0.4</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>a2 p1 s2 os2</Instance>
+                    <ProbTable>0.6</ProbTable>
+                </Entry>
+
+
+
+                <Entry>
+                    <Instance>a2 p2 s1 os1</Instance>
+                    <ProbTable>0.9</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>a2 p2 s1 os2</Instance>
+                    <ProbTable>0.1</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>a2 p2 s2 os1</Instance>
+                    <ProbTable>0.3</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>a2 p2 s2 os2</Instance>
+                    <ProbTable>0.7</ProbTable>
+                </Entry>
+
+            </Parameter>
+        </CondProb>
+
+        <CondProb>
+            <Var>obs_sensor_2</Var>
+            <Parent>action_robot robot_1 state_3</Parent>
+            <Parameter type="TBL">
+
+                <Entry>
+                    <Instance>a1 p1 s3 os3</Instance>
+                    <ProbTable>0.7</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>a1 p1 s3 os4</Instance>
+                    <ProbTable>0.3</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>a1 p1 s4 os3</Instance>
+                    <ProbTable>0.2</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>a1 p1 s4 os4</Instance>
+                    <ProbTable>0.8</ProbTable>
+                </Entry>
+
+
+
+                <Entry>
+                    <Instance>a1 p2 s3 os3</Instance>
+                    <ProbTable>0.6</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>a1 p2 s3 os4</Instance>
+                    <ProbTable>0.4</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>a1 p2 s4 os3</Instance>
+                    <ProbTable>0.4</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>a1 p2 s4 os4</Instance>
+                    <ProbTable>0.6</ProbTable>
+                </Entry>
+
+
+
+                 <Entry>
+                    <Instance>a2 p1 s3 os3</Instance>
+                    <ProbTable>0.8</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>a2 p1 s3 os4</Instance>
+                    <ProbTable>0.2</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>a2 p1 s4 os3</Instance>
+                    <ProbTable>0.4</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>a2 p1 s4 os4</Instance>
+                    <ProbTable>0.6</ProbTable>
+                </Entry>
+
+
+
+                <Entry>
+                    <Instance>a2 p2 s3 os3</Instance>
+                    <ProbTable>0.9</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>a2 p2 s3 os4</Instance>
+                    <ProbTable>0.1</ProbTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>a2 p2 s4 os3</Instance>
+                    <ProbTable>0.3</ProbTable>
+                </Entry>
+
+                 <Entry>
+                    <Instance>a2 p2 s4 os4</Instance>
+                    <ProbTable>0.7</ProbTable>
+                </Entry>
+
+            </Parameter>
+        </CondProb>
+    </ObsFunction>
+
+    <RewardFunction>
+        <Func>
+            <Var>reward_bulb_1</Var>
+            <Parent>action_robot robot_0 state_0 state_1</Parent>
+            <Parameter type="TBL">
+
+                <Entry>
+                    <Instance>* * s1 s1</Instance>
+                    <ValueTable>15</ValueTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>* * s1 s2</Instance>
+                    <ValueTable>-100</ValueTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>* * s2 s2</Instance>
+                    <ValueTable>15</ValueTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>* * s2 s1</Instance>
+                    <ValueTable>-100</ValueTable>
+                </Entry>
+            </Parameter>
+        </Func>
+
+        <Func>
+            <Var>reward_bulb_2</Var>
+            <Parent>action_robot robot_0 state_2 state_3</Parent>
+            <Parameter type="TBL">
+                <Entry>
+                    <Instance>* * s3 s3</Instance>
+                    <ValueTable>10</ValueTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>* * s3 s4</Instance>
+                    <ValueTable>-20</ValueTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>* * s4 s3</Instance>
+                    <ValueTable>-15</ValueTable>
+                </Entry>
+
+                <Entry>
+                    <Instance>* * s4 s4</Instance>
+                    <ValueTable>10</ValueTable>
+                </Entry>
+
+
+
+            </Parameter>
+        </Func>
+
+
+    </RewardFunction>
+
+
+</pomdpx>

@@ -1,0 +1,414 @@
+DESPOT
+ Horizon = 15
+Parsing terminal tag
+Parsing transitions
+Parsing reward function
+Done
+Action vars size :5
+Rewards func size:2
+Model = N6despot6POMDPXE
+Random root seed = 413035000
+Search depth = 15
+Discount = 0.95
+Simulation steps = 15
+Number of scenarios = 500
+Search time per step = 1
+Regularization constant = 0
+Lower bound = DEFAULT
+Upper bound = DEFAULT
+Policy simulation depth = 90
+Target gap ratio = 0.95
+
+####################################### Round 0 #######################################
+- Initial State = [robot_1:vp5, state_1:elongated, state_3:elongated]
+
+pdf for 4096 particles:
+ [robot_1:vp5, state_1:elongated, state_3:elongated] = 0.25
+ [robot_1:vp5, state_1:elongated, state_3:livarno] = 0.25
+ [robot_1:vp5, state_1:livarno, state_3:elongated] = 0.25
+ [robot_1:vp5, state_1:livarno, state_3:livarno] = 0.25
+
+[POMDPEvaluator::InitRound] Created intial belief N6despot12POMDPXBeliefE in 0.015311s
+Particles size 500
+Chosen action is :2
+-----------------------------------Round 0 Step 0-----------------------------------
+- Action = 2:east
+- State = [robot_1:vp5, state_1:elongated, state_3:elongated]
+- Observation = 
+[obs_sensor_1:olivarno, obs_sensor_2:oelongated]
+- ObsProb = 0.223569
+Pre
+pdf for 4096 particles:
+ [robot_1:vp5, state_1:elongated, state_3:elongated] = 0.25
+ [robot_1:vp5, state_1:elongated, state_3:livarno] = 0.25
+ [robot_1:vp5, state_1:livarno, state_3:elongated] = 0.25
+ [robot_1:vp5, state_1:livarno, state_3:livarno] = 0.25
+
+Post
+pdf for 4096 particles:
+ [robot_1:vp5, state_1:livarno, state_3:elongated] = 0.340281
+ [robot_1:vp5, state_1:livarno, state_3:livarno] = 0.256787
+ [robot_1:vp5, state_1:elongated, state_3:elongated] = 0.229639
+ [robot_1:vp5, state_1:elongated, state_3:livarno] = 0.173293
+
+- Reward = 30
+- Current rewards:
+  discounted / undiscounted = 30 / 30
+Particles size 500
+Chosen action is :0
+-----------------------------------Round 0 Step 1-----------------------------------
+- Action = 0:south
+- State = [robot_1:vp6, state_1:elongated, state_3:elongated]
+- Observation = 
+[obs_sensor_1:olivarno, obs_sensor_2:oelongated]
+- ObsProb = 0.155013
+Pre
+pdf for 4096 particles:
+ [robot_1:vp5, state_1:livarno, state_3:elongated] = 0.340281
+ [robot_1:vp5, state_1:livarno, state_3:livarno] = 0.256787
+ [robot_1:vp5, state_1:elongated, state_3:elongated] = 0.229639
+ [robot_1:vp5, state_1:elongated, state_3:livarno] = 0.173293
+
+Post
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.541538
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.252823
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.14019
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.0654492
+
+- Reward = 30
+- Current rewards:
+  discounted / undiscounted = 58.5 / 60
+Particles size 500
+Chosen action is :1
+-----------------------------------Round 0 Step 2-----------------------------------
+- Action = 1:north
+- State = [robot_1:vp6, state_1:elongated, state_3:elongated]
+- Observation = 
+[obs_sensor_1:oelongated, obs_sensor_2:oelongated]
+- ObsProb = 0.653186
+Pre
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.541538
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.252823
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.14019
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.0654492
+
+Post
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.547007
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.228892
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.157991
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.0661102
+
+- Reward = 30
+- Current rewards:
+  discounted / undiscounted = 85.575 / 90
+Particles size 500
+Chosen action is :0
+-----------------------------------Round 0 Step 3-----------------------------------
+- Action = 0:south
+- State = [robot_1:vp4, state_1:elongated, state_3:elongated]
+- Observation = 
+[obs_sensor_1:oelongated, obs_sensor_2:oelongated]
+- ObsProb = 0.275209
+Pre
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.547007
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.228892
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.157991
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.0661102
+
+Post
+pdf for 4096 particles:
+ [robot_1:vp4, state_1:livarno, state_3:elongated] = 0.544908
+ [robot_1:vp4, state_1:elongated, state_3:elongated] = 0.239233
+ [robot_1:vp4, state_1:livarno, state_3:livarno] = 0.150003
+ [robot_1:vp4, state_1:elongated, state_3:livarno] = 0.0658564
+
+- Reward = 30
+- Current rewards:
+  discounted / undiscounted = 111.296 / 120
+Particles size 500
+Chosen action is :1
+-----------------------------------Round 0 Step 4-----------------------------------
+- Action = 1:north
+- State = [robot_1:vp5, state_1:elongated, state_3:elongated]
+- Observation = 
+[obs_sensor_1:oelongated, obs_sensor_2:oelongated]
+- ObsProb = 0.439005
+Pre
+pdf for 4096 particles:
+ [robot_1:vp4, state_1:livarno, state_3:elongated] = 0.544908
+ [robot_1:vp4, state_1:elongated, state_3:elongated] = 0.239233
+ [robot_1:vp4, state_1:livarno, state_3:livarno] = 0.150003
+ [robot_1:vp4, state_1:elongated, state_3:livarno] = 0.0658564
+
+Post
+pdf for 4096 particles:
+ [robot_1:vp5, state_1:livarno, state_3:elongated] = 0.523456
+ [robot_1:vp5, state_1:elongated, state_3:elongated] = 0.304539
+ [robot_1:vp5, state_1:livarno, state_3:livarno] = 0.108741
+ [robot_1:vp5, state_1:elongated, state_3:livarno] = 0.0632638
+
+- Reward = 30
+- Current rewards:
+  discounted / undiscounted = 135.731 / 150
+Particles size 500
+Chosen action is :0
+-----------------------------------Round 0 Step 5-----------------------------------
+- Action = 0:south
+- State = [robot_1:vp6, state_1:elongated, state_3:elongated]
+- Observation = 
+[obs_sensor_1:oelongated, obs_sensor_2:olivarno]
+- ObsProb = 0.155013
+Pre
+pdf for 4096 particles:
+ [robot_1:vp5, state_1:livarno, state_3:elongated] = 0.523456
+ [robot_1:vp5, state_1:elongated, state_3:elongated] = 0.304539
+ [robot_1:vp5, state_1:livarno, state_3:livarno] = 0.108741
+ [robot_1:vp5, state_1:elongated, state_3:livarno] = 0.0632638
+
+Post
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.334314
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.314388
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.181045
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.170254
+
+- Reward = 30
+- Current rewards:
+  discounted / undiscounted = 158.945 / 180
+Particles size 500
+Chosen action is :3
+-----------------------------------Round 0 Step 6-----------------------------------
+- Action = 3:west
+- State = [robot_1:vp6, state_1:elongated, state_3:elongated]
+- Observation = 
+[obs_sensor_1:oelongated, obs_sensor_2:olivarno]
+- ObsProb = 0.155013
+Pre
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.334314
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.314388
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.181045
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.170254
+
+Post
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.353079
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.250104
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.23228
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.164536
+
+- Reward = 30
+- Current rewards:
+  discounted / undiscounted = 180.998 / 210
+Particles size 500
+Chosen action is :1
+-----------------------------------Round 0 Step 7-----------------------------------
+- Action = 1:north
+- State = [robot_1:vp6, state_1:elongated, state_3:elongated]
+- Observation = 
+[obs_sensor_1:olivarno, obs_sensor_2:oelongated]
+- ObsProb = 0.155013
+Pre
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.353079
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.250104
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.23228
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.164536
+
+Post
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.337184
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.294489
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.196611
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.171716
+
+- Reward = 30
+- Current rewards:
+  discounted / undiscounted = 201.948 / 240
+Particles size 500
+Chosen action is :3
+-----------------------------------Round 0 Step 8-----------------------------------
+- Action = 3:west
+- State = [robot_1:vp6, state_1:elongated, state_3:elongated]
+- Observation = 
+[obs_sensor_1:oelongated, obs_sensor_2:oelongated]
+- ObsProb = 0.653186
+Pre
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.337184
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.294489
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.196611
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.171716
+
+Post
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.334213
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.315001
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.180583
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.170203
+
+- Reward = 30
+- Current rewards:
+  discounted / undiscounted = 221.85 / 270
+Particles size 500
+Chosen action is :3
+-----------------------------------Round 0 Step 9-----------------------------------
+- Action = 3:west
+- State = [robot_1:vp6, state_1:elongated, state_3:elongated]
+- Observation = 
+[obs_sensor_1:oelongated, obs_sensor_2:oelongated]
+- ObsProb = 0.653186
+Pre
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.334213
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.315001
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.180583
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.170203
+
+Post
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.452471
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.296998
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.151251
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.0992796
+
+- Reward = 30
+- Current rewards:
+  discounted / undiscounted = 240.758 / 300
+Particles size 500
+Chosen action is :1
+-----------------------------------Round 0 Step 10-----------------------------------
+- Action = 1:north
+- State = [robot_1:vp6, state_1:elongated, state_3:elongated]
+- Observation = 
+[obs_sensor_1:oelongated, obs_sensor_2:oelongated]
+- ObsProb = 0.653186
+Pre
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.452471
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.296998
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.151251
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.0992796
+
+Post
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.589322
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.239314
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.121874
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.0494908
+
+- Reward = 30
+- Current rewards:
+  discounted / undiscounted = 258.72 / 330
+Particles size 500
+Chosen action is :3
+-----------------------------------Round 0 Step 11-----------------------------------
+- Action = 3:west
+- State = [robot_1:vp6, state_1:elongated, state_3:elongated]
+- Observation = 
+[obs_sensor_1:oelongated, obs_sensor_2:oelongated]
+- ObsProb = 0.653186
+Pre
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.589322
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.239314
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.121874
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.0494908
+
+Post
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.708562
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.17801
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.090654
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.0227747
+
+- Reward = 30
+- Current rewards:
+  discounted / undiscounted = 275.784 / 360
+Particles size 500
+Chosen action is :3
+-----------------------------------Round 0 Step 12-----------------------------------
+- Action = 3:west
+- State = [robot_1:vp6, state_1:elongated, state_3:elongated]
+- Observation = 
+[obs_sensor_1:oelongated, obs_sensor_2:oelongated]
+- ObsProb = 0.653186
+Pre
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.708562
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.17801
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.090654
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.0227747
+
+Post
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.802003
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.124651
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.06348
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.00986631
+
+- Reward = 30
+- Current rewards:
+  discounted / undiscounted = 291.995 / 390
+Particles size 500
+Chosen action is :1
+-----------------------------------Round 0 Step 13-----------------------------------
+- Action = 1:north
+- State = [robot_1:vp6, state_1:elongated, state_3:elongated]
+- Observation = 
+[obs_sensor_1:oelongated, obs_sensor_2:oelongated]
+- ObsProb = 0.653186
+Pre
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.802003
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.124651
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.06348
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.00986631
+
+Post
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.869693
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.0836249
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.0425871
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.00409495
+
+- Reward = 30
+- Current rewards:
+  discounted / undiscounted = 307.395 / 420
+Particles size 500
+Chosen action is :3
+-----------------------------------Round 0 Step 14-----------------------------------
+- Action = 3:west
+- State = [robot_1:vp6, state_1:elongated, state_3:elongated]
+- Observation = 
+[obs_sensor_1:oelongated, obs_sensor_2:oelongated]
+- ObsProb = 0.653186
+Pre
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.869693
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.0836249
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.0425871
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.00409495
+
+Post
+pdf for 4096 particles:
+ [robot_1:vp6, state_1:elongated, state_3:elongated] = 0.9161
+ [robot_1:vp6, state_1:livarno, state_3:elongated] = 0.054496
+ [robot_1:vp6, state_1:elongated, state_3:livarno] = 0.0277528
+ [robot_1:vp6, state_1:livarno, state_3:livarno] = 0.00165093
+
+- Reward = 30
+- Current rewards:
+  discounted / undiscounted = 322.025 / 450
+Simulation terminated in 15 steps
+Total discounted reward = 322.025
+Total undiscounted reward = 450
+
+Completed 1 run(s).
+Average total discounted reward (stderr) = 322.025 (0)
+Average total undiscounted reward (stderr) = 450 (0)
+Total time: Real / CPU = 18.0951 / 17.9405s

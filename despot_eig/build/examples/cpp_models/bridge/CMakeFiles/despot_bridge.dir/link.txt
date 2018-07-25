@@ -1,0 +1,1 @@
+/usr/bin/g++-5    -msse2 -mfpmath=sse -g   CMakeFiles/despot_bridge.dir/src/bridge.cpp.o CMakeFiles/despot_bridge.dir/src/main.cpp.o  -o despot_bridge -rdynamic ../../../libdespot.so -Wl,-rpath,/home/cptd/dd/despot/build: 
