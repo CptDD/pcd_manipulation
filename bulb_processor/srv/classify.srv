@@ -1,0 +1,4 @@
+std_msgs/String command
+std_msgs/String bulb_type
+---
+std_msgs/Int16 type

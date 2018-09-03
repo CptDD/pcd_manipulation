@@ -1,0 +1,28 @@
+Bulb:	mushroom
+Label:	p15
+Percentage_e:	0.2
+Percentage_l:	0
+Percentage_m:	0.7
+Percentage_s:	0.1
+---
+Bulb:	mushroom
+Label:	p16
+Percentage_e:	0.1
+Percentage_l:	0
+Percentage_m:	0.9
+Percentage_s:	0
+---
+Bulb:	mushroom
+Label:	p6
+Percentage_e:	0.0
+Percentage_l:	0
+Percentage_m:	0.9
+Percentage_s:	0.1
+---
+Bulb:	mushroom
+Label:	p7
+Percentage_e:	0.4
+Percentage_l:	0
+Percentage_m:	0.6
+Percentage_s:	0
+---

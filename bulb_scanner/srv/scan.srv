@@ -1,0 +1,5 @@
+geometry_msgs/Pose center
+std_msgs/Float32 radius
+std_msgs/Int16 nr_of_points
+---
+geometry_msgs/Pose[] points
