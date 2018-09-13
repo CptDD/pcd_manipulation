@@ -1,8 +1,5 @@
 #include <despot/evaluator.h>
-#include <despot/core/information.h>
-//#define CUSTOM
-
-
+#include <iostream>
 using namespace std;
 
 namespace despot {
@@ -157,53 +154,14 @@ bool Evaluator::RunStep(int step, int round) {
 
 	double start_t = get_time_second();
 	int action = solver_->Search().action;
-	cout<<"Chosen action is :"<<action<<endl;
-
-
-	if(action==2)
-	{
-		cout<<"Decision making!"<<endl;
-
-		map<string,double> pdf=solver_->belief()->get_pdf();
-		
-		map<string,double>::iterator it;
-
-		/*cout<<"Before!"<<endl;
-		for(it=pdf.begin();it!=pdf.end();++it)
-		{
-			cout<<it->first<<" "<<it->second<<endl;
-		}*/
-		
-		Belief *new_belief=solver_->belief();
-		new_belief->propagate();
-
-		solver_->belief(new_belief);
-
-		pdf=solver_->belief()->get_pdf();
-
-		/*cout<<"After!"<<endl;
-		for(it=pdf.begin();it!=pdf.end();++it)
-		{
-			cout<<it->first<<" "<<it->second<<endl;
-		}*/
-
-
-	}
-
-	//action=1;
-	//cout<<"Forced action is :"<<action<<endl;
 	double end_t = get_time_second();
 	logi << "[RunStep] Time spent in " << typeid(*solver_).name()
 		<< "::Search(): " << (end_t - start_t) << endl;
 
 	double reward;
 	OBS_TYPE obs;
-	//obs=1;
 	start_t = get_time_second();
-
-	cout<<"Maxer :"<<solver_->belief()->get_max()<<endl;
-	
-	bool terminal = ExecuteAction(action, reward, obs,solver_->belief()->get_max());
+	bool terminal = ExecuteAction(action, reward, obs);
 	end_t = get_time_second();
 	logi << "[RunStep] Time spent in ExecuteAction(): " << (end_t - start_t)
 		<< endl;
@@ -219,9 +177,8 @@ bool Evaluator::RunStep(int step, int round) {
 
 	if (state_ != NULL) {
 		if (!Globals::config.silence && out_) {
-			*out_ << "- State = ";
+			*out_ << "- State:";
 			model_->PrintState(*state_, *out_);
-
 		}
 	}
 
@@ -236,7 +193,7 @@ bool Evaluator::RunStep(int step, int round) {
 				<< endl;
 	}
 
-	//ReportStepReward();
+	ReportStepReward();
 	end_t = get_time_second();
 
 	double step_end_t;
@@ -255,42 +212,11 @@ bool Evaluator::RunStep(int step, int round) {
 
 	start_t = get_time_second();
 
-	#ifdef CUSTOM
-
-	Information i(model_,4);
-
-	Belief *pre=solver_->belief();
-	//cout<<"Pre :"<<pre->text()<<endl;
-	i.add_pre(pre);
-	#endif
-
 	cout<<"Pre"<<endl;
 	cout<<solver_->belief()->text()<<endl;
-	
 	solver_->Update(action, obs);
-
 	cout<<"Post"<<endl;
 	cout<<solver_->belief()->text()<<endl;
-
-	#ifdef CUSTOM
-	Belief *post=solver_->belief();
-	i.add_post(post);
-	//cout<<"Post :"<<post->text()<<endl;
-	//i.show();
-	//i.compute_information_gain();
-
-	/*====Update reward===*/
-	
-	double eig=i.compute_expected_information_gain(); //expected information gain K-L divergence
-
-	reward_=eig;
-	total_discounted_reward_+= Globals::Discount(step_)*eig;
-	total_undiscounted_reward_ += eig;
-
-	#endif
-
-	ReportStepReward();
-
 	end_t = get_time_second();
 	logi << "[RunStep] Time spent in Update(): " << (end_t - start_t) << endl;
 
@@ -381,7 +307,7 @@ void POMDPEvaluator::InitRound() {
 	state_ = model_->CreateStartState();
 	logi << "[POMDPEvaluator::InitRound] Created start state." << endl;
 	if (!Globals::config.silence && out_) {
-		*out_ << "- Initial State = ";
+		*out_ << "Initial state: ";
 		model_->PrintState(*state_, *out_);
 		*out_ << endl;
 	}
@@ -395,14 +321,9 @@ void POMDPEvaluator::InitRound() {
 
 	start_t = get_time_second();
 	Belief* belief = model_->InitialBelief(state_, belief_type_);
-	cout<<belief->text()<<endl;
 	end_t = get_time_second();
 	logi << "[POMDPEvaluator::InitRound] Created intial belief "
 		<< typeid(*belief).name() << " in " << (end_t - start_t) << "s" << endl;
-
-	cout << "[POMDPEvaluator::InitRound] Created intial belief "
-		<< typeid(*belief).name() << " in " << (end_t - start_t) << "s" << endl;
-	
 
 	solver_->belief(belief);
 
@@ -422,19 +343,13 @@ double POMDPEvaluator::EndRound() {
 	return total_undiscounted_reward_;
 }
 
-bool POMDPEvaluator::ExecuteAction(int action, double& reward, OBS_TYPE& obs,double random_num) {
-	//double random_num = random_.NextDouble();
-	//random_num=0.8;
-	//random_num=0.52465122450359691;
-	//random_num=0.89529110719230542;
-
+bool POMDPEvaluator::ExecuteAction(int action, double& reward, OBS_TYPE& obs) {
+	double random_num = random_.NextDouble();
 	bool terminal = model_->Step(*state_, random_num, action, reward, obs);
 
-	#ifndef CUSTOM
 	reward_ = reward;
 	total_discounted_reward_ += Globals::Discount(step_) * reward;
 	total_undiscounted_reward_ += reward;
-	#endif
 
 	return terminal;
 }

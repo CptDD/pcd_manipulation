@@ -25,6 +25,19 @@
 #define X_MIN 0.75
 #define X_MAX 0.82
 
+#define Y_MIN_1 0.35
+#define Y_MAX_1 0.45
+
+#define Y_MIN_2 0.2
+#define Y_MAX_2 0.35
+
+#define Z_MIN_REAL 0.01
+#define Z_MAX_REAL 0.1
+#define X_MIN_REAL 0.55
+#define X_MAX_REAL 0.95
+#define Y_MIN_REAL -0.2
+#define Y_MAX_REAL -0.1
+
 using namespace std;
 
 class Segmentor
@@ -42,6 +55,72 @@ public:
 		pass_filter.setInputCloud(filtered_cloud);
 		pass_filter.setFilterFieldName("x");
 		pass_filter.setFilterLimits(X_MIN,X_MAX);
+		pass_filter.filter(*filtered_cloud);
+
+	}
+
+
+	static void pass_filter_bulb_principal(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud,pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud)
+	{
+		pcl::PassThrough<pcl::PointXYZ> pass_filter;
+		pass_filter.setInputCloud(cloud);
+		pass_filter.setFilterFieldName("z");
+		pass_filter.setFilterLimits(Z_MIN,Z_MAX);
+		pass_filter.filter(*filtered_cloud);
+
+		pass_filter.setInputCloud(filtered_cloud);
+		pass_filter.setFilterFieldName("x");
+		pass_filter.setFilterLimits(X_MIN,X_MAX);
+		pass_filter.filter(*filtered_cloud);
+
+
+		pass_filter.setInputCloud(filtered_cloud);
+		pass_filter.setFilterFieldName("y");
+		pass_filter.setFilterLimits(Y_MIN_1,Y_MAX_1);
+		pass_filter.filter(*filtered_cloud);
+
+	}
+
+	static void pass_filter_bulb_secondary(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud,pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud)
+	{
+		pcl::PassThrough<pcl::PointXYZ> pass_filter;
+		pass_filter.setInputCloud(cloud);
+		pass_filter.setFilterFieldName("z");
+		pass_filter.setFilterLimits(Z_MIN,Z_MAX);
+		pass_filter.filter(*filtered_cloud);
+
+		pass_filter.setInputCloud(filtered_cloud);
+		pass_filter.setFilterFieldName("x");
+		pass_filter.setFilterLimits(X_MIN,X_MAX);
+		pass_filter.filter(*filtered_cloud);
+
+
+		pass_filter.setInputCloud(filtered_cloud);
+		pass_filter.setFilterFieldName("y");
+		pass_filter.setFilterLimits(Y_MIN_2,Y_MAX_2);
+		pass_filter.filter(*filtered_cloud);
+
+	}
+
+
+
+	static void pass_filter_bulb_real(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud,pcl::PointCloud<pcl::PointXYZ>::Ptr filtered_cloud)
+	{
+		pcl::PassThrough<pcl::PointXYZ> pass_filter;
+		pass_filter.setInputCloud(cloud);
+		pass_filter.setFilterFieldName("z");
+		pass_filter.setFilterLimits(Z_MIN_REAL,Z_MAX_REAL);
+		pass_filter.filter(*filtered_cloud);
+
+		pass_filter.setInputCloud(filtered_cloud);
+		pass_filter.setFilterFieldName("x");
+		pass_filter.setFilterLimits(X_MIN_REAL,X_MAX_REAL);
+		pass_filter.filter(*filtered_cloud);
+
+
+		pass_filter.setInputCloud(filtered_cloud);
+		pass_filter.setFilterFieldName("y");
+		pass_filter.setFilterLimits(Y_MIN_REAL,Y_MAX_REAL);
 		pass_filter.filter(*filtered_cloud);
 
 	}
@@ -120,7 +199,7 @@ public:
 
     		cout << "PointCloud representing the Cluster: " << cloud_cluster->points.size () << " data points." << std::endl;
     		
-    		if(cloud_cluster->points.size()>200)
+    		if(cloud_cluster->points.size()>10)
     		{
 	    		output_clouds.push_back(cloud_cluster);
     		}

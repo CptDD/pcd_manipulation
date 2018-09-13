@@ -33,15 +33,6 @@ public:
 	friend std::ostream& operator<<(std::ostream& os, const Belief& belief);
 	virtual Belief* MakeCopy() const = 0;
 
-	virtual std::map<std::string, double> get_pdf();
-
-	virtual double get_max();
-
-	virtual void propagate();
-	virtual std::vector<State*> get_propagation();
-	virtual std::vector<State*> get_particles();
-	virtual double particles_sum(std::vector<State*> particles);
-
 	static std::vector<State*> Sample(int num, std::vector<State*> belief,
 		const DSPOMDP* model);
 	static std::vector<State*> Resample(int num, const std::vector<State*>& belief,
@@ -58,16 +49,14 @@ public:
 
 class ParticleBelief: public Belief {
 protected:
-	
+	std::vector<State*> particles_;
+	int num_particles_;
 	Belief* prior_;
 	bool split_;
 	std::vector<State*> initial_particles_;
 	const StateIndexer* state_indexer_;
-	std::vector<State*> particles_;
-	int num_particles_;
 
 public:
-	
 	ParticleBelief(std::vector<State*> particles, const DSPOMDP* model,
 		Belief* prior = NULL, bool split = true);
 
@@ -80,17 +69,8 @@ public:
 	virtual void Update(int action, OBS_TYPE obs);
 
 	virtual Belief* MakeCopy() const;
-	
+
 	virtual std::string text() const;
-
-	virtual std::map<std::string, double> get_pdf();
-	virtual std::vector<State*> get_particles();
-	virtual double particles_sum(std::vector<State*> particles);
-
-	virtual std::vector<State*> get_propagation();
-
-	virtual void propagate();
-	virtual double get_max();
 };
 
 } // namespace despot

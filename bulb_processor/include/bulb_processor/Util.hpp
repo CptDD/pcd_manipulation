@@ -2,11 +2,6 @@
 #define UTIL
 
 #include <iostream>
-#include <pcd_processor/N2.hpp>
-#include <pcd_processor/DistributionEntry.hpp>
-#include <pcd_processor/DistributionEntryMultiple.hpp>
-#include <pcd_processor/DistributionComputer.hpp>
-#include <pcd_processor/DistributionComputerMultiple.hpp>
 #include <boost/algorithm/string.hpp>
 #include <fstream>
 #include <string>
@@ -15,110 +10,73 @@ using namespace std;
 
 class Util{
 
-
-
 public:
-  static void results_2_file(string file_name,vector<pair<string,vector<DistributionEntry> > > dist)
+  
+
+
+  static map<string,vector<double> > read_pdf(string filename)
   {
-      ofstream out;
-      out.open(file_name.c_str());
+    cout<<"Reading the results from the file!"<<endl;
+    map<string,vector<double> >pdf;
 
-
-      cout<<"Writing results to file!"<<endl;
-
-      if(!out)
-      {
-        cout<<"An error has occured while opening the file!"<<endl;
-        return;
-      }
-
-      for(int i=0;i<dist.size();i++)
-      {
-        out<<dist[i].first<<endl;
-
-        for(int j=0;j<dist[i].second.size();j++)
-        {
-          out<<dist[i].second[j].get_label()<<"\t"<<dist[i].second[j].get_type()<<
-          "\t"<<dist[i].second[j].get_positives()<<"\t"<<dist[i].second[j].get_total()<<"\t"
-          <<dist[i].second[j].get_percentage()<<endl;
-        }
-        
-        out<<"==="<<endl;
-      }
-
-      out.close();
-  }
-
-  static void results_2_file(string file_name,vector<pair<string,vector<DistributionEntryMultiple> > > dist)
-  {
-     ofstream out;
-     out.open(file_name.c_str());
-
-     cout<<"Writing results to file!"<<endl;
-
-      if(!out)
-      {
-        cout<<"An error has occured while opening the file!"<<endl;
-        return;
-      }
-
-      for(int i=0;i<dist.size();i++)
-      {
-        out<<dist[i].first<<endl;
-
-        for(int j=0;j<dist[i].second.size();j++)
-        {
-          out<<dist[i].second[j].get_label()<<"\t"<<dist[i].second[j].get_type()<<"\t"<<dist[i].second[j].get_total()<<"\t";
-
-          vector<int> totals=dist[i].second[j].get_positives();
-          vector<double> percentages=dist[i].second[j].get_percentages();
-
-          for(int k=0;k<totals.size();k++)
-          {
-            out<<totals[k]<<"\t";
-          }
-
-          for(int k=0;k<totals.size();k++)
-          {
-            out<<percentages[k]<<"\t";
-          }
-          out<<endl;
-        }
-        out<<"==="<<endl;
-
-
-
-      }
-
-      out.close();
-  }
-
-
-
-  static void get_results_from_file(string file_name,vector<pair<string,vector<DistributionEntry> > > &dist)
-  {
-    cout<<"Reading results from file!"<<endl;
-
-    //vector<pair<string,vector<DistributionEntry> > > dist;
-
-    ifstream in(file_name.c_str());
+    ifstream in(filename.c_str());
 
     if(!in)
     {
-      cout<<"Error while opening the file!"<<endl;
-      return;
+      cout<<"Error while opening  file :"<<filename<<"!"<<endl;
     }
 
-    int line_nr=0;
-    
-    string cloud_path;
-   
-    vector<DistributionEntry> entries;
+    vector<double> values;
+    string label;
 
     while(!in.eof())
     {
       string line;
       getline(in,line);
+
+     
+
+      if(boost::contains(line,"---")==0 && !line.empty())
+      {   
+          if(boost::contains(line,"Label:")==1)
+          {
+            values.clear();
+
+            vector<string> tokens;
+
+            boost::split(tokens,line,boost::is_any_of("\t"));
+
+            label=tokens[tokens.size()-1];
+            boost::replace_all(label,"p", "");
+
+          }
+
+          if(boost::contains(line,"Percentage_")==1)
+          {
+            vector<string> tokens;
+
+            boost::split(tokens,line,boost::is_any_of("\t"));
+
+            stringstream ss;
+            ss<<tokens[tokens.size()-1];
+
+            double temp_value;
+            ss>>temp_value;
+            values.push_back(temp_value);
+          }
+
+      }else
+      {
+        pdf[label]=values;
+      }
+    }
+    
+    return pdf;
+  }
+
+ /* 
+
+
 
       if(boost::contains(line,"===")==0 && !line.empty())
       {
@@ -178,7 +136,7 @@ public:
 
     in.close();
 
-  }
+  }*/
 };
 
 #endif

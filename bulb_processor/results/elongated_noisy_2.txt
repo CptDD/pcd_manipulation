@@ -1,0 +1,28 @@
+Bulb:	elongated
+Label:	p0
+Percentage_e:	0.7
+Percentage_l:	0.1
+Percentage_m:	0.2
+Percentage_s:	0
+---
+Bulb:	elongated
+Label:	p1
+Percentage_e:	0.8
+Percentage_l:	0
+Percentage_m:	0.2
+Percentage_s:	0
+---
+Bulb:	elongated
+Label:	p2
+Percentage_e:	0.5
+Percentage_l:	0
+Percentage_m:	0.5
+Percentage_s:	0
+---
+Bulb:	elongated
+Label:	p3
+Percentage_e:	0.6
+Percentage_l:	0
+Percentage_m:	0.4
+Percentage_s:	0
+---

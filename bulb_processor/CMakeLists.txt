@@ -85,6 +85,7 @@ find_package(Boost REQUIRED COMPONENTS system)
 add_service_files(
    FILES
    classify.srv
+   classify_multiple.srv
 #   Service2.srv
 )
 
@@ -164,6 +165,9 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(segment_server src/segment_server.cpp)
 add_executable(classification_server src/classify_server.cpp)
+add_executable(single_classification_server src/single_classification.cpp)
+add_executable(multi_classification_server src/multi_classification.cpp)
+add_executable(cluster_server src/cluster_extractor.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -183,6 +187,24 @@ target_link_libraries(segment_server
 )
 
 target_link_libraries(classification_server
+   ${catkin_LIBRARIES}
+   ${PCL_LIBRARIES}
+   ${HDF5_hdf5_LIBRARY}
+)
+
+target_link_libraries(single_classification_server
+   ${catkin_LIBRARIES}
+   ${PCL_LIBRARIES}
+   ${HDF5_hdf5_LIBRARY}
+)
+
+target_link_libraries(multi_classification_server
+   ${catkin_LIBRARIES}
+   ${PCL_LIBRARIES}
+   ${HDF5_hdf5_LIBRARY}
+)
+
+target_link_libraries(cluster_server
    ${catkin_LIBRARIES}
    ${PCL_LIBRARIES}
    ${HDF5_hdf5_LIBRARY}

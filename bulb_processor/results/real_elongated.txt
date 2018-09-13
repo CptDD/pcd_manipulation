@@ -1,0 +1,35 @@
+Bulb:	elongated
+Label:	p21
+Percentage_e:	0.5
+Percentage_l:	0.1
+Percentage_m:	0.2
+Percentage_s:	0.2
+---
+Bulb:	standard
+Label:	p20
+Percentage_e:	0.6
+Percentage_l:	0.3
+Percentage_m:	0.1
+Percentage_s:	0
+---
+Bulb:	standard
+Label:	p2
+Percentage_e:	0.4
+Percentage_l:	0.3
+Percentage_m:	0.2
+Percentage_s:	0.2
+---
+Bulb:	standard
+Label:	p36
+Percentage_e:	0.7
+Percentage_l:	0.2
+Percentage_m:	0
+Percentage_s:	0.1
+---
+Bulb:	standard
+Label:	p9
+Percentage_e:	0.5
+Percentage_l:	0.2
+Percentage_m:	0.3
+Percentage_s:	0
+---

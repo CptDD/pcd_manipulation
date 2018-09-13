@@ -506,7 +506,7 @@ int main(int argc,char**argv)
 	string bulb_type="standard";
 
 	stringstream ss;
-	ss<<pa<<"/clouds/"<<bulb_type<<"_segmented/";
+	ss<<pa<<"/clouds/"<<bulb_type<<"_segmented/secondary/";
 
 	vector<string> files=get_files(ss.str());
 	vector<pcl::PointCloud<pcl::VFHSignature308>::Ptr> vfh_clouds;

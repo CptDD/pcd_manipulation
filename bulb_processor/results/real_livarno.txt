@@ -1,0 +1,35 @@
+Bulb:	livarno
+Label:	p21
+Percentage_e:	0
+Percentage_l:	0.6
+Percentage_m:	0.2
+Percentage_s:	0.2
+---
+Bulb:	livarno
+Label:	p20
+Percentage_e:	0.1
+Percentage_l:	0.5
+Percentage_m:	0.2
+Percentage_s:	0.2
+---
+Bulb:	livarno
+Label:	p2
+Percentage_e:	0
+Percentage_l:	0.5
+Percentage_m:	0
+Percentage_s:	0.5
+---
+Bulb:	livarno
+Label:	p36
+Percentage_e:	0.6
+Percentage_l:	0
+Percentage_m:	0.4
+Percentage_s:	0
+---
+Bulb:	livarno
+Label:	p9
+Percentage_e:	0.2
+Percentage_l:	0.4
+Percentage_m:	0.1
+Percentage_s:	0.3
+---

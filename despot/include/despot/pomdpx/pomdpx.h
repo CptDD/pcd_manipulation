@@ -21,7 +21,6 @@ public:
 	POMDPXState(std::vector<int> state);
 
 	std::string text() const;
-
 };
 
 /* ==============================================================================

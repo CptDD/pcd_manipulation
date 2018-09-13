@@ -1,9 +1,6 @@
 #include <despot/solver/despot.h>
 #include <despot/solver/pomcp.h>
 
-#define ORIGINAL true
-
-
 using namespace std;
 
 namespace despot {
@@ -221,10 +218,6 @@ void DESPOT::InitBounds(VNode* vnode, ScenarioLowerBound* lower_bound,
 }
 
 ValuedAction DESPOT::Search() {
-
-	model_->PrintBelief(*belief_,cout);	
-	//model_->PrintBelief(*belief_);
-	//model_->PrintBelief(*belief_,cout);
 	if (logging::level() >= logging::DEBUG) {
 		model_->PrintBelief(*belief_);
 	}
@@ -235,11 +228,6 @@ ValuedAction DESPOT::Search() {
 
 	double start = get_time_second();
 	vector<State*> particles = belief_->Sample(Globals::config.num_scenarios);
-
-	cout<<"Particles size "<<particles.size()<<endl;
-
-
-
 	logi << "[DESPOT::Search] Time for sampling " << particles.size()
 		<< " particles: " << (get_time_second() - start) << "s" << endl;
 
@@ -636,17 +624,14 @@ void DESPOT::Expand(VNode* vnode,
 	History& history) {
 	vector<QNode*>& children = vnode->children();
 	logd << "- Expanding vnode " << vnode << endl;
-	//cout << "- Expanding vnode " << vnode << endl;
 	for (int action = 0; action < model->NumActions(); action++) {
 		logd << " Action " << action << endl;
-		//cout << " Action " << action << endl;
 		QNode* qnode = new QNode(vnode, action);
 		children.push_back(qnode);
 
 		Expand(qnode, lower_bound, upper_bound, model, streams, history);
 	}
 	logd << "* Expansion complete!" << endl;
-	//cout << "* Expansion complete!" << endl;
 }
 
 void DESPOT::Expand(QNode* qnode, ScenarioLowerBound* lb,
@@ -668,14 +653,10 @@ void DESPOT::Expand(QNode* qnode, ScenarioLowerBound* lb,
 	for (int i = 0; i < particles.size(); i++) {
 		State* particle = particles[i];
 		logd << " Original: " << *particle << endl;
-		//cout << " Original: " << *particle << endl;
 
 		State* copy = model->Copy(particle);
 
 		logd << " Before step: " << *copy << endl;
-		//cout << " Before step: " << *copy <<endl;
-
-		
 
 		bool terminal = model->Step(*copy, streams.Entry(copy->scenario_id),
 			qnode->edge(), reward, obs);
@@ -684,10 +665,6 @@ void DESPOT::Expand(QNode* qnode, ScenarioLowerBound* lb,
 
 		logd << " After step: " << *copy << " " << (reward * copy->weight)
 			<< " " << reward << " " << copy->weight << endl;
-
-		//cout << " After step: " << *copy << " " << (reward * copy->weight)
-		//	<< " " << reward << " " << copy->weight << endl;
-
 
 		if (!terminal) {
 			partitions[obs].push_back(copy);
@@ -705,7 +682,6 @@ void DESPOT::Expand(QNode* qnode, ScenarioLowerBound* lb,
 	for (map<OBS_TYPE, vector<State*> >::iterator it = partitions.begin();
 		it != partitions.end(); it++) {
 		OBS_TYPE obs = it->first;
-		//cout<<"Obs "<<obs<<endl;
 		logd << " Creating node for obs " << obs << endl;
 		VNode* vnode = new VNode(partitions[obs], parent->depth() + 1,
 			qnode, obs);
@@ -793,28 +769,18 @@ void DESPOT::belief(Belief* b) {
 	logi << "[DESPOT::belief] Start: Set initial belief." << endl;
 	belief_ = b;
 	history_.Truncate(0);
-	
 
 	lower_bound_->belief(b); // needed for POMCPScenarioLowerBound
 	logi << "[DESPOT::belief] End: Set initial belief." << endl;
 }
 
-
 void DESPOT::Update(int action, OBS_TYPE obs) {
 	double start = get_time_second();
 
-
-	
-
 	belief_->Update(action, obs);
-
-
 	history_.Add(action, obs);
 
-	//cout<<"Belief :"<<belief_->text()<<endl;
-
 	lower_bound_->belief(belief_);
-
 
 	logi << "[Solver::Update] Updated belief, history and root with action "
 		<< action << ", observation " << obs

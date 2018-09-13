@@ -1,0 +1,8 @@
+std_msgs/String command
+std_msgs/String pose
+std_msgs/String bulb_type
+---
+std_msgs/Int16 first_type
+std_msgs/Int16 second_type
+std_msgs/Float32 first_prob
+std_msgs/Float32 second_prob

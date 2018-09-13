@@ -1,0 +1,35 @@
+Bulb:	mushroom
+Label:	p21
+Percentage_e:	0
+Percentage_l:	0.2
+Percentage_m:	0.6
+Percentage_s:	0.2
+---
+Bulb:	mushroom
+Label:	p20
+Percentage_e:	0.1
+Percentage_l:	0.2
+Percentage_m:	0.6
+Percentage_s:	0.1
+---
+Bulb:	livarno
+Label:	p2
+Percentage_e:	0.3
+Percentage_l:	0
+Percentage_m:	0.7
+Percentage_s:	0
+---
+Bulb:	livarno
+Label:	p36
+Percentage_e:	0.3
+Percentage_l:	0.2
+Percentage_m:	0.5
+Percentage_s:	0
+---
+Bulb:	livarno
+Label:	p9
+Percentage_e:	0
+Percentage_l:	0.2
+Percentage_m:	0.8
+Percentage_s:	0
+---

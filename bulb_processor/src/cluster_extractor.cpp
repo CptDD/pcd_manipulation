@@ -42,6 +42,8 @@ void save_cloud(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud,string cloud_name,stri
 
 }
 
+
+
 void save_clouds(vector<pair<string,pcl::PointCloud<pcl::PointXYZ>::Ptr> > clouds,string cloud_type)
 {
 	stringstream ss;
@@ -202,7 +204,27 @@ void segment_clouds(vector<pair<string,pcl::PointCloud<pcl::PointXYZ>::Ptr> >clo
 		Segmentor::pass_filter_bulb(clouds[i].second,clouds[i].second);
 		cout<<clouds[i].second->points.size()<<endl;
 	}
+
+	for(int i=0;i<clouds.size();i++)
+	{
+		vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> clusters=Segmentor::extract_clusters(clouds[i].second);
+
+		for(int j=0;j<clusters.size();j++)
+		{
+			stringstream ss;
+			if(j==0)
+			{
+				ss<<clouds[i].first<<"_principal.pcd";
+			}else
+			{
+				ss<<clouds[i].first<<"_secondary.pcd";
+			}
+
+			save_cloud(clusters[j],ss.str(),"standard");
+		}
+	}
 }
+
 
 
 
@@ -264,7 +286,7 @@ int main(int argc,char**argv)
 	string bulb_type="standard";
 
 	stringstream ss;
-	ss<<pa<<"/clouds/"<<bulb_type<<"/";
+	ss<<pa<<"/clouds/"<<bulb_type<<"_segmented/";
 
 	vector<string> elongated=get_files(ss.str());
 
@@ -272,9 +294,7 @@ int main(int argc,char**argv)
 
 	segment_clouds(clouds);
 
-	save_clouds(clouds,bulb_type);
-
-	cout<<clouds.size()<<endl;
+	
 
 	return 0;
 }
