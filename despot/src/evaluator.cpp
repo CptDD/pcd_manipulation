@@ -1,5 +1,21 @@
 #include <despot/evaluator.h>
+#include <despot/core/information.h>
 #include <iostream>
+#include <ros/ros.h>
+
+#include <boost/filesystem.hpp>
+#include <boost/algorithm/string.hpp>
+
+//#include <bulb_processor/classify.h>
+#include <bulb_processor/classify_multiple.h>
+#include <bulb_scanner/position.h>
+#include <conveyor_advance/advance.h>
+
+#define POSITION_SERVICE "bulb_move"
+#define CLASSIFICATION_SERVICE "bulb_classification_service"
+#define CONVEYOR_ADVANCE_SERVICE "conveyor_advance"
+
+
 using namespace std;
 
 namespace despot {
@@ -135,7 +151,7 @@ Evaluator::~Evaluator() {
 }
 
 
-bool Evaluator::RunStep(int step, int round) {
+bool Evaluator::RunStep(int step, int round,string &ss) {
 	if (target_finish_time_ != -1 && get_time_second() > target_finish_time_) {
 		if (!Globals::config.silence && out_)
 			*out_ << "Exit. (Total time "
@@ -150,18 +166,37 @@ bool Evaluator::RunStep(int step, int round) {
 		exit(1);
 	}
 
+
+	stringstream st;
+
+
 	double step_start_t = get_time_second();
 
 	double start_t = get_time_second();
+
 	int action = solver_->Search().action;
+
 	double end_t = get_time_second();
 	logi << "[RunStep] Time spent in " << typeid(*solver_).name()
 		<< "::Search(): " << (end_t - start_t) << endl;
 
 	double reward;
 	OBS_TYPE obs;
+	OBS_TYPE obs2;
+
+	double secondary_probability;
+
 	start_t = get_time_second();
+
 	bool terminal = ExecuteAction(action, reward, obs);
+
+
+	ros::NodeHandle nh;
+	stringstream action_stream;
+	stringstream state_stream;
+
+
+
 	end_t = get_time_second();
 	logi << "[RunStep] Time spent in ExecuteAction(): " << (end_t - start_t)
 		<< endl;
@@ -170,30 +205,202 @@ bool Evaluator::RunStep(int step, int round) {
 	*out_ << "-----------------------------------Round " << round
 				<< " Step " << step << "-----------------------------------"
 				<< endl;
+	st << "-----------------------------------Round " << round
+				<< " Step " << step << "-----------------------------------"
+				<< endl;
+
+
 	if (!Globals::config.silence && out_) {
 		*out_ << "- Action = ";
 		model_->PrintAction(action, *out_);
+
+		st << "- Action = ";
+		model_->PrintAction(action, st);
+
+		model_->PrintAction(action,action_stream);
 	}
+
+	 /*************************************
+     *
+     *			Moving	the  arm
+     *
+     ************************************/
+
 
 	if (state_ != NULL) {
 		if (!Globals::config.silence && out_) {
 			*out_ << "- State:";
 			model_->PrintState(*state_, *out_);
+
+			st << "- State:";
+			model_->PrintState(*state_, st);
+			model_->PrintState(*state_,state_stream);
 		}
 	}
+
+	vector<string> action_tokens,state_tokens,temp_tokens;
+	string action_temp=action_stream.str();
+	string state_temp=state_stream.str();
+
+	if(boost::contains(action_temp,"d_")==1)
+	{
+		cout<<"Decision action is present:"<<action_temp<<" moving the conveyor belt!"<<endl;
+
+		ros::ServiceClient advanceClient=nh.serviceClient<conveyor_advance::advance>(CONVEYOR_ADVANCE_SERVICE);
+		conveyor_advance::advance advanceSrv;
+
+		/*if(advanceClient.call(advanceSrv))
+		{
+			cout<<"Conveyor advanced!"<<endl;
+		}else
+		{
+			cout<<"Error in advancing the conveyor!"<<endl;
+		}*/
+
+
+		/*cout<<"Decision making!"<<endl;
+
+		map<string,double> pdf=solver_->belief()->get_pdf();
+
+		map<string,double>::iterator it;*/
+
+		/*cout<<"Before!"<<endl;
+		for(it=pdf.begin();it!=pdf.end();++it)
+		{
+			cout<<it->first<<" "<<it->second<<endl;
+		}
+
+		Belief *new_belief=solver_->belief();
+		new_belief->propagate();
+
+		solver_->belief(new_belief);
+
+		pdf=solver_->belief()->get_pdf();
+
+		/*cout<<"After!"<<endl;
+		for(it=pdf.begin();it!=pdf.end();++it)
+		{
+			cout<<it->first<<" "<<it->second<<endl;
+		}*/
+
+
+		/*if(advanceClient.call(advanceSrv))
+		{
+			cout<<"Conveyor advanced!"<<endl;
+		}else
+		{
+			cout<<"Error in advancing the conveyor!"<<endl;
+		}*/
+	}else
+	{
+		boost::split(action_tokens,action_temp,boost::is_any_of(":"));
+		boost::split(state_tokens,state_temp,boost::is_any_of(","));
+		boost::split(temp_tokens,state_tokens[0],boost::is_any_of(":"));
+
+		string proc_position=temp_tokens[temp_tokens.size()-1];
+		boost::replace_all(proc_position,"vp", "");
+
+		ros::ServiceClient positionClient=nh.serviceClient<bulb_scanner::position>(POSITION_SERVICE);
+
+		bulb_scanner::position position_srv;
+		stringstream act;
+		act<<action_tokens[0];
+		int action;
+		act>>action;
+		position_srv.request.action.data=action;
+		position_srv.request.current_position_label.data=proc_position;
+
+		if(positionClient.call(position_srv))
+		{
+			cout<<"Positioning the arm!"<<endl;
+		}else
+		{
+			cout<<"An error has occured while positioning the arm!"<<endl;
+		}
+
+		ros::ServiceClient classificationClient=nh.serviceClient<bulb_processor::classify_multiple>(CLASSIFICATION_SERVICE);
+		bulb_processor::classify_multiple classification_srv;
+
+		classification_srv.request.pose.data=proc_position;
+
+		if(classificationClient.call(classification_srv))
+		{
+			//cout<<"Classification :"<<classification_srv.response.type.data<<endl;
+			//obs=classification_srv.response.type.data;
+
+			cout<<classification_srv.response.first_type.data<<endl;
+
+			obs=classification_srv.response.first_type.data;
+			obs2=classification_srv.response.second_type.data;
+		  secondary_probability=classification_srv.response.second_prob.data;
+
+
+		}else
+		{
+			cout<<"An error has occured while classification!"<<endl;
+		}
+
+	}
+
+
+
+
+
 
 	if (!Globals::config.silence && out_) {
 		*out_ << "- Observation = ";
 		model_->PrintObs(*state_, obs, *out_);
+
+		st << "- Observation = ";
+		model_->PrintObs(*state_, obs, st);
 	}
 
 	if (state_ != NULL) {
 		if (!Globals::config.silence && out_)
 			*out_ << "- ObsProb = " << model_->ObsProb(obs, *state_, action)
 				<< endl;
+
+			st << "- ObsProb = " << model_->ObsProb(obs, *state_, action)
+				<< endl;
 	}
 
-	ReportStepReward();
+
+	/*********************Belief propagation***************************************/
+	//cout<<"Chosen action is :"<<action<<endl;
+
+	if(boost::contains(action_temp,"d_")==1)
+	{
+		cout<<"Decision making!"<<endl;
+
+		map<string,double> pdf=solver_->belief()->get_pdf();
+		map<string,double>::iterator it;
+
+		/*cout<<"Before!"<<endl;
+		for(it=pdf.begin();it!=pdf.end();++it)
+		{
+			cout<<it->first<<" "<<it->second<<endl;
+		}*/
+		
+		Belief *new_belief=solver_->belief();
+		//new_belief->propagate();
+		new_belief->propagate_values();
+
+		solver_->belief(new_belief);
+		pdf=solver_->belief()->get_pdf();
+
+		cout<<"After!"<<endl;
+		for(it=pdf.begin();it!=pdf.end();++it)
+		{
+			cout<<it->first<<" "<<it->second<<endl;
+		}
+	}
+
+	/******************************************************************************/
+
+
+	st<<ReportStepReward();
+
+
 	end_t = get_time_second();
 
 	double step_end_t;
@@ -214,13 +421,32 @@ bool Evaluator::RunStep(int step, int round) {
 
 	cout<<"Pre"<<endl;
 	cout<<solver_->belief()->text()<<endl;
+
+	st<<"Pre"<<endl;
+	st<<solver_->belief()->text()<<endl;
+
 	solver_->Update(action, obs);
 	cout<<"Post"<<endl;
 	cout<<solver_->belief()->text()<<endl;
+
+	st<<"Post"<<endl;
+	st<<solver_->belief()->text()<<endl;
+
+	cout<<"Pre secondary!"<<endl;
+	cout<<solver_->secondary_belief()->text()<<endl;
+	solver_->Update_secondary(action,obs2,secondary_probability);
+
+	cout<<"Post secondary!"<<endl;
+	//cout<<solver_->secondary_belief()->text()<<endl;
+	cout<<solver_->secondary_belief()->text()<<endl;
+
 	end_t = get_time_second();
 	logi << "[RunStep] Time spent in Update(): " << (end_t - start_t) << endl;
 
 	step_++;
+
+	ss=st.str();
+
 	return false;
 }
 
@@ -265,12 +491,23 @@ double Evaluator::StderrDiscountedRoundReward() const {
 	return n > 0 ? sqrt(sum2 / n / n - sum * sum / n / n / n) : 0.0;
 }
 
-void Evaluator::ReportStepReward() {
+string Evaluator::ReportStepReward() {
+
 	if (!Globals::config.silence && out_)
 		*out_ << "- Reward = " << reward_ << endl
 			<< "- Current rewards:" << endl
 			<< "  discounted / undiscounted = " << total_discounted_reward_
 			<< " / " << total_undiscounted_reward_ << endl;
+
+	stringstream ss;
+
+	ss << "- Reward = " << reward_ << endl
+			<< "- Current rewards:" << endl
+			<< "  discounted / undiscounted = " << total_discounted_reward_
+			<< " / " << total_undiscounted_reward_ << endl;
+
+	return ss.str();
+
 }
 
 /* =============================================================================
@@ -312,26 +549,47 @@ void POMDPEvaluator::InitRound() {
 		*out_ << endl;
 	}
 
+	ros::NodeHandle nh;
+	ros::ServiceClient positionClient=nh.serviceClient<bulb_scanner::position>(POSITION_SERVICE);
+
+	bulb_scanner::position position_srv;
+	position_srv.request.action.data=-1;
+	position_srv.request.current_position_label.data="15";
+
+	if(positionClient.call(position_srv))
+	{
+		cout<<"Positioning the arm!"<<endl;
+	}else
+	{
+		cout<<"An error has occured while positioning the arm!"<<endl;
+	}
+
 	// Initial belief
 	start_t = get_time_second();
 	delete solver_->belief();
+	//delete solver_->secondary_belief();
+
 	end_t = get_time_second();
 	logi << "[POMDPEvaluator::InitRound] Deleted old belief in "
 		<< (end_t - start_t) << "s" << endl;
 
 	start_t = get_time_second();
 	Belief* belief = model_->InitialBelief(state_, belief_type_);
+	Belief* secondary=model_->InitialBelief(state_,belief_type_);
+
 	end_t = get_time_second();
 	logi << "[POMDPEvaluator::InitRound] Created intial belief "
 		<< typeid(*belief).name() << " in " << (end_t - start_t) << "s" << endl;
 
 	solver_->belief(belief);
+	solver_->belief_secondary(secondary);
 
 	total_discounted_reward_ = 0;
 	total_undiscounted_reward_ = 0;
 }
 
 double POMDPEvaluator::EndRound() {
+
 	if (!Globals::config.silence && out_) {
 		*out_ << "Total discounted reward = " << total_discounted_reward_ << endl
 			<< "Total undiscounted reward = " << total_undiscounted_reward_ << endl;
@@ -345,6 +603,7 @@ double POMDPEvaluator::EndRound() {
 
 bool POMDPEvaluator::ExecuteAction(int action, double& reward, OBS_TYPE& obs) {
 	double random_num = random_.NextDouble();
+
 	bool terminal = model_->Step(*state_, random_num, action, reward, obs);
 
 	reward_ = reward;

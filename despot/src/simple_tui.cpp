@@ -1,4 +1,6 @@
 #include <despot/simple_tui.h>
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -245,7 +247,9 @@ void SimpleTUI::InitializeEvaluator(Evaluator *&simulator,
   }
 }
 
-void SimpleTUI::DisplayParameters(option::Option *options, DSPOMDP *model) {
+string SimpleTUI::DisplayParameters(option::Option *options, DSPOMDP *model) {
+
+  stringstream out;
 
   string lbtype = options[E_LBTYPE] ? options[E_LBTYPE].arg : "DEFAULT";
   string ubtype = options[E_UBTYPE] ? options[E_UBTYPE].arg : "DEFAULT";
@@ -266,24 +270,55 @@ void SimpleTUI::DisplayParameters(option::Option *options, DSPOMDP *model) {
               << Globals::config.max_policy_sim_len << endl
               << "Target gap ratio = " << Globals::config.xi << endl;
   // << "Solver = " << typeid(*solver).name() << endl << endl;
+
+
+
+              out << "Model = " << typeid(*model).name() << endl
+              << "Random root seed = " << Globals::config.root_seed << endl
+              << "Search depth = " << Globals::config.search_depth << endl
+              << "Discount = " << Globals::config.discount << endl
+              << "Simulation steps = " << Globals::config.sim_len << endl
+              << "Number of scenarios = " << Globals::config.num_scenarios
+              << endl
+              << "Search time per step = " << Globals::config.time_per_move
+              << endl
+              << "Regularization constant = "
+              << Globals::config.pruning_constant << endl
+              << "Lower bound = " << lbtype << endl
+              << "Upper bound = " << ubtype << endl
+              << "Policy simulation depth = "
+              << Globals::config.max_policy_sim_len << endl
+              << "Target gap ratio = " << Globals::config.xi << endl;
+
+    return out.str();
 }
 
-void SimpleTUI::RunEvaluator(DSPOMDP *model, Evaluator *simulator,
+string SimpleTUI::RunEvaluator(DSPOMDP *model, Evaluator *simulator,
                              option::Option *options, int num_runs,
                              bool search_solver, Solver *&solver,
                              string simulator_type, clock_t main_clock_start,
                              int start_run) {
   // Run num_runs simulations
   vector<double> round_rewards(num_runs);
+
+  stringstream ss;
+
   for (int round = start_run; round < start_run + num_runs; round++) {
     default_out << endl
                 << "####################################### Round " << round
                 << " #######################################" << endl;
 
+    ss << endl
+                << "####################################### Round " << round
+                << " #######################################" << endl;
+
+
+
     if (search_solver) {
       if (round == 0) {
         solver = InitializeSolver(model, "DESPOT", options);
         default_out << "Solver: " << typeid(*solver).name() << endl;
+
 
         simulator->solver(solver);
       } else if (round == 5) {
@@ -316,8 +351,12 @@ void SimpleTUI::RunEvaluator(DSPOMDP *model, Evaluator *simulator,
                   << " Step " << i << "-----------------------------------"
                   << endl;*/
       double step_start_t = get_time_second();
+      string step_return;
 
-      bool terminal = simulator->RunStep(i, round);
+      bool terminal = simulator->RunStep(i, round,step_return);
+
+      ss<<step_return;
+
 
       if (terminal)
         break;
@@ -348,10 +387,14 @@ void SimpleTUI::RunEvaluator(DSPOMDP *model, Evaluator *simulator,
          << endl;
     exit(0);
   }
+
+  return ss.str();
 }
 
-void SimpleTUI::PrintResult(int num_runs, Evaluator *simulator,
+string SimpleTUI::PrintResult(int num_runs, Evaluator *simulator,
                             clock_t main_clock_start) {
+
+  stringstream ss;
 
   cout << "\nCompleted " << num_runs << " run(s)." << endl;
   cout << "Average total discounted reward (stderr) = "
@@ -363,22 +406,40 @@ void SimpleTUI::PrintResult(int num_runs, Evaluator *simulator,
   cout << "Total time: Real / CPU = "
        << (get_time_second() - EvalLog::curr_inst_start_time) << " / "
        << (double(clock() - main_clock_start) / CLOCKS_PER_SEC) << "s" << endl;
+
+  ss << "\nCompleted " << num_runs << " run(s)." << endl;
+  ss << "Average total discounted reward (stderr) = "
+       << simulator->AverageDiscountedRoundReward() << " ("
+       << simulator->StderrDiscountedRoundReward() << ")" << endl;
+  ss << "Average total undiscounted reward (stderr) = "
+       << simulator->AverageUndiscountedRoundReward() << " ("
+       << simulator->StderrUndiscountedRoundReward() << ")" << endl;
+  ss << "Total time: Real / CPU = "
+       << (get_time_second() - EvalLog::curr_inst_start_time) << " / "
+       << (double(clock() - main_clock_start) / CLOCKS_PER_SEC) << "s" << endl;
+
+  return ss.str();
+
 }
 
-int SimpleTUI::run(int argc, char *argv[]) {
+string SimpleTUI::run(string pomdpx_file) {
+
 
   clock_t main_clock_start = clock();
   EvalLog::curr_inst_start_time = get_time_second();
 
-  const char *program = (argc > 0) ? argv[0] : "despot";
+  //const char *program = (argc > 0) ? argv[0] : "despot";
 
-  argc -= (argc > 0);
-  argv += (argc > 0); // skip program name argv[0] if present
+  //argc -= (argc > 0);
+  //argv += (argc > 0); // skip program name argv[0] if present
+
+  int argc=1;
+  char **argv;
 
   option::Stats stats(usage, argc, argv);
   option::Option *options = new option::Option[stats.options_max];
   option::Option *buffer = new option::Option[stats.buffer_max];
-  option::Parser parse(usage, argc, argv, options, buffer);
+  //option::Parser parse(usage, argc, argv, options, buffer);
 
   string solver_type = "DESPOT";
   bool search_solver;
@@ -399,11 +460,12 @@ int SimpleTUI::run(int argc, char *argv[]) {
   /* =========================
    * Parse optional parameters
    * =========================*/
-  if (options[E_HELP]) {
+  /*if (options[E_HELP]) {
     cout << "Usage: " << program << " [options]" << endl;
     option::printUsage(std::cout, usage);
     return 0;
-  }
+  }*/
+
   OptionParse(options, num_runs, simulator_type, belief_type, time_limit,
               solver_type, search_solver);
 
@@ -418,7 +480,8 @@ int SimpleTUI::run(int argc, char *argv[]) {
   /* =========================
    * initialize model
    * =========================*/
-  DSPOMDP *model = InitializeModel(options);
+
+  DSPOMDP *model = InitializeModel(pomdpx_file);
 
   /* =========================
    * initialize solver
@@ -440,19 +503,33 @@ int SimpleTUI::run(int argc, char *argv[]) {
   /* =========================
    * Display parameters
    * =========================*/
-  DisplayParameters(options, model);
+  string displayString=DisplayParameters(options, model);
+
+
 
   /* =========================
    * run simulator
    * =========================*/
-  RunEvaluator(model, simulator, options, num_runs, search_solver, solver,
+  string evaluatorString=RunEvaluator(model, simulator, options, num_runs, search_solver, solver,
                simulator_type, main_clock_start, start_run);
 
   simulator->End();
 
-  PrintResult(num_runs, simulator, main_clock_start);
+  string runString=PrintResult(num_runs, simulator, main_clock_start);
 
-  return 0;
+  stringstream ss;
+
+  ss<<displayString<<evaluatorString<<runString;
+
+  string finalResults=ss.str();
+
+  if(!finalResults.empty())
+  {
+    return finalResults;
+  }else
+  {
+    return "---";
+  }
 }
 
 } // namespace despot

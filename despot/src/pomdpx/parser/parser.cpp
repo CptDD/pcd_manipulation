@@ -1139,12 +1139,15 @@ void Parser::GetNoisyNextState(vector<int>& state, int action,
 
 OBS_TYPE Parser::GetObservation(const vector<int>& state, int action,
 	double& random) const {
+
 	for (int s = 0; s < state.size(); s++) {
 		curr_state_vars_[s].curr_value = state[s];
 	}
+
 	action_vars_[0].curr_value = action;
 
 	OBS_TYPE obs = 0;
+	
 	for (int o = 0; o < obs_vars_.size(); o++) {
 		obs = obs * obs_vars_[o].Size()
 			+ obs_funcs_[o]->ComputeCurrentIndex(random);

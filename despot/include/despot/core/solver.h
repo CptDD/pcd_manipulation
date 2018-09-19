@@ -42,6 +42,7 @@ class Solver {
 protected:
 	const DSPOMDP* model_;
 	Belief* belief_;
+	Belief* secondary_;
 	History history_;
 
 public:
@@ -61,13 +62,18 @@ public:
 	 */
 	virtual void Update(int action, OBS_TYPE obs);
 
+	virtual void Update_secondary(int action,OBS_TYPE obs,double value);
+
 	/**
 	 * Set initial belief for planning. Make sure internal states associated with
 	 * initial belief are reset. In particular, history need to be cleaned, and
 	 * allocated memory from previous searches need to be cleaned if not.
 	 */
 	virtual void belief(Belief* b);
+	virtual void belief_secondary(Belief *b);
+
 	Belief* belief();
+	Belief* secondary_belief();
 };
 
 } // namespace despot

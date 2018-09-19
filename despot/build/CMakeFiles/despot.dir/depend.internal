@@ -18,13 +18,13 @@ CMakeFiles/despot.dir/src/core/belief.cpp.o
  ../include/despot/util/random.h
  ../include/despot/util/seeds.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/core/belief.cpp
+ /home/cptd/go_ws/src/despot/src/core/belief.cpp
 CMakeFiles/despot.dir/src/core/globals.cpp.o
  ../include/despot/config.h
  ../include/despot/core/globals.h
  ../include/despot/util/exec_tracker.h
  ../include/despot/util/logging.h
- /home/cptd/dd/despot/src/core/globals.cpp
+ /home/cptd/go_ws/src/despot/src/core/globals.cpp
 CMakeFiles/despot.dir/src/core/information.cpp.o
  ../include/despot/config.h
  ../include/despot/core/belief.h
@@ -43,7 +43,7 @@ CMakeFiles/despot.dir/src/core/information.cpp.o
  ../include/despot/util/random.h
  ../include/despot/util/seeds.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/core/information.cpp
+ /home/cptd/go_ws/src/despot/src/core/information.cpp
 CMakeFiles/despot.dir/src/core/lower_bound.cpp.o
  ../include/despot/config.h
  ../include/despot/core/belief.h
@@ -63,7 +63,7 @@ CMakeFiles/despot.dir/src/core/lower_bound.cpp.o
  ../include/despot/util/random.h
  ../include/despot/util/seeds.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/core/lower_bound.cpp
+ /home/cptd/go_ws/src/despot/src/core/lower_bound.cpp
 CMakeFiles/despot.dir/src/core/mdp.cpp.o
  ../include/despot/config.h
  ../include/despot/core/belief.h
@@ -82,7 +82,7 @@ CMakeFiles/despot.dir/src/core/mdp.cpp.o
  ../include/despot/util/random.h
  ../include/despot/util/seeds.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/core/mdp.cpp
+ /home/cptd/go_ws/src/despot/src/core/mdp.cpp
 CMakeFiles/despot.dir/src/core/node.cpp.o
  ../include/despot/config.h
  ../include/despot/core/belief.h
@@ -102,7 +102,7 @@ CMakeFiles/despot.dir/src/core/node.cpp.o
  ../include/despot/util/random.h
  ../include/despot/util/seeds.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/core/node.cpp
+ /home/cptd/go_ws/src/despot/src/core/node.cpp
 CMakeFiles/despot.dir/src/core/policy.cpp.o
  ../include/despot/config.h
  ../include/despot/core/belief.h
@@ -120,7 +120,7 @@ CMakeFiles/despot.dir/src/core/policy.cpp.o
  ../include/despot/util/random.h
  ../include/despot/util/seeds.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/core/policy.cpp
+ /home/cptd/go_ws/src/despot/src/core/policy.cpp
 CMakeFiles/despot.dir/src/core/pomdp.cpp.o
  ../include/despot/config.h
  ../include/despot/core/belief.h
@@ -140,7 +140,7 @@ CMakeFiles/despot.dir/src/core/pomdp.cpp.o
  ../include/despot/util/random.h
  ../include/despot/util/seeds.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/core/pomdp.cpp
+ /home/cptd/go_ws/src/despot/src/core/pomdp.cpp
 CMakeFiles/despot.dir/src/core/solver.cpp.o
  ../include/despot/config.h
  ../include/despot/core/belief.h
@@ -158,7 +158,7 @@ CMakeFiles/despot.dir/src/core/solver.cpp.o
  ../include/despot/util/random.h
  ../include/despot/util/seeds.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/core/solver.cpp
+ /home/cptd/go_ws/src/despot/src/core/solver.cpp
 CMakeFiles/despot.dir/src/core/upper_bound.cpp.o
  ../include/despot/config.h
  ../include/despot/core/belief.h
@@ -177,7 +177,7 @@ CMakeFiles/despot.dir/src/core/upper_bound.cpp.o
  ../include/despot/util/random.h
  ../include/despot/util/seeds.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/core/upper_bound.cpp
+ /home/cptd/go_ws/src/despot/src/core/upper_bound.cpp
 CMakeFiles/despot.dir/src/evaluator.cpp.o
  ../include/despot/config.h
  ../include/despot/core/belief.h
@@ -202,7 +202,75 @@ CMakeFiles/despot.dir/src/evaluator.cpp.o
  ../include/despot/util/random.h
  ../include/despot/util/seeds.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/evaluator.cpp
+ /home/cptd/go_ws/devel/include/bulb_processor/classify_multiple.h
+ /home/cptd/go_ws/devel/include/bulb_processor/classify_multipleRequest.h
+ /home/cptd/go_ws/devel/include/bulb_processor/classify_multipleResponse.h
+ /home/cptd/go_ws/devel/include/bulb_scanner/position.h
+ /home/cptd/go_ws/devel/include/bulb_scanner/positionRequest.h
+ /home/cptd/go_ws/devel/include/bulb_scanner/positionResponse.h
+ /home/cptd/go_ws/devel/include/conveyor_advance/advance.h
+ /home/cptd/go_ws/devel/include/conveyor_advance/advanceRequest.h
+ /home/cptd/go_ws/devel/include/conveyor_advance/advanceResponse.h
+ /home/cptd/go_ws/src/despot/src/evaluator.cpp
+ /opt/ros/kinetic/include/ros/advertise_options.h
+ /opt/ros/kinetic/include/ros/advertise_service_options.h
+ /opt/ros/kinetic/include/ros/assert.h
+ /opt/ros/kinetic/include/ros/builtin_message_traits.h
+ /opt/ros/kinetic/include/ros/common.h
+ /opt/ros/kinetic/include/ros/console.h
+ /opt/ros/kinetic/include/ros/console_backend.h
+ /opt/ros/kinetic/include/ros/datatypes.h
+ /opt/ros/kinetic/include/ros/duration.h
+ /opt/ros/kinetic/include/ros/exception.h
+ /opt/ros/kinetic/include/ros/exceptions.h
+ /opt/ros/kinetic/include/ros/forwards.h
+ /opt/ros/kinetic/include/ros/init.h
+ /opt/ros/kinetic/include/ros/macros.h
+ /opt/ros/kinetic/include/ros/master.h
+ /opt/ros/kinetic/include/ros/message.h
+ /opt/ros/kinetic/include/ros/message_event.h
+ /opt/ros/kinetic/include/ros/message_forward.h
+ /opt/ros/kinetic/include/ros/message_operations.h
+ /opt/ros/kinetic/include/ros/message_traits.h
+ /opt/ros/kinetic/include/ros/names.h
+ /opt/ros/kinetic/include/ros/node_handle.h
+ /opt/ros/kinetic/include/ros/param.h
+ /opt/ros/kinetic/include/ros/parameter_adapter.h
+ /opt/ros/kinetic/include/ros/platform.h
+ /opt/ros/kinetic/include/ros/publisher.h
+ /opt/ros/kinetic/include/ros/rate.h
+ /opt/ros/kinetic/include/ros/ros.h
+ /opt/ros/kinetic/include/ros/roscpp_serialization_macros.h
+ /opt/ros/kinetic/include/ros/rostime_decl.h
+ /opt/ros/kinetic/include/ros/serialization.h
+ /opt/ros/kinetic/include/ros/serialized_message.h
+ /opt/ros/kinetic/include/ros/service.h
+ /opt/ros/kinetic/include/ros/service_callback_helper.h
+ /opt/ros/kinetic/include/ros/service_client.h
+ /opt/ros/kinetic/include/ros/service_client_options.h
+ /opt/ros/kinetic/include/ros/service_server.h
+ /opt/ros/kinetic/include/ros/service_traits.h
+ /opt/ros/kinetic/include/ros/single_subscriber_publisher.h
+ /opt/ros/kinetic/include/ros/spinner.h
+ /opt/ros/kinetic/include/ros/static_assert.h
+ /opt/ros/kinetic/include/ros/subscribe_options.h
+ /opt/ros/kinetic/include/ros/subscriber.h
+ /opt/ros/kinetic/include/ros/subscription_callback_helper.h
+ /opt/ros/kinetic/include/ros/this_node.h
+ /opt/ros/kinetic/include/ros/time.h
+ /opt/ros/kinetic/include/ros/timer.h
+ /opt/ros/kinetic/include/ros/timer_options.h
+ /opt/ros/kinetic/include/ros/topic.h
+ /opt/ros/kinetic/include/ros/transport_hints.h
+ /opt/ros/kinetic/include/ros/types.h
+ /opt/ros/kinetic/include/ros/wall_timer.h
+ /opt/ros/kinetic/include/ros/wall_timer_options.h
+ /opt/ros/kinetic/include/rosconsole/macros_generated.h
+ /opt/ros/kinetic/include/std_msgs/Float32.h
+ /opt/ros/kinetic/include/std_msgs/Int16.h
+ /opt/ros/kinetic/include/std_msgs/String.h
+ /opt/ros/kinetic/include/xmlrpcpp/XmlRpcDecl.h
+ /opt/ros/kinetic/include/xmlrpcpp/XmlRpcValue.h
 CMakeFiles/despot.dir/src/pomdpx/parser/function.cpp.o
  ../include/despot/config.h
  ../include/despot/core/globals.h
@@ -211,7 +279,7 @@ CMakeFiles/despot.dir/src/pomdpx/parser/function.cpp.o
  ../include/despot/util/exec_tracker.h
  ../include/despot/util/logging.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/pomdpx/parser/function.cpp
+ /home/cptd/go_ws/src/despot/src/pomdpx/parser/function.cpp
 CMakeFiles/despot.dir/src/pomdpx/parser/parser.cpp.o
  ../include/despot/config.h
  ../include/despot/core/belief.h
@@ -234,11 +302,11 @@ CMakeFiles/despot.dir/src/pomdpx/parser/parser.cpp.o
  ../include/despot/util/tinyxml/tinystr.h
  ../include/despot/util/tinyxml/tinyxml.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/pomdpx/parser/parser.cpp
+ /home/cptd/go_ws/src/despot/src/pomdpx/parser/parser.cpp
 CMakeFiles/despot.dir/src/pomdpx/parser/variable.cpp.o
  ../include/despot/pomdpx/parser/variable.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/pomdpx/parser/variable.cpp
+ /home/cptd/go_ws/src/despot/src/pomdpx/parser/variable.cpp
 CMakeFiles/despot.dir/src/pomdpx/pomdpx.cpp.o
  ../include/despot/config.h
  ../include/despot/core/belief.h
@@ -263,12 +331,68 @@ CMakeFiles/despot.dir/src/pomdpx/pomdpx.cpp.o
  ../include/despot/util/random.h
  ../include/despot/util/seeds.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/pomdpx/pomdpx.cpp
+ /home/cptd/go_ws/src/despot/src/pomdpx/pomdpx.cpp
+ /opt/ros/kinetic/include/ros/advertise_options.h
+ /opt/ros/kinetic/include/ros/advertise_service_options.h
+ /opt/ros/kinetic/include/ros/assert.h
+ /opt/ros/kinetic/include/ros/builtin_message_traits.h
+ /opt/ros/kinetic/include/ros/common.h
+ /opt/ros/kinetic/include/ros/console.h
+ /opt/ros/kinetic/include/ros/console_backend.h
+ /opt/ros/kinetic/include/ros/datatypes.h
+ /opt/ros/kinetic/include/ros/duration.h
+ /opt/ros/kinetic/include/ros/exception.h
+ /opt/ros/kinetic/include/ros/exceptions.h
+ /opt/ros/kinetic/include/ros/forwards.h
+ /opt/ros/kinetic/include/ros/init.h
+ /opt/ros/kinetic/include/ros/macros.h
+ /opt/ros/kinetic/include/ros/master.h
+ /opt/ros/kinetic/include/ros/message.h
+ /opt/ros/kinetic/include/ros/message_event.h
+ /opt/ros/kinetic/include/ros/message_forward.h
+ /opt/ros/kinetic/include/ros/message_traits.h
+ /opt/ros/kinetic/include/ros/names.h
+ /opt/ros/kinetic/include/ros/node_handle.h
+ /opt/ros/kinetic/include/ros/package.h
+ /opt/ros/kinetic/include/ros/param.h
+ /opt/ros/kinetic/include/ros/parameter_adapter.h
+ /opt/ros/kinetic/include/ros/platform.h
+ /opt/ros/kinetic/include/ros/publisher.h
+ /opt/ros/kinetic/include/ros/rate.h
+ /opt/ros/kinetic/include/ros/ros.h
+ /opt/ros/kinetic/include/ros/roscpp_serialization_macros.h
+ /opt/ros/kinetic/include/ros/rostime_decl.h
+ /opt/ros/kinetic/include/ros/serialization.h
+ /opt/ros/kinetic/include/ros/serialized_message.h
+ /opt/ros/kinetic/include/ros/service.h
+ /opt/ros/kinetic/include/ros/service_callback_helper.h
+ /opt/ros/kinetic/include/ros/service_client.h
+ /opt/ros/kinetic/include/ros/service_client_options.h
+ /opt/ros/kinetic/include/ros/service_server.h
+ /opt/ros/kinetic/include/ros/service_traits.h
+ /opt/ros/kinetic/include/ros/single_subscriber_publisher.h
+ /opt/ros/kinetic/include/ros/spinner.h
+ /opt/ros/kinetic/include/ros/static_assert.h
+ /opt/ros/kinetic/include/ros/subscribe_options.h
+ /opt/ros/kinetic/include/ros/subscriber.h
+ /opt/ros/kinetic/include/ros/subscription_callback_helper.h
+ /opt/ros/kinetic/include/ros/this_node.h
+ /opt/ros/kinetic/include/ros/time.h
+ /opt/ros/kinetic/include/ros/timer.h
+ /opt/ros/kinetic/include/ros/timer_options.h
+ /opt/ros/kinetic/include/ros/topic.h
+ /opt/ros/kinetic/include/ros/transport_hints.h
+ /opt/ros/kinetic/include/ros/types.h
+ /opt/ros/kinetic/include/ros/wall_timer.h
+ /opt/ros/kinetic/include/ros/wall_timer_options.h
+ /opt/ros/kinetic/include/rosconsole/macros_generated.h
+ /opt/ros/kinetic/include/xmlrpcpp/XmlRpcDecl.h
+ /opt/ros/kinetic/include/xmlrpcpp/XmlRpcValue.h
 CMakeFiles/despot.dir/src/random_streams.cpp.o
  ../include/despot/random_streams.h
  ../include/despot/util/random.h
  ../include/despot/util/seeds.h
- /home/cptd/dd/despot/src/random_streams.cpp
+ /home/cptd/go_ws/src/despot/src/random_streams.cpp
 CMakeFiles/despot.dir/src/simple_tui.cpp.o
  ../include/despot/config.h
  ../include/despot/core/belief.h
@@ -298,7 +422,7 @@ CMakeFiles/despot.dir/src/simple_tui.cpp.o
  ../include/despot/util/random.h
  ../include/despot/util/seeds.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/simple_tui.cpp
+ /home/cptd/go_ws/src/despot/src/simple_tui.cpp
 CMakeFiles/despot.dir/src/solver/aems.cpp.o
  ../include/despot/config.h
  ../include/despot/core/belief.h
@@ -318,7 +442,7 @@ CMakeFiles/despot.dir/src/solver/aems.cpp.o
  ../include/despot/util/random.h
  ../include/despot/util/seeds.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/solver/aems.cpp
+ /home/cptd/go_ws/src/despot/src/solver/aems.cpp
 CMakeFiles/despot.dir/src/solver/despot.cpp.o
  ../include/despot/config.h
  ../include/despot/core/belief.h
@@ -339,7 +463,7 @@ CMakeFiles/despot.dir/src/solver/despot.cpp.o
  ../include/despot/util/random.h
  ../include/despot/util/seeds.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/solver/despot.cpp
+ /home/cptd/go_ws/src/despot/src/solver/despot.cpp
 CMakeFiles/despot.dir/src/solver/pomcp.cpp.o
  ../include/despot/config.h
  ../include/despot/core/belief.h
@@ -359,51 +483,51 @@ CMakeFiles/despot.dir/src/solver/pomcp.cpp.o
  ../include/despot/util/random.h
  ../include/despot/util/seeds.h
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/solver/pomcp.cpp
+ /home/cptd/go_ws/src/despot/src/solver/pomcp.cpp
 CMakeFiles/despot.dir/src/util/coord.cpp.o
  ../include/despot/util/coord.h
- /home/cptd/dd/despot/src/util/coord.cpp
+ /home/cptd/go_ws/src/despot/src/util/coord.cpp
 CMakeFiles/despot.dir/src/util/dirichlet.cpp.o
  ../include/despot/util/dirichlet.h
  ../include/despot/util/gamma.h
  ../include/despot/util/random.h
- /home/cptd/dd/despot/src/util/dirichlet.cpp
+ /home/cptd/go_ws/src/despot/src/util/dirichlet.cpp
 CMakeFiles/despot.dir/src/util/exec_tracker.cpp.o
  ../include/despot/util/exec_tracker.h
- /home/cptd/dd/despot/src/util/exec_tracker.cpp
+ /home/cptd/go_ws/src/despot/src/util/exec_tracker.cpp
 CMakeFiles/despot.dir/src/util/floor.cpp.o
  ../include/despot/util/coord.h
  ../include/despot/util/floor.h
- /home/cptd/dd/despot/src/util/floor.cpp
+ /home/cptd/go_ws/src/despot/src/util/floor.cpp
 CMakeFiles/despot.dir/src/util/gamma.cpp.o
  ../include/despot/util/gamma.h
  ../include/despot/util/random.h
- /home/cptd/dd/despot/src/util/gamma.cpp
+ /home/cptd/go_ws/src/despot/src/util/gamma.cpp
 CMakeFiles/despot.dir/src/util/logging.cpp.o
  ../include/despot/util/logging.h
- /home/cptd/dd/despot/src/util/logging.cpp
+ /home/cptd/go_ws/src/despot/src/util/logging.cpp
 CMakeFiles/despot.dir/src/util/random.cpp.o
  ../include/despot/util/random.h
- /home/cptd/dd/despot/src/util/random.cpp
+ /home/cptd/go_ws/src/despot/src/util/random.cpp
 CMakeFiles/despot.dir/src/util/seeds.cpp.o
  ../include/despot/util/random.h
  ../include/despot/util/seeds.h
- /home/cptd/dd/despot/src/util/seeds.cpp
+ /home/cptd/go_ws/src/despot/src/util/seeds.cpp
 CMakeFiles/despot.dir/src/util/tinyxml/tinystr.cpp.o
  ../include/despot/util/tinyxml/tinystr.h
- /home/cptd/dd/despot/src/util/tinyxml/tinystr.cpp
+ /home/cptd/go_ws/src/despot/src/util/tinyxml/tinystr.cpp
 CMakeFiles/despot.dir/src/util/tinyxml/tinyxml.cpp.o
  ../include/despot/util/tinyxml/tinystr.h
  ../include/despot/util/tinyxml/tinyxml.h
- /home/cptd/dd/despot/src/util/tinyxml/tinyxml.cpp
+ /home/cptd/go_ws/src/despot/src/util/tinyxml/tinyxml.cpp
 CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlerror.cpp.o
  ../include/despot/util/tinyxml/tinystr.h
  ../include/despot/util/tinyxml/tinyxml.h
- /home/cptd/dd/despot/src/util/tinyxml/tinyxmlerror.cpp
+ /home/cptd/go_ws/src/despot/src/util/tinyxml/tinyxmlerror.cpp
 CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlparser.cpp.o
  ../include/despot/util/tinyxml/tinystr.h
  ../include/despot/util/tinyxml/tinyxml.h
- /home/cptd/dd/despot/src/util/tinyxml/tinyxmlparser.cpp
+ /home/cptd/go_ws/src/despot/src/util/tinyxml/tinyxmlparser.cpp
 CMakeFiles/despot.dir/src/util/util.cpp.o
  ../include/despot/util/util.h
- /home/cptd/dd/despot/src/util/util.cpp
+ /home/cptd/go_ws/src/despot/src/util/util.cpp

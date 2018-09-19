@@ -7,7 +7,7 @@ namespace despot {
 
 DESPOT::DESPOT(const DSPOMDP* model, ScenarioLowerBound* lb, ScenarioUpperBound* ub, Belief* belief) :
 	Solver(model, belief),
-	root_(NULL), 
+	root_(NULL),
 	lower_bound_(lb),
 	upper_bound_(ub) {
 	assert(model != NULL);
@@ -774,6 +774,12 @@ void DESPOT::belief(Belief* b) {
 	logi << "[DESPOT::belief] End: Set initial belief." << endl;
 }
 
+void DESPOT::belief_secondary(Belief* b)
+{
+	secondary_=b;
+
+}
+
 void DESPOT::Update(int action, OBS_TYPE obs) {
 	double start = get_time_second();
 
@@ -785,6 +791,11 @@ void DESPOT::Update(int action, OBS_TYPE obs) {
 	logi << "[Solver::Update] Updated belief, history and root with action "
 		<< action << ", observation " << obs
 		<< " in " << (get_time_second() - start) << "s" << endl;
+}
+
+void DESPOT::Update_secondary(int action,OBS_TYPE obs,double value)
+{
+	secondary_->Update_secondary(action,obs,value);
 }
 
 } // namespace despot

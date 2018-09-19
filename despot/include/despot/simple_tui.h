@@ -2,6 +2,7 @@
 #define SIMPLETUI_H
 
 #include <typeinfo>
+#include <iostream>
 #include <despot/solver/despot.h>
 #include <despot/solver/aems.h>
 #include <despot/solver/pomcp.h>
@@ -134,13 +135,13 @@ public:
 
   virtual ~SimpleTUI();
 
-  virtual DSPOMDP* InitializeModel(option::Option* options) = 0;
+  virtual DSPOMDP* InitializeModel(string pomdpx_file) = 0;
   virtual void InitializeDefaultParameters() = 0;
 
   Solver* InitializeSolver(DSPOMDP* model, std::string solver_type,
                            option::Option* options);
 
-  int run(int argc, char* argv[]);
+  string run(string pomdpx_file);
 
   void OptionParse(option::Option* options, int& num_runs,
                    std::string& simulator_type, std::string& belief_type, int& time_limit,
@@ -152,14 +153,14 @@ public:
                            std::string belief_type, int time_limit,
                            std::string solver_type);
 
-  void DisplayParameters(option::Option* options, DSPOMDP* model);
+  string DisplayParameters(option::Option* options, DSPOMDP* model);
 
-  void RunEvaluator(DSPOMDP* model, Evaluator* simulator,
+  string RunEvaluator(DSPOMDP* model, Evaluator* simulator,
                     option::Option* options, int num_runs, bool search_solver,
                     Solver*& solver, std::string simulator_type,
                     clock_t main_clock_start, int start_run);
 
-  void PrintResult(int num_runs, Evaluator* simulator,
+  string PrintResult(int num_runs, Evaluator* simulator,
                    clock_t main_clock_start);
 };
 

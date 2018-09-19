@@ -115,11 +115,11 @@ public:
 	virtual int Handshake(std::string instance) = 0; // Initialize simulator and return number of runs.
 	virtual void InitRound() = 0;
 
-	bool RunStep(int step, int round);
+	bool RunStep(int step, int round,std::string &ss);
 
 	virtual double EndRound() = 0; // Return total undiscounted reward for this round.
 	virtual bool ExecuteAction(int action, double& reward, OBS_TYPE& obs) = 0;
-	virtual void ReportStepReward();
+	virtual std::string ReportStepReward();
 	virtual double End() = 0; // Free resources and return total reward collected
 
 	virtual void UpdateTimePerMove(double step_time) = 0;

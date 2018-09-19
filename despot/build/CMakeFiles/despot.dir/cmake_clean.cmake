@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/despot.dir/src/core/belief.cpp.o"
-  "CMakeFiles/despot.dir/src/core/information.cpp.o"
   "CMakeFiles/despot.dir/src/core/globals.cpp.o"
   "CMakeFiles/despot.dir/src/core/lower_bound.cpp.o"
   "CMakeFiles/despot.dir/src/core/mdp.cpp.o"
@@ -9,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/despot.dir/src/core/pomdp.cpp.o"
   "CMakeFiles/despot.dir/src/core/solver.cpp.o"
   "CMakeFiles/despot.dir/src/core/upper_bound.cpp.o"
+  "CMakeFiles/despot.dir/src/core/information.cpp.o"
   "CMakeFiles/despot.dir/src/evaluator.cpp.o"
   "CMakeFiles/despot.dir/src/pomdpx/parser/function.cpp.o"
   "CMakeFiles/despot.dir/src/pomdpx/parser/parser.cpp.o"
@@ -32,8 +32,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/despot.dir/src/util/tinyxml/tinyxml.cpp.o"
   "CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlerror.cpp.o"
   "CMakeFiles/despot.dir/src/util/tinyxml/tinyxmlparser.cpp.o"
-  "libdespot.pdb"
-  "libdespot.so"
+  "devel/lib/libdespot.pdb"
+  "devel/lib/libdespot.so"
 )
 
 # Per-language clean rules from dependency scanning.

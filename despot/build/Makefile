@@ -48,13 +48,23 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/cptd/dd/despot
+CMAKE_SOURCE_DIR = /home/cptd/go_ws/src/despot
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/cptd/dd/despot/build
+CMAKE_BINARY_DIR = /home/cptd/go_ws/src/despot/build
 
 #=============================================================================
 # Targets provided globally by CMake.
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target install
 install: preinstall
@@ -68,16 +78,6 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -89,16 +89,16 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
 
-# Special rule for the target install/strip
-install/strip/fast: install/strip
+# Special rule for the target test
+test/fast: test
 
-.PHONY : install/strip/fast
+.PHONY : test/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -110,6 +110,17 @@ install/local: preinstall
 install/local/fast: install/local
 
 .PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+
+.PHONY : install/strip/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -124,9 +135,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cptd/dd/despot/build/CMakeFiles /home/cptd/dd/despot/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cptd/go_ws/src/despot/build/CMakeFiles /home/cptd/go_ws/src/despot/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/cptd/dd/despot/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/cptd/go_ws/src/despot/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -155,6 +166,201 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named bulb_test
+
+# Build rule for target.
+bulb_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 bulb_test
+.PHONY : bulb_test
+
+# fast build rule for target.
+bulb_test/fast:
+	$(MAKE) -f CMakeFiles/bulb_test.dir/build.make CMakeFiles/bulb_test.dir/build
+.PHONY : bulb_test/fast
+
+#=============================================================================
+# Target rules for targets named bulb_despot
+
+# Build rule for target.
+bulb_despot: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 bulb_despot
+.PHONY : bulb_despot
+
+# fast build rule for target.
+bulb_despot/fast:
+	$(MAKE) -f CMakeFiles/bulb_despot.dir/build.make CMakeFiles/bulb_despot.dir/build
+.PHONY : bulb_despot/fast
+
+#=============================================================================
+# Target rules for targets named bulb_processor_generate_messages_py
+
+# Build rule for target.
+bulb_processor_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 bulb_processor_generate_messages_py
+.PHONY : bulb_processor_generate_messages_py
+
+# fast build rule for target.
+bulb_processor_generate_messages_py/fast:
+	$(MAKE) -f CMakeFiles/bulb_processor_generate_messages_py.dir/build.make CMakeFiles/bulb_processor_generate_messages_py.dir/build
+.PHONY : bulb_processor_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named bulb_processor_generate_messages_lisp
+
+# Build rule for target.
+bulb_processor_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 bulb_processor_generate_messages_lisp
+.PHONY : bulb_processor_generate_messages_lisp
+
+# fast build rule for target.
+bulb_processor_generate_messages_lisp/fast:
+	$(MAKE) -f CMakeFiles/bulb_processor_generate_messages_lisp.dir/build.make CMakeFiles/bulb_processor_generate_messages_lisp.dir/build
+.PHONY : bulb_processor_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named roscpp_generate_messages_py
+
+# Build rule for target.
+roscpp_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_py
+.PHONY : roscpp_generate_messages_py
+
+# fast build rule for target.
+roscpp_generate_messages_py/fast:
+	$(MAKE) -f CMakeFiles/roscpp_generate_messages_py.dir/build.make CMakeFiles/roscpp_generate_messages_py.dir/build
+.PHONY : roscpp_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named rosgraph_msgs_generate_messages_eus
+
+# Build rule for target.
+rosgraph_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rosgraph_msgs_generate_messages_eus
+.PHONY : rosgraph_msgs_generate_messages_eus
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_eus/fast:
+	$(MAKE) -f CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
+.PHONY : rosgraph_msgs_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named clean_test_results
+
+# Build rule for target.
+clean_test_results: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 clean_test_results
+.PHONY : clean_test_results
+
+# fast build rule for target.
+clean_test_results/fast:
+	$(MAKE) -f CMakeFiles/clean_test_results.dir/build.make CMakeFiles/clean_test_results.dir/build
+.PHONY : clean_test_results/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_nodejs
+
+# Build rule for target.
+std_msgs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_nodejs
+.PHONY : std_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+std_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
+.PHONY : std_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named roscpp_generate_messages_cpp
+
+# Build rule for target.
+roscpp_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_cpp
+.PHONY : roscpp_generate_messages_cpp
+
+# fast build rule for target.
+roscpp_generate_messages_cpp/fast:
+	$(MAKE) -f CMakeFiles/roscpp_generate_messages_cpp.dir/build.make CMakeFiles/roscpp_generate_messages_cpp.dir/build
+.PHONY : roscpp_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named bulb_processor_generate_messages_nodejs
+
+# Build rule for target.
+bulb_processor_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 bulb_processor_generate_messages_nodejs
+.PHONY : bulb_processor_generate_messages_nodejs
+
+# fast build rule for target.
+bulb_processor_generate_messages_nodejs/fast:
+	$(MAKE) -f CMakeFiles/bulb_processor_generate_messages_nodejs.dir/build.make CMakeFiles/bulb_processor_generate_messages_nodejs.dir/build
+.PHONY : bulb_processor_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named roscpp_generate_messages_eus
+
+# Build rule for target.
+roscpp_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_eus
+.PHONY : roscpp_generate_messages_eus
+
+# fast build rule for target.
+roscpp_generate_messages_eus/fast:
+	$(MAKE) -f CMakeFiles/roscpp_generate_messages_eus.dir/build.make CMakeFiles/roscpp_generate_messages_eus.dir/build
+.PHONY : roscpp_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named download_extra_data
+
+# Build rule for target.
+download_extra_data: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 download_extra_data
+.PHONY : download_extra_data
+
+# fast build rule for target.
+download_extra_data/fast:
+	$(MAKE) -f CMakeFiles/download_extra_data.dir/build.make CMakeFiles/download_extra_data.dir/build
+.PHONY : download_extra_data/fast
+
+#=============================================================================
+# Target rules for targets named std_msgs_generate_messages_lisp
+
+# Build rule for target.
+std_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_lisp
+.PHONY : std_msgs_generate_messages_lisp
+
+# fast build rule for target.
+std_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+.PHONY : std_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named doxygen
+
+# Build rule for target.
+doxygen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 doxygen
+.PHONY : doxygen
+
+# fast build rule for target.
+doxygen/fast:
+	$(MAKE) -f CMakeFiles/doxygen.dir/build.make CMakeFiles/doxygen.dir/build
+.PHONY : doxygen/fast
+
+#=============================================================================
+# Target rules for targets named run_tests
+
+# Build rule for target.
+run_tests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 run_tests
+.PHONY : run_tests
+
+# fast build rule for target.
+run_tests/fast:
+	$(MAKE) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/build
+.PHONY : run_tests/fast
+
+#=============================================================================
 # Target rules for targets named despot
 
 # Build rule for target.
@@ -168,186 +374,186 @@ despot/fast:
 .PHONY : despot/fast
 
 #=============================================================================
-# Target rules for targets named despot_adventurer
+# Target rules for targets named std_msgs_generate_messages_cpp
 
 # Build rule for target.
-despot_adventurer: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 despot_adventurer
-.PHONY : despot_adventurer
+std_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_cpp
+.PHONY : std_msgs_generate_messages_cpp
 
 # fast build rule for target.
-despot_adventurer/fast:
-	$(MAKE) -f examples/cpp_models/adventurer/CMakeFiles/despot_adventurer.dir/build.make examples/cpp_models/adventurer/CMakeFiles/despot_adventurer.dir/build
-.PHONY : despot_adventurer/fast
+std_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+.PHONY : std_msgs_generate_messages_cpp/fast
 
 #=============================================================================
-# Target rules for targets named despot_bridge
+# Target rules for targets named rosgraph_msgs_generate_messages_cpp
 
 # Build rule for target.
-despot_bridge: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 despot_bridge
-.PHONY : despot_bridge
+rosgraph_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rosgraph_msgs_generate_messages_cpp
+.PHONY : rosgraph_msgs_generate_messages_cpp
 
 # fast build rule for target.
-despot_bridge/fast:
-	$(MAKE) -f examples/cpp_models/bridge/CMakeFiles/despot_bridge.dir/build.make examples/cpp_models/bridge/CMakeFiles/despot_bridge.dir/build
-.PHONY : despot_bridge/fast
+rosgraph_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_cpp/fast
 
 #=============================================================================
-# Target rules for targets named despot_chain
+# Target rules for targets named rosgraph_msgs_generate_messages_nodejs
 
 # Build rule for target.
-despot_chain: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 despot_chain
-.PHONY : despot_chain
+rosgraph_msgs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rosgraph_msgs_generate_messages_nodejs
+.PHONY : rosgraph_msgs_generate_messages_nodejs
 
 # fast build rule for target.
-despot_chain/fast:
-	$(MAKE) -f examples/cpp_models/chain/CMakeFiles/despot_chain.dir/build.make examples/cpp_models/chain/CMakeFiles/despot_chain.dir/build
-.PHONY : despot_chain/fast
+rosgraph_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
+.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
-# Target rules for targets named despot_navigation
+# Target rules for targets named roscpp_generate_messages_nodejs
 
 # Build rule for target.
-despot_navigation: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 despot_navigation
-.PHONY : despot_navigation
+roscpp_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_nodejs
+.PHONY : roscpp_generate_messages_nodejs
 
 # fast build rule for target.
-despot_navigation/fast:
-	$(MAKE) -f examples/cpp_models/navigation/CMakeFiles/despot_navigation.dir/build.make examples/cpp_models/navigation/CMakeFiles/despot_navigation.dir/build
-.PHONY : despot_navigation/fast
+roscpp_generate_messages_nodejs/fast:
+	$(MAKE) -f CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make CMakeFiles/roscpp_generate_messages_nodejs.dir/build
+.PHONY : roscpp_generate_messages_nodejs/fast
 
 #=============================================================================
-# Target rules for targets named despot_pocman
+# Target rules for targets named tests
 
 # Build rule for target.
-despot_pocman: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 despot_pocman
-.PHONY : despot_pocman
+tests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tests
+.PHONY : tests
 
 # fast build rule for target.
-despot_pocman/fast:
-	$(MAKE) -f examples/cpp_models/pocman/CMakeFiles/despot_pocman.dir/build.make examples/cpp_models/pocman/CMakeFiles/despot_pocman.dir/build
-.PHONY : despot_pocman/fast
+tests/fast:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
+.PHONY : tests/fast
 
 #=============================================================================
-# Target rules for targets named despot_reg_demo
+# Target rules for targets named rosgraph_msgs_generate_messages_lisp
 
 # Build rule for target.
-despot_reg_demo: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 despot_reg_demo
-.PHONY : despot_reg_demo
+rosgraph_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rosgraph_msgs_generate_messages_lisp
+.PHONY : rosgraph_msgs_generate_messages_lisp
 
 # fast build rule for target.
-despot_reg_demo/fast:
-	$(MAKE) -f examples/cpp_models/reg_demo/CMakeFiles/despot_reg_demo.dir/build.make examples/cpp_models/reg_demo/CMakeFiles/despot_reg_demo.dir/build
-.PHONY : despot_reg_demo/fast
+rosgraph_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_lisp/fast
 
 #=============================================================================
-# Target rules for targets named despot_rock_sample
+# Target rules for targets named rosgraph_msgs_generate_messages_py
 
 # Build rule for target.
-despot_rock_sample: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 despot_rock_sample
-.PHONY : despot_rock_sample
+rosgraph_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rosgraph_msgs_generate_messages_py
+.PHONY : rosgraph_msgs_generate_messages_py
 
 # fast build rule for target.
-despot_rock_sample/fast:
-	$(MAKE) -f examples/cpp_models/rock_sample/CMakeFiles/despot_rock_sample.dir/build.make examples/cpp_models/rock_sample/CMakeFiles/despot_rock_sample.dir/build
-.PHONY : despot_rock_sample/fast
+rosgraph_msgs_generate_messages_py/fast:
+	$(MAKE) -f CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
+.PHONY : rosgraph_msgs_generate_messages_py/fast
 
 #=============================================================================
-# Target rules for targets named despot_fvrs
+# Target rules for targets named std_msgs_generate_messages_py
 
 # Build rule for target.
-despot_fvrs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 despot_fvrs
-.PHONY : despot_fvrs
+std_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_py
+.PHONY : std_msgs_generate_messages_py
 
 # fast build rule for target.
-despot_fvrs/fast:
-	$(MAKE) -f examples/cpp_models/rock_sample/CMakeFiles/despot_fvrs.dir/build.make examples/cpp_models/rock_sample/CMakeFiles/despot_fvrs.dir/build
-.PHONY : despot_fvrs/fast
+std_msgs_generate_messages_py/fast:
+	$(MAKE) -f CMakeFiles/std_msgs_generate_messages_py.dir/build.make CMakeFiles/std_msgs_generate_messages_py.dir/build
+.PHONY : std_msgs_generate_messages_py/fast
 
 #=============================================================================
-# Target rules for targets named despot_simple_rock_sample
+# Target rules for targets named roscpp_generate_messages_lisp
 
 # Build rule for target.
-despot_simple_rock_sample: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 despot_simple_rock_sample
-.PHONY : despot_simple_rock_sample
+roscpp_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_lisp
+.PHONY : roscpp_generate_messages_lisp
 
 # fast build rule for target.
-despot_simple_rock_sample/fast:
-	$(MAKE) -f examples/cpp_models/simple_rock_sample/CMakeFiles/despot_simple_rock_sample.dir/build.make examples/cpp_models/simple_rock_sample/CMakeFiles/despot_simple_rock_sample.dir/build
-.PHONY : despot_simple_rock_sample/fast
+roscpp_generate_messages_lisp/fast:
+	$(MAKE) -f CMakeFiles/roscpp_generate_messages_lisp.dir/build.make CMakeFiles/roscpp_generate_messages_lisp.dir/build
+.PHONY : roscpp_generate_messages_lisp/fast
 
 #=============================================================================
-# Target rules for targets named despot_laser_tag
+# Target rules for targets named std_msgs_generate_messages_eus
 
 # Build rule for target.
-despot_laser_tag: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 despot_laser_tag
-.PHONY : despot_laser_tag
+std_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_eus
+.PHONY : std_msgs_generate_messages_eus
 
 # fast build rule for target.
-despot_laser_tag/fast:
-	$(MAKE) -f examples/cpp_models/tag/CMakeFiles/despot_laser_tag.dir/build.make examples/cpp_models/tag/CMakeFiles/despot_laser_tag.dir/build
-.PHONY : despot_laser_tag/fast
+std_msgs_generate_messages_eus/fast:
+	$(MAKE) -f CMakeFiles/std_msgs_generate_messages_eus.dir/build.make CMakeFiles/std_msgs_generate_messages_eus.dir/build
+.PHONY : std_msgs_generate_messages_eus/fast
 
 #=============================================================================
-# Target rules for targets named despot_noisy_laser_tag
+# Target rules for targets named bulb_processor_generate_messages_cpp
 
 # Build rule for target.
-despot_noisy_laser_tag: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 despot_noisy_laser_tag
-.PHONY : despot_noisy_laser_tag
+bulb_processor_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 bulb_processor_generate_messages_cpp
+.PHONY : bulb_processor_generate_messages_cpp
 
 # fast build rule for target.
-despot_noisy_laser_tag/fast:
-	$(MAKE) -f examples/cpp_models/tag/CMakeFiles/despot_noisy_laser_tag.dir/build.make examples/cpp_models/tag/CMakeFiles/despot_noisy_laser_tag.dir/build
-.PHONY : despot_noisy_laser_tag/fast
+bulb_processor_generate_messages_cpp/fast:
+	$(MAKE) -f CMakeFiles/bulb_processor_generate_messages_cpp.dir/build.make CMakeFiles/bulb_processor_generate_messages_cpp.dir/build
+.PHONY : bulb_processor_generate_messages_cpp/fast
 
 #=============================================================================
-# Target rules for targets named despot_tag
+# Target rules for targets named bulb_processor_generate_messages_eus
 
 # Build rule for target.
-despot_tag: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 despot_tag
-.PHONY : despot_tag
+bulb_processor_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 bulb_processor_generate_messages_eus
+.PHONY : bulb_processor_generate_messages_eus
 
 # fast build rule for target.
-despot_tag/fast:
-	$(MAKE) -f examples/cpp_models/tag/CMakeFiles/despot_tag.dir/build.make examples/cpp_models/tag/CMakeFiles/despot_tag.dir/build
-.PHONY : despot_tag/fast
+bulb_processor_generate_messages_eus/fast:
+	$(MAKE) -f CMakeFiles/bulb_processor_generate_messages_eus.dir/build.make CMakeFiles/bulb_processor_generate_messages_eus.dir/build
+.PHONY : bulb_processor_generate_messages_eus/fast
 
 #=============================================================================
-# Target rules for targets named despot_tiger
+# Target rules for targets named gtest
 
 # Build rule for target.
-despot_tiger: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 despot_tiger
-.PHONY : despot_tiger
+gtest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
 
 # fast build rule for target.
-despot_tiger/fast:
-	$(MAKE) -f examples/cpp_models/tiger/CMakeFiles/despot_tiger.dir/build.make examples/cpp_models/tiger/CMakeFiles/despot_tiger.dir/build
-.PHONY : despot_tiger/fast
+gtest/fast:
+	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
 
 #=============================================================================
-# Target rules for targets named despot_pomdpx
+# Target rules for targets named gtest_main
 
 # Build rule for target.
-despot_pomdpx: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 despot_pomdpx
-.PHONY : despot_pomdpx
+gtest_main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
 
 # fast build rule for target.
-despot_pomdpx/fast:
-	$(MAKE) -f examples/pomdpx_models/CMakeFiles/despot_pomdpx.dir/build.make examples/pomdpx_models/CMakeFiles/despot_pomdpx.dir/build
-.PHONY : despot_pomdpx/fast
+gtest_main/fast:
+	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
 
 src/core/belief.o: src/core/belief.cpp.o
 
@@ -619,6 +825,33 @@ src/core/upper_bound.cpp.s:
 	$(MAKE) -f CMakeFiles/despot.dir/build.make CMakeFiles/despot.dir/src/core/upper_bound.cpp.s
 .PHONY : src/core/upper_bound.cpp.s
 
+src/despot_test.o: src/despot_test.cpp.o
+
+.PHONY : src/despot_test.o
+
+# target to build an object file
+src/despot_test.cpp.o:
+	$(MAKE) -f CMakeFiles/bulb_test.dir/build.make CMakeFiles/bulb_test.dir/src/despot_test.cpp.o
+.PHONY : src/despot_test.cpp.o
+
+src/despot_test.i: src/despot_test.cpp.i
+
+.PHONY : src/despot_test.i
+
+# target to preprocess a source file
+src/despot_test.cpp.i:
+	$(MAKE) -f CMakeFiles/bulb_test.dir/build.make CMakeFiles/bulb_test.dir/src/despot_test.cpp.i
+.PHONY : src/despot_test.cpp.i
+
+src/despot_test.s: src/despot_test.cpp.s
+
+.PHONY : src/despot_test.s
+
+# target to generate assembly for a file
+src/despot_test.cpp.s:
+	$(MAKE) -f CMakeFiles/bulb_test.dir/build.make CMakeFiles/bulb_test.dir/src/despot_test.cpp.s
+.PHONY : src/despot_test.cpp.s
+
 src/evaluator.o: src/evaluator.cpp.o
 
 .PHONY : src/evaluator.o
@@ -645,6 +878,33 @@ src/evaluator.s: src/evaluator.cpp.s
 src/evaluator.cpp.s:
 	$(MAKE) -f CMakeFiles/despot.dir/build.make CMakeFiles/despot.dir/src/evaluator.cpp.s
 .PHONY : src/evaluator.cpp.s
+
+src/main.o: src/main.cpp.o
+
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/bulb_despot.dir/build.make CMakeFiles/bulb_despot.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/bulb_despot.dir/build.make CMakeFiles/bulb_despot.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/bulb_despot.dir/build.make CMakeFiles/bulb_despot.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 src/pomdpx/parser/function.o: src/pomdpx/parser/function.cpp.o
 
@@ -1246,27 +1506,43 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install"
 	@echo "... list_install_components"
+	@echo "... install"
 	@echo "... rebuild_cache"
-	@echo "... despot"
-	@echo "... install/strip"
+	@echo "... test"
 	@echo "... install/local"
+	@echo "... install/strip"
 	@echo "... edit_cache"
-	@echo "... despot_adventurer"
-	@echo "... despot_bridge"
-	@echo "... despot_chain"
-	@echo "... despot_navigation"
-	@echo "... despot_pocman"
-	@echo "... despot_reg_demo"
-	@echo "... despot_rock_sample"
-	@echo "... despot_fvrs"
-	@echo "... despot_simple_rock_sample"
-	@echo "... despot_laser_tag"
-	@echo "... despot_noisy_laser_tag"
-	@echo "... despot_tag"
-	@echo "... despot_tiger"
-	@echo "... despot_pomdpx"
+	@echo "... bulb_test"
+	@echo "... bulb_despot"
+	@echo "... bulb_processor_generate_messages_py"
+	@echo "... bulb_processor_generate_messages_lisp"
+	@echo "... roscpp_generate_messages_py"
+	@echo "... rosgraph_msgs_generate_messages_eus"
+	@echo "... clean_test_results"
+	@echo "... std_msgs_generate_messages_nodejs"
+	@echo "... roscpp_generate_messages_cpp"
+	@echo "... bulb_processor_generate_messages_nodejs"
+	@echo "... roscpp_generate_messages_eus"
+	@echo "... download_extra_data"
+	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... doxygen"
+	@echo "... run_tests"
+	@echo "... despot"
+	@echo "... std_msgs_generate_messages_cpp"
+	@echo "... rosgraph_msgs_generate_messages_cpp"
+	@echo "... rosgraph_msgs_generate_messages_nodejs"
+	@echo "... roscpp_generate_messages_nodejs"
+	@echo "... tests"
+	@echo "... rosgraph_msgs_generate_messages_lisp"
+	@echo "... rosgraph_msgs_generate_messages_py"
+	@echo "... std_msgs_generate_messages_py"
+	@echo "... roscpp_generate_messages_lisp"
+	@echo "... std_msgs_generate_messages_eus"
+	@echo "... bulb_processor_generate_messages_cpp"
+	@echo "... bulb_processor_generate_messages_eus"
+	@echo "... gtest"
+	@echo "... gtest_main"
 	@echo "... src/core/belief.o"
 	@echo "... src/core/belief.i"
 	@echo "... src/core/belief.s"
@@ -1297,9 +1573,15 @@ help:
 	@echo "... src/core/upper_bound.o"
 	@echo "... src/core/upper_bound.i"
 	@echo "... src/core/upper_bound.s"
+	@echo "... src/despot_test.o"
+	@echo "... src/despot_test.i"
+	@echo "... src/despot_test.s"
 	@echo "... src/evaluator.o"
 	@echo "... src/evaluator.i"
 	@echo "... src/evaluator.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 	@echo "... src/pomdpx/parser/function.o"
 	@echo "... src/pomdpx/parser/function.i"
 	@echo "... src/pomdpx/parser/function.s"

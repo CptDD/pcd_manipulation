@@ -1,6 +1,9 @@
 #include <despot/pomdpx/pomdpx.h>
 #include <despot/solver/pomcp.h>
 
+#include <ros/ros.h>
+#include <ros/package.h>
+
 using namespace std;
 
 namespace despot {
@@ -103,7 +106,9 @@ bool POMDPX::Step(State& s, double random_num, int action, double& reward,
 
 	parser_->GetNextState(state.vec_id, action, random_num);
 	reward = parser_->GetReward(action); // Prev state and curr state set in GetNextState
+
 	obs = parser_->GetObservation(state.vec_id, action, random_num);
+
 
 	return parser_->IsTerminalState(state.vec_id);
 }

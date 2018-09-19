@@ -75,13 +75,33 @@ void Solver::Update(int action, OBS_TYPE obs) {
 		<< " in " << (get_time_second() - start) << "s" << endl;
 }
 
+
+void Solver::Update_secondary(int action,OBS_TYPE obs,double value)
+{
+	double start = get_time_second();
+
+	secondary_->Update_secondary(action, obs,value);
+
+}
+
 void Solver::belief(Belief* b) {
 	belief_ = b;
 	history_.Truncate(0);
 }
 
+
+void Solver::belief_secondary(Belief *b)
+{
+	secondary_=b;
+}
+
 Belief* Solver::belief() {
 	return belief_;
+}
+
+Belief* Solver::secondary_belief()
+{
+	return secondary_;
 }
 
 } // namespace despot

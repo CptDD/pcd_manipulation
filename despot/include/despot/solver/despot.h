@@ -28,7 +28,10 @@ public:
 	ValuedAction Search();
 
 	void belief(Belief* b);
+	void belief_secondary(Belief *b);
+
 	void Update(int action, OBS_TYPE obs);
+	void Update_secondary(int action,OBS_TYPE obs,double value);
 
 	ScenarioLowerBound* lower_bound() const;
 	ScenarioUpperBound* upper_bound() const;
