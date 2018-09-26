@@ -1,0 +1,1 @@
+/usr/bin/g++-5    -msse2 -mfpmath=sse -g   CMakeFiles/despot_navigation.dir/src/navigation.cpp.o CMakeFiles/despot_navigation.dir/src/main.cpp.o  -o despot_navigation -rdynamic ../../../libdespot.so -Wl,-rpath,/home/cptd/despot/despot/build: 

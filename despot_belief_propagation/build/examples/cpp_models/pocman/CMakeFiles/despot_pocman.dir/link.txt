@@ -1,0 +1,1 @@
+/usr/bin/g++-5    -msse2 -mfpmath=sse -g   CMakeFiles/despot_pocman.dir/src/pocman.cpp.o CMakeFiles/despot_pocman.dir/src/main.cpp.o  -o despot_pocman -rdynamic ../../../libdespot.so -Wl,-rpath,/home/cptd/despot/despot/build: 
