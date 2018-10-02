@@ -1,0 +1,12 @@
+<?xml version='1.0'?>
+
+<launch>
+	<node pkg="bulb_scanner" name="bulb_scanner" type="move_server.py" output="screen"/>
+
+	<node pkg="pcd_cloud_saver"  name="saver_service" type="save_server"  output="screen"/>
+	<node pkg="bulb_processor"   name="classification_server" type="multi_classification_server" output="screen"/>
+
+	<!--<node pkg="bulb_processor"   name="baxter_tucker" type="single_classification_server" output="screen"/>-->
+	<!--<node pkg="conveyor_advance" name="conveyor_advance" type="server.py" output="screen"/>-->
+
+</launch>

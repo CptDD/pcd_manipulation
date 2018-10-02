@@ -1,0 +1,8 @@
+prefix=/home/cptd/go_ws/src/despot/build/devel
+
+Name: despot
+Description: Description of despot
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/cptd/go_ws/src/despot/build/devel/lib -ldespot
+Requires: 
